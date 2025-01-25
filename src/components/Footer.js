@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="column">
         <h4>Information</h4>
         <Link href="/faq">FAQ</Link><br />
-        <Link href="/auth/login">Login</Link>
+        <Link href="/login">Login</Link>
       </div>
       <div className="column">
         <h4>Kontakt</h4>

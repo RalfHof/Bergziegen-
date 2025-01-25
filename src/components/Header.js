@@ -10,9 +10,9 @@ export default function Header() {
       <nav>
         <Link href="/">Home</Link>
         <Link href="/touren">Touren</Link>
-        <Link href="/about">Über Uns</Link>
-        <Link href="/auth/login">Login</Link>
-        <Link href="/auth/register">Registrieren</Link>
+        <Link href="/ueber-uns">Über Uns</Link>
+        <Link href="/login">Login</Link>
+        <Link href="/register">Registrieren</Link>
       </nav>
     </header>
   );

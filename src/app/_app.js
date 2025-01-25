@@ -1,5 +1,5 @@
-import '../styles/globals.css'; // Korrekter Pfad
-import MainLayout from '../layouts/MainLayout';
+import MainLayout from './layout';
+import React from 'react';
 
 export default function MyApp({ Component, pageProps }) {
   return (

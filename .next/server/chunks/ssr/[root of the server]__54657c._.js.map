@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 55, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/pages/index.js"],"sourcesContent":["import Link from 'next/link';\r\n\r\nexport default function Home() {\r\n  return (\r\n    <div>\r\n      <h1>Willkommen Bei den Bergziegen</h1>\r\n      <nav>\r\n        <ul>\r\n          <li><Link href=\"/about\">Über uns</Link></li>\r\n          <li><Link href=\"/legal/impressum\">Impressum</Link></li>\r\n          <li><Link href=\"/legal/datenschutz\">Datenschutz</Link></li>\r\n          <li><Link href=\"/auth/login\">Login</Link></li>\r\n          <li><Link href=\"/auth/register\">Registrieren</Link></li>\r\n        </ul>\r\n      </nav>\r\n    </div>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;;;AAEe,SAAS;IACtB,qBACE,qKAAC;;0BACC,qKAAC;0BAAG;;;;;;0BACJ,qKAAC;0BACC,cAAA,qKAAC;;sCACC,qKAAC;sCAAG,cAAA,qKAAC,qHAAA,CAAA,UAAI;gCAAC,MAAK;0CAAS;;;;;;;;;;;sCACxB,qKAAC;sCAAG,cAAA,qKAAC,qHAAA,CAAA,UAAI;gCAAC,MAAK;0CAAmB;;;;;;;;;;;sCAClC,qKAAC;sCAAG,cAAA,qKAAC,qHAAA,CAAA,UAAI;gCAAC,MAAK;0CAAqB;;;;;;;;;;;sCACpC,qKAAC;sCAAG,cAAA,qKAAC,qHAAA,CAAA,UAAI;gCAAC,MAAK;0CAAc;;;;;;;;;;;sCAC7B,qKAAC;sCAAG,cAAA,qKAAC,qHAAA,CAAA,UAAI;gCAAC,MAAK;0CAAiB;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAK1C"}},
+    {"offset": {"line": 163, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

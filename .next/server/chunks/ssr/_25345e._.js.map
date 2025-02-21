@@ -1,9 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/app/legal/impressum/page.js"],"sourcesContent":["\"use client\"\r\n\r\nexport default function Impressum() {\r\n    return (\r\n      <div>\r\n        <h1>Impressum</h1>\r\n        <p>Hier stehen die Impressums-Informationen gemäß § 5 TMG.</p>\r\n      </div>\r\n    );\r\n  }\r\n  "],"names":[],"mappings":";;;;AAAA;;AAEe,SAAS;IACpB,qBACE,8OAAC;;0BACC,8OAAC;0BAAG;;;;;;0BACJ,8OAAC;0BAAE;;;;;;;;;;;;AAGT"}},
-    {"offset": {"line": 37, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
-    {"offset": {"line": 47, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/node_modules/next/src/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.ts"],"sourcesContent":["module.exports = require('../../module.compiled').vendored[\n  'react-ssr'\n].ReactJsxDevRuntime\n"],"names":["module","exports","require","vendored","ReactJsxDevRuntime"],"mappings":";AAAAA,OAAOC,OAAO,GAAGC,QAAQ,0HAAyBC,QAAQ,CACxD,YACD,CAACC,kBAAkB","ignoreList":[0]}},
-    {"offset": {"line": 49, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

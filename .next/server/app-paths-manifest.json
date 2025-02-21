@@ -1,11 +1,7 @@
 {
-  "/login/page": "app/login/page.js",
-  "/faq/page": "app/faq/page.js",
-  "/legal/impressum/page": "app/legal/impressum/page.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/register/page": "app/register/page.js",
-  "/ueber-uns/page": "app/ueber-uns/page.js",
-  "/touren/page": "app/touren/page.js",
   "/page": "app/page.js",
-  "/legal/datenschutz/page": "app/legal/datenschutz/page.js"
+  "/touren/page": "app/touren/page.js",
+  "/ueber-uns/page": "app/ueber-uns/page.js",
+  "/login/page": "app/login/page.js"
 }

@@ -1,0 +1,21 @@
+/* [project]/src/globals.css [app-client] (css) */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+main {
+  min-height: 100vh;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/*# sourceMappingURL=src_globals_5b332f.css.map*/

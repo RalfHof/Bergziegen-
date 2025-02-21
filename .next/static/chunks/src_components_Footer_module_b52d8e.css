@@ -1,0 +1,45 @@
+/* [project]/src/components/Footer.module.css [app-client] (css) */
+.Footer-module__S6Hkya__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #004d18;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+.Footer-module__S6Hkya__column {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.Footer-module__S6Hkya__column h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.Footer-module__S6Hkya__link {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+
+@media (width <= 768px) {
+  .Footer-module__S6Hkya__footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Footer-module__S6Hkya__column {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/*# sourceMappingURL=src_components_Footer_module_b52d8e.css.map*/

@@ -1,0 +1,50 @@
+/* [project]/src/app/login/page.module.css [app-client] (css) */
+.page-module__aydn6q__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.page-module__aydn6q__form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.page-module__aydn6q__form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-module__aydn6q__form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.page-module__aydn6q__form button {
+  padding: 10px;
+  background-color: #004d18;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.page-module__aydn6q__form a {
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (width <= 480px) {
+  .page-module__aydn6q__form {
+    width: 90%;
+  }
+}
+
+/*# sourceMappingURL=src_app_login_page_module_b52d8e.css.map*/

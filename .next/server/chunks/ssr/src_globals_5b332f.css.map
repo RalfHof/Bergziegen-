@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/globals.css"],"sourcesContent":["body, main {\r\n  font-family: Arial, sans-serif;\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: #f9f9f9;\r\n  width: 100%;\r\n  height: 100vh;\r\n  min-height: 100vh;\r\n}\r\n\r\n/* Header */\r\nheader {\r\n  background-color: #003d13;\r\n  color: white;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  padding: 10px 20px;\r\n}\r\n\r\nheader nav {\r\n  display: flex;\r\n  gap: 15px;\r\n}\r\n\r\nheader nav a {\r\n  color: white;\r\n  text-decoration: none;\r\n  font-weight: bold;\r\n  padding: 5px 10px;\r\n  /* Etwas Padding für die Links */\r\n}\r\n\r\nheader nav a:hover {\r\n  text-decoration: underline;\r\n}\r\n\r\n/* Footer */\r\nfooter {\r\n  background-color: #004d18;\r\n  color: white;\r\n  padding: 20px;\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nfooter .column {\r\n  flex: 1;\r\n}\r\n\r\nfooter h4 {\r\n  margin-bottom: 10px;\r\n  font-size: 18px;\r\n}\r\n\r\nfooter a {\r\n  color: white;\r\n  text-decoration: none;\r\n}\r\n\r\nfooter a:hover {\r\n  text-decoration: underline;\r\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;AAWA;;;;;;;;;AASA;;;;;AAKA;;;;;;;AAQA;;;;AAKA;;;;;;;;AAQA;;;;AAIA;;;;;AAKA;;;;;AAKA"}},
-    {"offset": {"line": 61, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

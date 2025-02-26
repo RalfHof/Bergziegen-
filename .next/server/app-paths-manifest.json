@@ -1,8 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/touren/page": "app/touren/page.js",
-  "/ueber-uns/page": "app/ueber-uns/page.js",
-  "/login/page": "app/login/page.js",
-  "/register/page": "app/register/page.js",
-  "/touren/[id]/page": "app/touren/[id]/page.js"
-}

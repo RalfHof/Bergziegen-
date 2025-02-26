@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 55, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/app/api/auth/register/route.js"],"sourcesContent":["import { NextResponse } from 'next/server';\r\n\r\nexport async function POST(request) {\r\n    const { firstName, lastName, email, password } = await request.json();\r\n\r\n    // Hier solltest du deine Datenbank oder Auth-Provider-Logik einfügen\r\n    // Beispiel: Überprüfen, ob der Benutzer bereits existiert, Passwort hashen, Benutzer erstellen usw.\r\n\r\n    // Beispielantwort\r\n    return NextResponse.json({ message: 'Benutzer erfolgreich registriert' });\r\n}"],"names":[],"mappings":";;;AAAA;;AAEO,eAAe,KAAK,OAAO;IAC9B,MAAM,EAAE,SAAS,EAAE,QAAQ,EAAE,KAAK,EAAE,QAAQ,EAAE,GAAG,MAAM,QAAQ,IAAI;IAEnE,qEAAqE;IACrE,oGAAoG;IAEpG,kBAAkB;IAClB,OAAO,gIAAA,CAAA,eAAY,CAAC,IAAI,CAAC;QAAE,SAAS;IAAmC;AAC3E"}},
-    {"offset": {"line": 69, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

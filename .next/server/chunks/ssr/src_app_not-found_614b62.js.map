@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/app/not-found.js"],"sourcesContent":["export default function Notfound() {\r\n\r\n    return (\r\n        <>\r\n            <h1>Not Found</h1>\r\n        </>\r\n\r\n    )\r\n}"],"names":[],"mappings":";;;;;AAAe,SAAS;IAEpB,qBACI;kBACI,cAAA,8OAAC;sBAAG;;;;;;;AAIhB"}},
-    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

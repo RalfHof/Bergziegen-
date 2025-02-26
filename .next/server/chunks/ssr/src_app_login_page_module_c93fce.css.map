@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/app/login/page.module.css"],"sourcesContent":[".container {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: 100vh;\r\n}\r\n\r\n.form {\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 300px;\r\n    padding: 20px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n}\r\n\r\n.form h1 {\r\n    text-align: center;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.form input {\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 3px;\r\n}\r\n\r\n.form button {\r\n    padding: 10px;\r\n    background-color: #004d18;\r\n    color: white;\r\n    border: none;\r\n    border-radius: 3px;\r\n    cursor: pointer;\r\n}\r\n\r\n.form a {\r\n    text-align: center;\r\n    margin-top: 10px;\r\n}\r\n\r\n@media (max-width: 480px) {\r\n    .form {\r\n        width: 90%;\r\n    }\r\n}"],"names":[],"mappings":"AAAA;;;;;;;AAOA;;;;;;;;;AASA;;;;;AAKA;;;;;;;AAOA;;;;;;;;;AASA;;;;;AAKA;EACI"}},
-    {"offset": {"line": 48, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

@@ -4,6 +4,11 @@ import styles from './page.module.css';
 const tours = [
     { id: 1, name: 'Tour 1', image: '/tour1.jpg', info: 'Info Tour 1', komootLink: 'https://www.komoot.de/...' },
     { id: 2, name: 'Tour 2', image: '/tour2.jpg', info: 'Info Tour 2', komootLink: 'https://www.komoot.de/...' },
+    { id: 3, name: 'Tour 2', image: '/tour2.jpg', info: 'Info Tour 3', komootLink: 'https://www.komoot.de/...' },
+    { id: 4, name: 'Tour 2', image: '/tour2.jpg', info: 'Info Tour 4', komootLink: 'https://www.komoot.de/...' },
+    { id: 5, name: 'Tour 2', image: '/tour2.jpg', info: 'Info Tour 5', komootLink: 'https://www.komoot.de/...' },
+    { id: 6, name: 'Tour 2', image: '/tour2.jpg', info: 'Info Tour 6', komootLink: 'https://www.komoot.de/...' },
+    
     // ... füge weitere Touren hinzu ...
 ];
 

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 55, "column": 0}, "map": {"version":3,"sources":["file://C%3A/web_hofmann/src/app/api/auth/login/route.js"],"sourcesContent":["import { NextResponse } from 'next/server';\r\n\r\nexport async function POST(request) {\r\n    const { email, password } = await request.json();\r\n\r\n    // Hier solltest du deine Datenbank oder Auth-Provider-Logik einfügen\r\n    // Beispiel: Benutzer in der Datenbank suchen, Passwort überprüfen usw.\r\n\r\n    // Beispielantwort (ersetze mit deiner tatsächlichen Logik)\r\n    if (email === 'test@example.com' && password === 'password') {\r\n        return NextResponse.json({ message: 'Erfolgreich angemeldet' });\r\n    } else {\r\n        return NextResponse.json({ message: 'Falsche E-Mail oder Passwort' }, { status: 401 });\r\n    }\r\n}"],"names":[],"mappings":";;;AAAA;;AAEO,eAAe,KAAK,OAAO;IAC9B,MAAM,EAAE,KAAK,EAAE,QAAQ,EAAE,GAAG,MAAM,QAAQ,IAAI;IAE9C,qEAAqE;IACrE,uEAAuE;IAEvE,2DAA2D;IAC3D,IAAI,UAAU,sBAAsB,aAAa,YAAY;QACzD,OAAO,gIAAA,CAAA,eAAY,CAAC,IAAI,CAAC;YAAE,SAAS;QAAyB;IACjE,OAAO;QACH,OAAO,gIAAA,CAAA,eAAY,CAAC,IAAI,CAAC;YAAE,SAAS;QAA+B,GAAG;YAAE,QAAQ;QAAI;IACxF;AACJ"}},
-    {"offset": {"line": 77, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

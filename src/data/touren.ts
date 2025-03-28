@@ -165,3 +165,4 @@ export const touren = [
     komootLink: "https://www.komoot.de/tour-6",
   },
 ];
+

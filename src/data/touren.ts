@@ -145,24 +145,19 @@ export const touren = [
       "/Tour5_6.jpg",
       "/Tour5_7.jpg",
       "/Tour5_8.jpg",
+      "/Tour5_9.jpg",
+      "/Tour5_10.jpg",
+      "/Tour5_11.jpg",
+      "/Tour5_12.jpg",
+      "/Tour5_13.jpg",
+      "/Tour5_14.jpg",
+      "/Tour5_15.jpg",
+      "/Tour5_16.jpg",
+      "/Tour5_17.jpg",
+
     ],
     komootLink: "https://www.komoot.de/tour-5",
   },
-  {
-    id: 6,
-    name: "Tour 6",
-    description: "Beschreibung der Tour 6",
-    images: [
-      "/Tour6_1.jpg",
-      "/Tour6_2.jpg",
-      "/Tour6_3.jpg",
-      "/Tour6_4.jpg",
-      "/Tour6_5.jpg",
-      "/Tour6_6.jpg",
-      "/Tour6_7.jpg",
-      "/Tour6_8.jpg",
-    ],
-    komootLink: "https://www.komoot.de/tour-6",
-  },
+
 ];
 

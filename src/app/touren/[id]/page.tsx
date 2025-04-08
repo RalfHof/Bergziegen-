@@ -43,6 +43,3 @@ export default function TourDetails({ params }: { params: { id: string } }) {
     </div>
   );
 }
-
-
-

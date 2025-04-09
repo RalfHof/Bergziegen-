@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
 import { touren } from "@/data/touren";
 
-// Wichtig: Damit Next.js params korrekt behandelt
-export const dynamic = "force-dynamic";
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-export default function TourDetails({ params }: { params: { id: string } }) {
+export default async function TourDetails({ params }: Props) {
   const tour = touren.find((t) => t.id.toString() === params.id);
 
   if (!tour) {
@@ -15,31 +18,12 @@ export default function TourDetails({ params }: { params: { id: string } }) {
     <div>
       <h1>{tour.name}</h1>
       <p>{tour.description}</p>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+      <div>
         {tour.images.map((src, index) => (
-          <img
-            key={index}
-            src={src}
-            alt={`Bild ${index + 1}`}
-            width="300"
-            style={{ borderRadius: "10px" }}
-          />
+          <img key={index} src={src} alt={`Bild ${index + 1}`} width="300" />
         ))}
       </div>
-      <p style={{ marginTop: "1rem" }}>
-        <a
-          href={tour.komootLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "green",
-            textDecoration: "underline",
-            fontWeight: "bold",
-          }}
-        >
-          Zur Komoot-Tour
-        </a>
-      </p>
+      <a href={tour.komootLink} target="_blank">Zur Komoot-Tour</a>
     </div>
   );
 }

@@ -1,9 +1,9 @@
-export const touren = [
+export const tourenData = [
   {
-    id: 1,
+    id: "1",
     name: "Alte Brauerei Weingarten",
-    description: "Beschreibung der Tour 1",
-    images: [
+    beschreibung: "Beschreibung der Tour 1",
+    bilder: [
       "/Tour1_1.jpg",
       "/Tour1_2.jpg",
       "/Tour1_3.jpg",
@@ -16,10 +16,10 @@ export const touren = [
     komootLink: "https://www.komoot.de/tour-1",
   },
   {
-    id: 2,
+    id: "2",
     name: "Besen Hexe Kreutzbergsee",
-    description: "Beschreibung der Tour 2",
-    images: [
+    beschreibung: "Beschreibung der Tour 2",
+    bilder: [
       "/Tour2_1.jpg",
       "/Tour2_2.jpg",
       "/Tour2_3.jpg",
@@ -42,10 +42,10 @@ export const touren = [
     komootLink: "https://www.komoot.de/tour-2",
   },
   {
-    id: 3,
+    id: "3",
     name: "Forsthaus Silbertal",
-    description: "Beschreibung der Tour 3",
-    images: [
+    beschreibung: "Beschreibung der Tour 3",
+    bilder: [
       "/Tour3_1.jpg",
       "/Tour3_2.jpg",
       "/Tour3_3.jpg",
@@ -71,15 +71,14 @@ export const touren = [
       "/Tour3_23.jpg",
       "/Tour3_24.jpg",
       "/Tour3_25.jpg",
-      
     ],
     komootLink: "https://www.komoot.de/tour-3",
   },
   {
-    id: 4,
+    id: "4",
     name: "Mondbachschlucht",
-    description: "Beschreibung der Tour 4",
-    images: [
+    beschreibung: "Beschreibung der Tour 4",
+    bilder: [
       "/Tour4_1.jpg",
       "/Tour4_2.jpg",
       "/Tour4_3.jpg",
@@ -128,15 +127,14 @@ export const touren = [
       "/Tour4_46.jpg",
       "/Tour4_47.jpg",
       "/Tour4_48.jpg",
-
     ],
     komootLink: "https://www.komoot.de/tour-4",
   },
   {
-    id: 5,
+    id: "5",
     name: "Holz Weißbrot",
-    description: "Beschreibung der Tour 5",
-    images: [
+    beschreibung: "Beschreibung der Tour 5",
+    bilder: [
       "/Tour5_1.jpg",
       "/Tour5_2.jpg",
       "/Tour5_3.jpg",
@@ -154,10 +152,7 @@ export const touren = [
       "/Tour5_15.jpg",
       "/Tour5_16.jpg",
       "/Tour5_17.jpg",
-
     ],
     komootLink: "https://www.komoot.de/tour-5",
   },
-
 ];
-

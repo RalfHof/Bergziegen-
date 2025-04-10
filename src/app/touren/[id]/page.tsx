@@ -2,7 +2,13 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
 
-export default function TourDetailPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function TourDetailPage({ params }: PageProps) {
   const tourId = parseInt(params.id);
   const tour = touren.find((t) => t.id === tourId);
 

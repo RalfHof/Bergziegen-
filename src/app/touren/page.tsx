@@ -1,25 +1,46 @@
-import { tourenData } from '@/data/touren';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './page.module.css';
+import Link from "next/link";
+import { touren } from "@/data/touren";
 
 export default function TourenPage() {
   return (
-    <div className={styles.tourenContainer}>
-      {tourenData.map((tour) => (
-        <div key={tour.id} className={styles.tourItem}>
-          <Link href={`/touren/${tour.id}`}>
-            <Image
-              src={tour.bilder[0]}
-              alt={tour.name}
-              width={300}
-              height={200}
-              className={styles.tourImage}
-            />
-          </Link>
-          <h2>{tour.name}</h2>
-        </div>
-      ))}
+    <div style={{ padding: "2rem" }}>
+      <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Alle Touren</h1>
+      
+      {/* Grid-Container für Touren */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "2rem",
+          justifyContent: "center",
+        }}
+      >
+        {touren.map((tour) => (
+          <div
+            key={tour.id}
+            style={{
+              width: "300px",
+              textAlign: "center",
+            }}
+          >
+            <h2 style={{ fontSize: "1.2rem", marginBottom: "0.5rem" }}>
+              {tour.name}
+            </h2>
+            <Link href={`/touren/${tour.id}`}>
+              <img
+                src={tour.images[0]}
+                alt={`Vorschau für ${tour.name}`}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "12px",
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

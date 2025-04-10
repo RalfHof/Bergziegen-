@@ -1,33 +1,44 @@
+import { notFound } from "next/navigation";
+import Image from "next/image";
 import { touren } from "@/data/touren";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function TourDetailPage({ params }: PageProps) {
-  // Wichtig: params.id ist ein String – also in Zahl umwandeln!
-  const tour = touren.find((t) => t.id === Number(params.id));
+export default function TourDetailPage({ params }: { params: { id: string } }) {
+  const tourId = parseInt(params.id);
+  const tour = touren.find((t) => t.id === tourId);
 
   if (!tour) {
-    return <div>Tour nicht gefunden.</div>;
+    return notFound();
   }
 
   return (
-    <div>
-      <h1>{tour.name}</h1>
-      <p>{tour.description}</p>
-      <a href={tour.komootLink} target="_blank" rel="noopener noreferrer">
-        Zur Komoot Tour
+    <div style={{ padding: "2rem" }}>
+      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{tour.name}</h1>
+      <p style={{ marginBottom: "1rem" }}>{tour.description}</p>
+      <a
+        href={tour.komootLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ color: "blue", textDecoration: "underline", marginBottom: "2rem", display: "inline-block" }}
+      >
+        Zur Komoot-Tour
       </a>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "1rem",
+          marginTop: "2rem",
+        }}
+      >
         {tour.images.map((src, index) => (
-          <img
+          <Image
             key={index}
             src={src}
-            alt={`Bild ${index + 1}`}
-            style={{ width: "200px", borderRadius: "8px" }}
+            alt={`${tour.name} Bild ${index + 1}`}
+            width={300}
+            height={200}
+            style={{ borderRadius: "12px", objectFit: "cover" }}
           />
         ))}
       </div>

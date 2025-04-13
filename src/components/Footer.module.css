@@ -1,42 +1,56 @@
 .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     background-color: #004d18;
     color: white;
-    padding: 10px 20px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.footerContainer {
     display: flex;
-    justify-content: center;
-    z-index: 100;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .column {
-    display: inline-flex; /* Inline-Flex für horizontale Anordnung */
-    align-items: center; /* Oder baseline verwenden */
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
 }
 
 .column h4 {
-    margin: 0; /* Entferne den Standardabstand der Überschrift */
-    font-size: 16px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .link {
     color: white;
     text-decoration: none;
-    margin-right: 3px;
-    margin-left: 3px;
+    font-size: 16px;
+    transition: color 0.2s ease-in-out;
+}
+
+.link:hover {
+    color: #7cff9b;
+}
+
+.text {
+    font-size: 15px;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
-    .footer {
+    .footerContainer {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
     .column {
-        flex-direction: column;
-        gap: 5px;
+        align-items: center;
     }
 }

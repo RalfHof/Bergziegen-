@@ -1,9 +1,18 @@
-// src/app/touren/[id]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
 
-export default function Page({ params }: { params: { id: string } }) {
+type Props = {
+  params: { id: string };
+};
+
+export async function generateStaticParams() {
+  return touren.map((tour) => ({
+    id: tour.id.toString(),
+  }));
+}
+
+export default async function Page({ params }: Props) {
   const tourId = parseInt(params.id);
   const tour = touren.find((t) => t.id === tourId);
 

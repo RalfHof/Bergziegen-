@@ -1,43 +1,53 @@
 // src/app/touren/[id]/page.tsx
+import { notFound } from "next/navigation";
+import Image from "next/image";
 import { touren } from "@/data/touren";
-import "@/styles/detail.css";
 
-interface PageProps {
-  params: { id: string };
-}
-
-export default function Page({ params }: PageProps) {
+export default function Page({ params }: { params: { id: string } }) {
   const tourId = parseInt(params.id);
   const tour = touren.find((t) => t.id === tourId);
 
   if (!tour) {
-    return <div>Tour nicht gefunden</div>;
+    notFound();
   }
 
   return (
-    <div className="detail-container">
-      <h1 className="detail-title">{tour.name}</h1>
-      <p className="detail-description">{tour.description}</p>
-
-      <div className="image-gallery">
-        {tour.images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Bild ${index + 1} der Tour ${tour.name}`}
-            className="detail-image"
-          />
-        ))}
-      </div>
-
+    <div style={{ padding: "2rem" }}>
+      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{tour.name}</h1>
+      <p style={{ marginBottom: "1rem" }}>{tour.description}</p>
       <a
         href={tour.komootLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="komoot-link"
+        style={{
+          color: "blue",
+          textDecoration: "underline",
+          marginBottom: "2rem",
+          display: "inline-block",
+        }}
       >
         Zur Komoot-Tour
       </a>
+
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "1rem",
+          marginTop: "2rem",
+        }}
+      >
+        {tour.images.map((src, index) => (
+          <Image
+            key={index}
+            src={src}
+            alt={`${tour.name} Bild ${index + 1}`}
+            width={300}
+            height={200}
+            style={{ borderRadius: "12px", objectFit: "cover" }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ export default function TourenPage() {
         <Link key={tour.id} href={`/touren/${tour.id}`} className={styles.link}>
           <div className={styles.tourCard}>
             <Image
-              src={tour.images[0]} // Korrigiert: von tour.bilder zu tour.images
+              src={tour.images[0]}
               alt={tour.name}
               width={150}
               height={100}

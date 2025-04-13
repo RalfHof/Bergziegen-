@@ -1,5 +1,3 @@
-// src/app/touren/page.tsx
-"use client";
 import Link from "next/link";
 import { touren } from "@/data/touren";
 
@@ -7,7 +5,8 @@ export default function TourenPage() {
   return (
     <div style={{ padding: "2rem" }}>
       <h1 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Alle Touren</h1>
-
+      
+      {/* Grid-Container für Touren */}
       <div
         style={{
           display: "flex",

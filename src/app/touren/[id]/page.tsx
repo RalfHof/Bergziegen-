@@ -1,19 +1,14 @@
+// src/app/touren/[id]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function TourDetailPage({ params }: PageProps) {
+export default function Page({ params }: { params: { id: string } }) {
   const tourId = parseInt(params.id);
   const tour = touren.find((t) => t.id === tourId);
 
   if (!tour) {
-    return notFound();
+    notFound();
   }
 
   return (
@@ -24,7 +19,12 @@ export default function TourDetailPage({ params }: PageProps) {
         href={tour.komootLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{ color: "blue", textDecoration: "underline", marginBottom: "2rem", display: "inline-block" }}
+        style={{
+          color: "blue",
+          textDecoration: "underline",
+          marginBottom: "2rem",
+          display: "inline-block",
+        }}
       >
         Zur Komoot-Tour
       </a>

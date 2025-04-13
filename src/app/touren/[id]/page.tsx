@@ -2,20 +2,18 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
 
-type Props = {
+type PageProps = {
   params: { id: string };
 };
 
-export async function generateStaticParams() {
-  return touren.map((tour) => ({
-    id: tour.id.toString(),
-  }));
-}
-
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: PageProps) {
+  // Wandle die id in eine Zahl um
   const tourId = parseInt(params.id);
+
+  // Finde die passende Tour
   const tour = touren.find((t) => t.id === tourId);
 
+  // Wenn keine Tour gefunden wurde → 404
   if (!tour) {
     notFound();
   }

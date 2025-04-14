@@ -1,49 +1,52 @@
+"use client"; // Wichtig, da wir useState und Event-Handler verwenden
+
+import { useState } from 'react'; // Import useState
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
+import styles from "./page.module.css";
 
-export default async function Page({ params }: { params: { id: string } }) { // Make the component async
+export default function Page({ params }: { params: { id: string } }) { // Entferne 'async'
   const tourId = parseInt(params.id);
   const tour = touren.find((t) => t.id === tourId);
+  const [zoomedImage, setZoomedImage] = useState<number | null>(null); // State für das gezoomte Bild
 
   if (!tour) {
     notFound();
   }
 
+  const handleImageClick = (index: number) => {
+    setZoomedImage(zoomedImage === index ? null : index); // Toggle Zoom
+  };
+
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1 style={{ fontSize: "2rem", marginBottom: "1rem" }}>{tour.name}</h1>
-      <p style={{ marginBottom: "1rem" }}>{tour.description}</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>{tour.name}</h1>
+      <p className={styles.description}>{tour.description}</p>
       <a
         href={tour.komootLink}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          color: "blue",
-          textDecoration: "underline",
-          marginBottom: "2rem",
-          display: "inline-block",
-        }}
+        className={styles.komootLink}
       >
         Zur Komoot-Tour
       </a>
 
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "1rem",
-          marginTop: "2rem",
-        }}
-      >
+      <div className={styles.gallery}>
         {tour.images.map((src, index) => (
           <Image
             key={index}
             src={src}
             alt={`${tour.name} Bild ${index + 1}`}
-            width={300}
-            height={200}
-            style={{ borderRadius: "12px", objectFit: "cover" }}
+            width={zoomedImage === index ? 600 : 300} // Dynamische Breite
+            height={zoomedImage === index ? 400 : 200} // Dynamische Höhe
+            style={{
+              borderRadius: "12px",
+              objectFit: "cover",
+              cursor: "pointer",
+              transition: "width 0.3s ease, height 0.3s ease", // Sanfte Animation
+            }}
+            onClick={() => handleImageClick(index)}
           />
         ))}
       </div>

@@ -38,5 +38,10 @@
     object-fit: cover;
     max-width: 100%;
     height: auto;
+    cursor: pointer; /* Zeiger-Cursor für Interaktion */
+    transition: width 0.3s ease, height 0.3s ease; /* Sanfte Animation */
   }
   
+  .image:hover {
+    opacity: 0.8; /* Leichte Transparenz beim Hovern (optional) */
+  }

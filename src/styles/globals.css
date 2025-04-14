@@ -1,0 +1,18 @@
+/* src/styles/globals.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #e6f2e6, #cce0cc);
+  color: #333;
+}
+
+main {
+  padding: 1rem;
+  min-height: 80vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

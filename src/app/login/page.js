@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import axios from "axios";
-import styles from "./Login.module.css"; // Korrigierter Importpfad
+import styles from "./Login.module.css";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h1>Login</h1>
+        <h1 className={styles.title}>Login</h1> {/* Wende die lokale Klasse an */}
         <input
           type="email"
           placeholder="E-Mail"

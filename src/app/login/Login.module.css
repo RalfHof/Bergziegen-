@@ -1,3 +1,4 @@
+/* src/app/login/Login.module.css */
 .container {
     background: #d4e5cd;
     padding: 2rem;
@@ -5,11 +6,13 @@
     max-width: 400px;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
   }
   
-  .title { /* Lokale Klasse für h2 */
+  .title {
     text-align: center;
     margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
   
   .form {
@@ -18,14 +21,14 @@
     gap: 1rem;
   }
   
-  .input { /* Lokale Klasse für input */
+  .input {
     padding: 0.75rem;
     border-radius: 10px;
     border: 1px solid #999;
     font-size: 1rem;
   }
   
-  .button { /* Lokale Klasse für button */
+  .button {
     background-color: #356859;
     color: white;
     padding: 0.75rem;
@@ -39,3 +42,21 @@
     color: red;
     text-align: center;
   }
+  
+  /* ✅ Mobilfreundlich */
+  @media (max-width: 600px) {
+    .container {
+      padding: 1rem;
+      margin: 1rem auto;
+    }
+  
+    .title {
+      font-size: 1.25rem;
+    }
+  
+    .input,
+    .button {
+      font-size: 1rem;
+    }
+  }
+  

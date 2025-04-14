@@ -1,9 +1,27 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { touren } from '@/data/touren';
 
 export default function TourenPage() {
+  const router = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem('auth');
+    if (auth === 'true') {
+      setIsLoggedIn(true);
+    } else {
+      router.push('/login');
+    }
+  }, [router]);
+
+  if (!isLoggedIn) return null;
+
   return (
     <div className={styles.container}>
       {touren.map((tour) => (

@@ -1,4 +1,4 @@
-"use client"; // Füge diese Zeile am Anfang der Datei hinzu
+"use client";
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './Login.module.css';
@@ -14,7 +14,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleLogin = (e: FormEvent) => { // Korrekte TypeScript-Syntax
+  const handleLogin = (e: FormEvent) => {
     e.preventDefault();
     const usersString = localStorage.getItem('users') || '[]';
     const users: User[] = JSON.parse(usersString);
@@ -54,4 +54,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

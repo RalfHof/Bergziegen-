@@ -25,13 +25,14 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h1 className={styles.title}>Login</h1> {/* Wende die lokale Klasse an */}
+        <h1 className={styles.title}>Login</h1>
         <input
           type="email"
           placeholder="E-Mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className={styles.inputField} // Wende die lokale Klasse für input an
         />
         <input
           type="password"
@@ -39,8 +40,11 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className={styles.inputField} // Wende die lokale Klasse für input an
         />
-        <button type="submit">Anmelden</button>
+        <button type="submit" className={styles.submitButton}> {/* Wende die lokale Klasse für button an */}
+          Anmelden
+        </button>
         <p>{message}</p>
         <a href="/forgot-password">Passwort vergessen?</a>
       </form>

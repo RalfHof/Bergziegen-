@@ -7,7 +7,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  .title { /* Füge diese lokale Klasse hinzu */
+  .title {
     text-align: center;
     margin-bottom: 1rem;
   }
@@ -18,14 +18,14 @@
     gap: 1rem;
   }
   
-  input {
+  .inputField { /* Füge diese lokale Klasse für input hinzu */
     padding: 0.75rem;
     border-radius: 10px;
     border: 1px solid #999;
     font-size: 1rem;
   }
   
-  button {
+  .submitButton { /* Füge diese lokale Klasse für button hinzu */
     background-color: #356859;
     color: white;
     padding: 0.75rem;

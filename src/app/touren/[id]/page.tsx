@@ -1,9 +1,8 @@
-// src/app/touren/[id]/page.tsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
 
-export default function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) { // Make the component async
   const tourId = parseInt(params.id);
   const tour = touren.find((t) => t.id === tourId);
 

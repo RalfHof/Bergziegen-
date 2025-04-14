@@ -33,8 +33,10 @@
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    ".next/types/**/*.ts"
-, "src/components/Header.js", "src/components/Footer.js", "src/app/login/page.js"  ],
+    ".next/types/**/*.ts",
+    "src/components/Header.js",
+    "src/components/Footer.js"
+  ],
   "exclude": [
     "node_modules",
     ".next"

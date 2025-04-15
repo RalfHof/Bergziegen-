@@ -1,18 +1,20 @@
 // src/app/layout.tsx
+'use client'; // wichtig
+
 import '../styles/globals.css';
-import type { Metadata } from 'next';
-import ClientLayout from '@/components/ClientLayout';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { SessionProvider } from 'next-auth/react';
 
-export const metadata: Metadata = {
-  title: 'Bergziegen',
-  description: 'Wandergruppe Bergziegen',
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de">
       <body className="site-wrapper">
-        <ClientLayout>{children}</ClientLayout>
+        <SessionProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

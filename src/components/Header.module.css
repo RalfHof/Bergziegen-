@@ -21,7 +21,7 @@
   display: flex;
   gap: 0.25rem;
   flex-wrap: nowrap;
-  justify-content: flex-end;
+  justify-content: center; /* Zentriert die Links */
   align-items: center;
 }
 
@@ -43,29 +43,29 @@
 /* Mobile Optimierung */
 @media (max-width: 600px) {
   .header {
-    flex-direction: column; /* Logo, Titel, Nav übereinander */
-    align-items: center; /* Zentriert horizontal */
-    justify-content: flex-start; /* Links */
+    flex-direction: column; /* Stapelt Logo, Titel, Navigationsleiste übereinander */
+    align-items: center; /* Zentriert Inhalt horizontal */
+    justify-content: center; /* Zentriert Inhalt horizontal */
   }
 
   .logo {
     margin-right: auto; /* Logo links */
-    margin-bottom: 0.25rem; /* Abstand zum Titel */
-    width: auto;
-    text-align: left;
+    margin-bottom: 0.25rem; /* Abstand zwischen Logo und Titel */
+    width: 100%; /* Logo volle Breite */
+    text-align: left; /* Text linksbündig */
   }
 
   .nav {
-    width: 100%; /* Nav volle Breite */
+    width: 100%; /* Navigationsleiste volle Breite */
     justify-content: space-around; /* Gleichmäßiger Abstand */
-    margin-top: 0.25rem; /* Abstand zum Titel */
-    gap: 0.1rem; /* Kleinerer Abstand */
+    margin-top: 0.25rem; /* Abstand zwischen Titel und Navigationsleiste */
+    gap: 0.1rem; /* Kleinerer Abstand zwischen Links */
   }
 
   .nav a {
     flex: 1; /* Gleiche Breite für Links */
-    text-align: center; /* Zentriert Text */
+    text-align: center; /* Zentriert Text in Links */
     padding: 0.1rem 0.2rem; /* Kleinerer Innenabstand */
-    font-size: 0.65rem; /* Kleinere Schrift */
+    font-size: 0.65rem; /* Kleinere Schriftgröße */
   }
 }

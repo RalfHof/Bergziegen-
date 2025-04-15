@@ -14,7 +14,7 @@
 .logo {
   display: flex;
   align-items: center;
-  /* width: auto; */ /* Entfernt: Breite nicht einschränken */
+  /* width: auto; */
 }
 
 .nav {
@@ -43,30 +43,29 @@
 /* Mobile Optimierung */
 @media (max-width: 600px) {
   .header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: nowrap; /* Wichtig: Kein Umbruch */
+    flex-direction: column; /* Logo, Titel, Nav übereinander */
+    align-items: center; /* Zentriert horizontal */
+    justify-content: flex-start; /* Links */
   }
 
   .logo {
-    margin-right: auto;
-    margin-bottom: 0;
+    margin-right: auto; /* Logo links */
+    margin-bottom: 0.25rem; /* Abstand zum Titel */
     width: auto;
     text-align: left;
   }
 
   .nav {
-    width: auto;
-    justify-content: flex-end;
-    margin-top: 0;
-    gap: 0.1rem;
+    width: 100%; /* Nav volle Breite */
+    justify-content: space-around; /* Gleichmäßiger Abstand */
+    margin-top: 0.25rem; /* Abstand zum Titel */
+    gap: 0.1rem; /* Kleinerer Abstand */
   }
 
   .nav a {
-    flex: none;
-    text-align: center;
-    padding: 0.1rem 0.2rem;
-    font-size: 0.65rem;
+    flex: 1; /* Gleiche Breite für Links */
+    text-align: center; /* Zentriert Text */
+    padding: 0.1rem 0.2rem; /* Kleinerer Innenabstand */
+    font-size: 0.65rem; /* Kleinere Schrift */
   }
 }

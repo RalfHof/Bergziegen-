@@ -1,39 +1,75 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabaseClient';
+import { useSession } from 'next-auth/react';
 import styles from './page.module.css';
 
-export default function ChatAktuellPage() {
-  const [messages, setMessages] = useState<string[]>([]);
-  const [input, setInput] = useState('');
+interface Message {
+  id: number;
+  content: string;
+  username: string;
+  created_at: string;
+}
+
+export default function ChatPage() {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [newMessage, setNewMessage] = useState('');
+  const { data: session } = useSession();
 
   useEffect(() => {
-    const saved = localStorage.getItem('chatMessages');
-    if (saved) {
-      setMessages(JSON.parse(saved));
-    }
+    fetchMessages();
+
+    const channel = supabase
+      .channel('chat-room')
+      .on(
+        'postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'messages' },
+        (payload) => {
+          const newMsg = payload.new as Message;
+          setMessages((prev) => [...prev, newMsg]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem('chatMessages', JSON.stringify(messages));
-  }, [messages]);
+  const fetchMessages = async () => {
+    const { data } = await supabase
+      .from('messages')
+      .select('*')
+      .order('created_at', { ascending: true });
 
-  const handleSend = () => {
-    if (input.trim()) {
-      setMessages((prev) => [...prev, input.trim()]);
-      setInput('');
-    }
+    setMessages(data as Message[]);
+  };
+
+  const sendMessage = async () => {
+    if (!newMessage || !session?.user?.name) return;
+
+    await supabase.from('messages').insert([
+      {
+        content: newMessage,
+        username: session.user.name,
+      },
+    ]);
+    setNewMessage('');
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Aktuelle Nachrichten</h1>
+      <h1 className={styles.title}>🐐 Bergziegen-Chat</h1>
 
-      <div className={styles.chatBox}>
-        {messages.length === 0 && <p>Keine Nachrichten bisher.</p>}
-        {messages.map((msg, i) => (
-          <div key={i} className={styles.message}>
-            {msg}
+      <div className={styles.messages}>
+        {messages.map((msg) => (
+          <div key={msg.id} className={styles.messageCard}>
+            <div className={styles.messageMeta}>
+              <strong>{msg.username}</strong> am{' '}
+              {new Date(msg.created_at).toLocaleString()}
+            </div>
+            <p className={styles.messageText}>{msg.content}</p>
           </div>
         ))}
       </div>
@@ -41,11 +77,14 @@ export default function ChatAktuellPage() {
       <div className={styles.inputArea}>
         <input
           type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Schreibe eine Nachricht..."
+          value={newMessage}
+          placeholder="Nachricht eingeben..."
+          onChange={(e) => setNewMessage(e.target.value)}
+          className={styles.input}
         />
-        <button onClick={handleSend}>Senden</button>
+        <button onClick={sendMessage} className={styles.button}>
+          Senden
+        </button>
       </div>
     </div>
   );

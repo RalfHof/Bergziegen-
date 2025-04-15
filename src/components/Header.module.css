@@ -14,23 +14,25 @@
 .logo {
   display: flex;
   align-items: center;
+  /* width: auto; */ /* Entfernt: Breite nicht einschränken */
 }
 
 .nav {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 0.25rem;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .nav a {
   color: white;
   font-weight: 500;
   text-decoration: none;
-  padding: 0.25rem 0.5rem;
+  padding: 0.15rem 0.3rem;
   border-radius: 8px;
   transition: background-color 0.2s ease;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 
 .nav a:hover {
@@ -41,26 +43,30 @@
 /* Mobile Optimierung */
 @media (max-width: 600px) {
   .header {
-    flex-direction: column; /* Stapeln Sie Logo und Nav */
-    align-items: center; /* Zentrieren Sie vertikal */
-    justify-content: center; /* Zentrieren Sie horizontal */
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap; /* Wichtig: Kein Umbruch */
   }
 
   .logo {
-    margin-right: 0; /* Kein rechter Rand */
-    margin-bottom: 0.5rem; /* Abstand zwischen Logo und Nav */
-    text-align: center; /* Zentriert Logo-Text */
-    width: 100%; /* Logo volle Breite */
+    margin-right: auto;
+    margin-bottom: 0;
+    width: auto;
+    text-align: left;
   }
 
   .nav {
-    width: 100%; /* Navigation volle Breite */
-    justify-content: space-around; /* Gleichmäßiger Abstand */
-    margin-top: 0; /* Kein Abstand nach oben */
+    width: auto;
+    justify-content: flex-end;
+    margin-top: 0;
+    gap: 0.1rem;
   }
 
   .nav a {
-    flex: 1; /* Gleichmäßige Breite für Links */
-    text-align: center; /* Zentriert Text in den Links */
+    flex: none;
+    text-align: center;
+    padding: 0.1rem 0.2rem;
+    font-size: 0.65rem;
   }
 }

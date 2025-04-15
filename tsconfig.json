@@ -36,7 +36,7 @@
     ".next/types/**/*.ts",
     "src/components/Header.js",
     "src/components/Footer.js"
-  ],
+, "src/app/legal/datenschutz/page.js"  ],
   "exclude": [
     "node_modules",
     ".next"

@@ -1,16 +1,23 @@
-// src/app/page.tsx
+"use client"; // Wenn Sie Client-Side Hooks verwenden (useState, etc.)
+
+import React from 'react';
+import styles from './page.module.css'; // Importieren Sie die CSS-Modul-Datei
+
 export default function HomePage() {
-    return (
-      <section>
+  return (
+    <main className={styles.main}> 
+      <section className={styles.section}>
         <h1>Willkommen bei den Bergziegen 🐐</h1>
-        <p>Willkommen bei unserer wanderbegeisterten Gemeinschaft! Wir sind eine kleine
-        Familie aus Freunden und Naturliebhabern, die gemeinsam die Schönheit der
-        Wälder erkunden und sich mit Freude in neue Höhenmeter-Abenteuer stürzen.
-        Von sanften Pfaden bis zu herausfordernden Gipfeln – unsere Touren führen
-        uns immer wieder zu unvergesslichen Erlebnissen. Entdecken Sie unsere
-        Leidenschaft und wandern Sie mit uns! Schau dir unsere Touren an und lass
-        dich inspirieren!</p>
+        <p className={styles.text}>
+          Willkommen bei unserer wanderbegeisterten Gemeinschaft! Entfliehe dem Alltag und tauche ein in die Wunder der Natur! Wir sind eine
+          Gruppe von Wanderfreunden, die die Stille der Wälder, die frische Bergluft
+          und die atemberaubenden Aussichten lieben. Gemeinsam suchen wir das
+          Abenteuer auf anspruchsvollen Höhenmetern und genießen die tiefe
+          Verbundenheit mit der Natur. Unsere Touren bieten dir die Möglichkeit, die
+          Schönheit der Welt zu Fuß zu erleben und dich selbst wiederzufinden.
+          Entdecke unsere Touren und finde dein nächstes Abenteuer!
+        </p>
       </section>
-    );
-  }
-  
+    </main>
+  );
+}

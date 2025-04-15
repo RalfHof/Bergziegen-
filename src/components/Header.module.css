@@ -3,12 +3,12 @@
   justify-content: space-between;
   align-items: center;
   background-color: #2e7d32;
-  padding: 0.5rem 1rem; /* Reduzierter vertikaler Abstand */
+  padding: 0.5rem 1rem;
   color: white;
   position: sticky;
   top: 0;
   z-index: 100;
-  flex-wrap: wrap; /* Wichtig für das Umbrechen der Navigation */
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -18,7 +18,7 @@
 
 .nav {
   display: flex;
-  gap: 0.5rem; /* Reduzierter Abstand zwischen den Links */
+  gap: 0.5rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -27,10 +27,10 @@
   color: white;
   font-weight: 500;
   text-decoration: none;
-  padding: 0.25rem 0.5rem; /* Reduzierter Abstand in den Links */
+  padding: 0.25rem 0.5rem;
   border-radius: 8px;
   transition: background-color 0.2s ease;
-  font-size: 0.85rem; /* Kleinere Schriftgröße für die Links */
+  font-size: 0.85rem;
 }
 
 .nav a:hover {
@@ -41,24 +41,26 @@
 /* Mobile Optimierung */
 @media (max-width: 600px) {
   .header {
-    justify-content: flex-start; /* Logo links, Navigation rechts */
-    align-items: center;
-    flex-direction: row; /* Wichtig, um Logo und Nav nebeneinander zu halten */
+    flex-direction: column; /* Stapeln Sie Logo und Nav */
+    align-items: center; /* Zentrieren Sie vertikal */
+    justify-content: center; /* Zentrieren Sie horizontal */
   }
 
   .logo {
-    margin-right: auto; /* Logo ganz links */
-    gap: 0.25rem; /* Kleinerer Abstand zum Logo */
+    margin-right: 0; /* Kein rechter Rand */
+    margin-bottom: 0.5rem; /* Abstand zwischen Logo und Nav */
+    text-align: center; /* Zentriert Logo-Text */
+    width: 100%; /* Logo volle Breite */
   }
 
   .nav {
-    justify-content: flex-end; /* Navigation ganz rechts */
-    width: auto; /* Breite automatisch anpassen */
+    width: 100%; /* Navigation volle Breite */
+    justify-content: space-around; /* Gleichmäßiger Abstand */
     margin-top: 0; /* Kein Abstand nach oben */
   }
 
   .nav a {
-    flex: none; /* Nicht strecken */
-    text-align: center;
+    flex: 1; /* Gleichmäßige Breite für Links */
+    text-align: center; /* Zentriert Text in den Links */
   }
 }

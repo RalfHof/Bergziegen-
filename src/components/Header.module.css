@@ -50,7 +50,7 @@
 
   .logo {
     margin-right: auto; /* Logo links */
-    margin-bottom: 0.50rem; /* Abstand zwischen Logo und Titel */
+    margin-bottom: 0.25rem; /* Abstand zwischen Logo und Titel */
     width: 100%; /* Logo volle Breite */
     text-align: left; /* Text linksbündig */
   }

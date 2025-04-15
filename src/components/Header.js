@@ -13,6 +13,7 @@ export default function Header() {
       <nav className={styles.nav}>
         <Link href="/">Home</Link>
         <Link href="/touren">Touren</Link>
+        <Link href="/Chat/Aktuell">Chat/Aktuell</Link>
         <Link href="/login">Login</Link>
         <Link href="/register">Register</Link>
       </nav>

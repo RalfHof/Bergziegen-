@@ -6,8 +6,8 @@ import Image from "next/image";
 import { touren } from "@/data/touren";
 import styles from "./page.module.css";
 
-export default function Page({ params }: { params: { id: string } }) { // Entferne 'async'
-  const tourId = parseInt(params.id);
+export default function Page({ params }: { params: { id: string } }) {
+  const tourId = parseInt(params.id); // Direkter Zugriff auf params.id
   const tour = touren.find((t) => t.id === tourId);
   const [zoomedImage, setZoomedImage] = useState<number | null>(null); // State für das gezoomte Bild
 

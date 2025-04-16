@@ -1,14 +1,40 @@
-import { NextRequest, NextResponse } from 'next/server';
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
-export async function POST(request: NextRequest) {
-  const { email, password } = await request.json();
+const handler = NextAuth({
+  providers: [
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        username: { label: "Benutzername", type: "text" },
+        password: { label: "Passwort", type: "password" }
+      },
+      async authorize(credentials) {
+        // Hier Beispielbenutzer
+        const user = {
+          id: "1",
+          name: "Ralf",
+          email: "ralf@example.com"
+        };
 
-  // Hier könntest du echte Authentifizierung einbauen
-  if (email === 'test@bergziegen.de' && password === '1234') {
-    const response = NextResponse.json({ success: true });
-    response.cookies.set('auth', 'true', { path: '/' });
-    return response;
-  }
+        if (
+          credentials?.username === "ralf" &&
+          credentials?.password === "passwort123"
+        ) {
+          return user;
+        }
 
-  return NextResponse.json({ success: false }, { status: 401 });
-}
+        return null;
+      }
+    })
+  ],
+  pages: {
+    signIn: '/login',
+  },
+  session: {
+    strategy: 'jwt',
+  },
+  secret: process.env.NEXTAUTH_SECRET, // WICHTIG: Nutze Umgebungsvariable
+});
+
+export { handler as GET, handler as POST };

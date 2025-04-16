@@ -11,7 +11,7 @@ export default function Footer() {
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/touren">Touren</Link></li>
-            <li><Link href="/Chat/Aktuell">Chat/Aktuell</Link></li>
+            <li><Link href="/kalender">Kalender</Link></li>
             <li><Link href="/login">Login</Link></li>
             <li><Link href="/register">Register</Link></li>
           </ul>

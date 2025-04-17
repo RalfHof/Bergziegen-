@@ -1,5 +1,3 @@
-/* src/app/kalender/page.module.css */
-
 .container {
     padding: 2rem;
     max-width: 900px;
@@ -7,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #e0f7e9; /* hellgrüner Kasten */
+    background-color: #e0f7e9;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
@@ -46,6 +44,11 @@
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.2rem;
+    transition: background-color 0.2s;
+  }
+  
+  .button:hover {
+    background-color: #3e6743;
   }
   
   .calendarContainer {
@@ -56,15 +59,6 @@
     padding: 1rem;
     width: 100%;
     max-width: 700px;
-  }
-  
-  .terminMarker {
-    height: 8px;
-    width: 8px;
-    background-color: #2e7d32;
-    border-radius: 50%;
-    margin: auto;
-    margin-top: 4px;
   }
   
   .list {
@@ -78,8 +72,29 @@
   
   .card {
     padding: 1rem;
-    background-color: #f0f0f0;
     border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+  }
+  
+  /* Farben nach Kategorie */
+  .leicht {
+    background-color: #d0f0c0;
+  }
+  
+  .schwer {
+    background-color: #ffe0b2;
+  }
+  
+  .abgesagt {
+    background-color: #ffcdd2;
+    text-decoration: line-through;
+    opacity: 0.7;
   }
   
   .cardDatum {
@@ -91,6 +106,30 @@
     margin-top: 0.25rem;
     font-size: 1.2rem;
     color: #333;
+  }
+  
+  .cardButtons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .editButton {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .deleteButton {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .editButton:hover {
+    background-color: #1976d2;
+  }
+  
+  .deleteButton:hover {
+    background-color: #d32f2f;
   }
   
   @media (max-width: 600px) {
@@ -116,7 +155,18 @@
     .cardTitel {
       font-size: 1rem;
     }
+  
+    .card {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .cardButtons {
+      width: 100%;
+      justify-content: flex-end;
+    }
   }
+  
   .outerBox {
     background-color: #e0f7da;
     padding: 2rem;

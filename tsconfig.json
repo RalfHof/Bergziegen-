@@ -35,8 +35,10 @@
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "src/components/Header.js",
-    "src/components/Footer.js"
-, "src/app/legal/datenschutz/page.js"  ],
+    "src/components/Footer.js",
+    "src/app/legal/datenschutz/page.js",
+    "src/types/next-auth.d.ts"
+  ],
   "exclude": [
     "node_modules",
     ".next"

@@ -9,7 +9,7 @@ import { touren } from '@/data/touren';
 
 export default function TourenPage() {
   const router = useRouter();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
 
   useEffect(() => {
     const auth = sessionStorage.getItem('auth');
@@ -20,6 +20,7 @@ export default function TourenPage() {
     }
   }, [router]);
 
+  if (isLoggedIn === null) return <p className={styles.loading}>Lade...</p>;
   if (!isLoggedIn) return null;
 
   return (

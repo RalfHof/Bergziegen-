@@ -1,9 +1,8 @@
-// src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import type { NextAuthOptions } from 'next-auth';
+import { cookies } from 'next/headers'; // Diesen Import behalten
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -14,7 +13,7 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Passwort', type: 'password' },
       },
       async authorize(credentials) {
-        const supabase = createServerComponentClient({ cookies });
+        const supabase = createServerComponentClient({ cookies }); // Hier verwenden wir cookies
 
         const { data, error } = await supabase.auth.signInWithPassword({
           email: credentials?.email || '',
@@ -43,4 +42,5 @@ export const authOptions: NextAuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export const GET = handler;
+export const POST = handler;

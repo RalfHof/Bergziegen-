@@ -13,15 +13,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
-      - name: Pull Environment Variables From Vercel (Debug)
-        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }} --debug
+      - name: Pull Environment Variables From Vercel
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Install Dependencies
-        run: npm install
-      - name: Debug Environment Variables
-        run: |
-          echo "SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}"
-          echo "SUPABASE_ANON_KEY: ${{ env.NEXT_PUBLIC_SUPABASE_ANON_KEY }}"
-          echo "NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}"
+        run: npm install # Füge diesen Schritt hinzu!
       - name: Build Project
         run: npm run build
       - name: Deploy to Vercel

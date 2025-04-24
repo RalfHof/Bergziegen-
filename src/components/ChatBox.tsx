@@ -1,24 +1,32 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '@/lib/supabase';
+import { RealtimePostgresInsertPayload } from '@supabase/supabase-js';
+
+import { Message } from '@/types/message';
 import styles from './ChatBox.module.css';
 
-type Message = {
-  id: number;
-  text: string;
-  created_at: string;
-};
 
-const supabase = createClient(
-  'https://vxdxrojbgltjypxzehsg.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4ZHhyb2piZ2x0anlweHplaHNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3MDg2MTEsImV4cCI6MjA2MDI4NDYxMX0.x6RaoV5RgYt5BNcO-rP_VD2_qgR0p9vkvidzoJU0lwc'
-);
 
 export default function ChatBox() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState('');
+  const [userEmail, setUserEmail] = useState<string | null>(null);
 
+  // Benutzer-Session laden
+  useEffect(() => {
+    const getSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      setUserEmail(session?.user?.email ?? null);
+    };
+
+    getSession();
+  }, []);
+
+  // Nachrichten laden + Live-Update
   useEffect(() => {
     const loadMessages = async () => {
       const { data, error } = await supabase
@@ -38,8 +46,8 @@ export default function ChatBox() {
       .on(
         'postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'messages' },
-        (payload) => {
-          setMessages((prev) => [...prev, payload.new as Message]);
+        (payload: RealtimePostgresInsertPayload<Message>) => {
+          setMessages((prev) => [...prev, payload.new]);
         }
       )
       .subscribe();
@@ -49,11 +57,29 @@ export default function ChatBox() {
     };
   }, []);
 
+  // Nachricht senden
   const sendMessage = async () => {
-    if (message.trim()) {
-      const { error } = await supabase.from('messages').insert({ text: message });
-      if (!error) setMessage('');
+    if (!message.trim()) return;
+  
+    const { error } = await supabase.from('messages').insert({
+      text: message,
+      user_email: userEmail,
+    });
+  
+    if (error) {
+      console.error('Fehler beim Senden der Nachricht:', error.message);
+      alert('Nachricht konnte nicht gesendet werden: ' + error.message);
+    } else {
+      setMessage('');
     }
+  };
+  // Datum & Uhrzeit schön formatieren
+  const formatDate = (isoString: string) => {
+    const date = new Date(isoString);
+    return date.toLocaleString('de-DE', {
+      dateStyle: 'short',
+      timeStyle: 'short',
+    });
   };
 
   return (
@@ -61,19 +87,26 @@ export default function ChatBox() {
       <div className={styles.messages}>
         {messages.map((msg) => (
           <div key={msg.id} className={styles.message}>
-            {msg.text}
+            <div>
+              <strong>{msg.user_email || 'Unbekannt'}</strong>
+              <span style={{ fontSize: '0.8rem', marginLeft: '0.5rem', color: '#888' }}>
+                {formatDate(msg.created_at)}
+              </span>
+            </div>
+            <div>{msg.text}</div>
           </div>
         ))}
       </div>
+
       <div className={styles.inputArea}>
         <input
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Nachricht eingeben..."
-          className={styles.input} // ✅ lokale Klasse
+          className={styles.input}
         />
-        <button onClick={sendMessage} className={styles.button}> {/* ✅ lokale Klasse */}
+        <button onClick={sendMessage} className={styles.button}>
           Senden
         </button>
       </div>

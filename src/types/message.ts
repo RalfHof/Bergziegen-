@@ -1,9 +1,8 @@
-// src/types/message.ts
-
+// src/types/message.ts (oder ähnlicher Pfad)
 export type Message = {
-    id: number;
-    text: string;
-    created_at: string;
-    user_email?: string;
-  };
-  
+        id: number; // Oder string, je nachdem wie die ID in deiner DB ist
+        created_at: string;
+        text: string;
+        user_email: string | null; // Muss string | null sein
+        user_id: string; // Muss string sein
+    };

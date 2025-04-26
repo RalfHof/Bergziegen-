@@ -1,117 +1,87 @@
-.container {
+/* Allgemeine Container und Titel */
+.outerBox {
+  background-color: #e0f7da;
   padding: 1rem;
+  border-radius: 16px;
+  margin: 1rem auto;
+  max-width: 800px;
+  min-height: 80vh;
+}
+
+.container {
+  padding: 1.5rem;
   max-width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e0f7e9;
+  background-color: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .title {
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
-  color: #2f4f2f;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1a4314;
   text-align: center;
+  font-weight: bold;
 }
 
+/* Formular Bereich (Datum, Titel, Buttons) */
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
   width: 100%;
+  max-width: 450px;
+  background-color: #f0f4f0;
+  padding: 1.5rem;
+  border-radius: 12px;
 }
 
 .input {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 0.75rem;
+  font-size: 1.1rem;
   border-radius: 8px;
   border: 1px solid #ccc;
   width: 100%;
-  max-width: 100%;
-  text-align: center;
+  box-sizing: border-box;
+  text-align: left;
 }
 
+/* Styles für den Submit Button (Hinzufügen/Speichern) */
 .button {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   background-color: #2f4f2f;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s;
+  font-size: 1.1rem;
+  transition: background-color 0.2s, opacity 0.2s;
+  width: 100%;
+  font-weight: bold;
 }
 
-.button:hover {
+.button:hover:not(:disabled) {
   background-color: #3e6743;
 }
 
-.calendarContainer {
-  margin-top: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 0.5rem;
-  width: 100%;
-  max-width: 100%;
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 100%;
-  margin-top: 1.5rem;
+/* Spezielle Button-Styles */
+.cancelButton {
+  background-color: #9e9e9e;
 }
 
-.card {
-  padding: 0.75rem;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s;
-}
-
-/* Farben nach Kategorie */
-.leicht {
-  background-color: #d0f0c0;
-}
-
-.schwer {
-  background-color: #ffe0b2;
-}
-
-.abgesagt {
-  background-color: #ffcdd2;
-  text-decoration: line-through;
-  opacity: 0.7;
-}
-
-.cardDatum {
-  font-weight: bold;
-  color: #2f4f2f;
-}
-
-.cardTitel {
-  margin-top: 0.25rem;
-  font-size: 1.1rem;
-  color: #333;
-}
-
-.cardButtons {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+.cancelButton:hover:not(:disabled) {
+  background-color: #757575;
 }
 
 .editButton {
@@ -119,58 +89,157 @@
   color: white;
 }
 
+.editButton:hover:not(:disabled) {
+  background-color: #1976d2;
+}
+
 .deleteButton {
   background-color: #f44336;
   color: white;
 }
 
-.editButton:hover {
-  background-color: #1976d2;
-}
-
-.deleteButton:hover {
+.deleteButton:hover:not(:disabled) {
   background-color: #d32f2f;
 }
 
-@media (max-width: 600px) {
-  .title {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-
-  .input,
-  .button,
-  .calendarContainer,
-  .list {
-    width: 100%;
-  }
-
-  .input {
-    font-size: 1rem;
-  }
-
-  .button {
-    font-size: 1rem;
-  }
-
-  .cardTitel {
-    font-size: 1rem;
-  }
-
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cardButtons {
-    width: 100%;
-    justify-content: flex-end;
-  }
+.menuButton {
+  background-color: #ff9800;
+  color: white;
 }
 
-.outerBox {
-  background-color: #e0f7da;
-  padding: 1rem;
-  border-radius: 16px;
-  margin: 1rem;
+.menuButton:hover:not(:disabled) {
+  background-color: #f57c00;
+}
+
+/* Kalender Bereich */
+.calendarContainer {
+  margin-top: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Stile für den Kalender-Marker */
+.terminMarker {
+  height: 6px;
+  width: 6px;
+  background-color: #2f4f2f;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 2px;
+}
+
+/* Liste der Termine */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 2rem;
+}
+
+/* Stil für eine einzelne Termin-Karte */
+.card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* Farben nach Schwierigkeit */
+.leicht {
+  background-color: #e8f5e9;
+  border-left: 6px solid #4caf50;
+}
+
+.mittel {
+  background-color: #fff3e0;
+  border-left: 6px solid #ff9800;
+}
+
+.schwer {
+  background-color: #ffebee;
+  border-left: 6px solid #f44336;
+}
+
+.abgesagt {
+  text-decoration: line-through;
+  opacity: 0.6;
+  background-color: #f5f5f5;
+  border-left: 6px solid #9e9e9e;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardDatum {
+  font-weight: bold;
+  color: #1a4314;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardTitel {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.cardDetails {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Button Container in der Karte */
+.cardButtons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* Stil für das Schwierigkeits/Status Menü */
+.difficultyMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  overflow: hidden;
+}
+
+.difficultyMenu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.difficultyMenu button:hover {
+  background-color: #f0f0f0;
 }

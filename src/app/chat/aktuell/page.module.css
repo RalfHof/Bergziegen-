@@ -1,0 +1,7 @@
+.chatTitle {
+    /* ... andere Styles ... */
+    text-align: center; /* Zentriert den Text */
+    width: 100%; /* Stellt sicher, dass der Titel die volle Breite einnimmt, um zentriert zu werden */
+    margin-bottom: 1rem; /* Abstand nach unten (ggf. anpassen) */
+  }
+  

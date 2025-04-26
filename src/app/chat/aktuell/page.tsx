@@ -53,7 +53,7 @@ export default function ChatPage() {
 
   return (
     <div className={styles.chatContainer}>
-      <h1 className={styles.chatTitle}>🗨️ Aktueller Chat</h1>
+      <h1 className={styles.chatTitle}>⛰️ Bergziegen Chat 🐐</h1>
       <ChatBox /> {/* Rendere die ChatBox */}
     </div>
   );

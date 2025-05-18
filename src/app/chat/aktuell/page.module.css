@@ -1,7 +1,37 @@
+/* src/app/chat/aktuell/page.module.css */
+/* Vollst\u00E4ndige Version mit notwendigem Styling f\u00FCr die Chat-Seite */
+
+/* Wenn du Tailwind verwendest, sollten diese am Anfang stehen */
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+
+.chatContainer {
+  /* Dies ist der Hauptcontainer f\u00FCr die Seite, der die \u00DCberschrift und die ChatBox enth\u00E4lt */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert den Inhalt horizontal */
+  padding: 1rem;
+  max-width: 800px; /* Maximale Breite der Seite */
+  margin: 0 auto; /* Zentriert den Seitencontainer selbst */
+}
+
 .chatTitle {
-    /* ... andere Styles ... */
-    text-align: center; /* Zentriert den Text */
-    width: 100%; /* Stellt sicher, dass der Titel die volle Breite einnimmt, um zentriert zu werden */
-    margin-bottom: 1rem; /* Abstand nach unten (ggf. anpassen) */
-  }
-  
+  /* Stil f\u00FCr die \u00DCberschrift der Chat-Seite */
+  font-size: 2rem; /* Gr\u00F6\u00DFe anpassen */
+  font-weight: bold;
+  margin-bottom: 1.5rem; /* Abstand zur ChatBox */
+  color: #333; /* Farbe anpassen */
+  text-align: center;
+  width: 100%; /* Nimmt die volle Breite im Container ein */
+}
+
+.loading {
+  /* Stil f\u00FCr die Ladeanzeige */
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 2rem;
+}
+
+/* F\u00FCge hier weitere Styles spezifisch f\u00FCr page.tsx hinzu */

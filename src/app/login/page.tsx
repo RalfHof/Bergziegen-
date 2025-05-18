@@ -1,5 +1,5 @@
 // src/app/login/page.tsx
-// Komplette Version mit Passwort-Anzeige-Button
+// Komplette Version mit Passwort-Anzeige-Button (Fehlender State hinzugef\u00FCgt)
 
 "use client";
 import { useState, FormEvent } from 'react';
@@ -12,7 +12,9 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // Für Ladezustand
+  const [loading, setLoading] = useState(false); // F\u00FCr Ladezustand
+  // NEU: State f\u00FCr Passwort anzeigen/verbergen - DIESE ZEILE WAR FEHLEND
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const handleLogin = async (e: FormEvent) => { // async machen
@@ -42,7 +44,7 @@ export default function LoginPage() {
     }
   };
 
-  // NEU: Funktion zum Umschalten der Passwort-Sichtbarkeit
+  // Funktion zum Umschalten der Passwort-Sichtbarkeit
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -62,10 +64,10 @@ export default function LoginPage() {
           disabled={loading}
         />
 
-        {/* NEU: Wrapper um Passwort-Input und Toggle */}
+        {/* Wrapper um Passwort-Input und Toggle */}
         <div className={styles.passwordContainer}>
           <input
-            // NEU: Typ dynamisch zwischen 'password' und 'text' wechseln
+            // Typ dynamisch zwischen 'password' und 'text' wechseln
             type={showPassword ? "text" : "password"}
             placeholder="Passwort"
             value={password}
@@ -74,7 +76,7 @@ export default function LoginPage() {
             className={styles.input} // Behalte die Input-Klasse f\u00FCr allgemeines Styling bei
             disabled={loading}
           />
-          {/* NEU: Toggle Button/Icon */}
+          {/* Toggle Button/Icon */}
           {/* Klickt dieses Element, wird die Sichtbarkeit umgeschaltet */}
           {/* Verwende hier Text-Emojis als einfache Icons */}
           <span
@@ -85,7 +87,6 @@ export default function LoginPage() {
             {showPassword ? '👁️' : '🔒'}
           </span>
         </div>
-        {/* Ende NEU */}
 
 
         <button type="submit" className={styles.button} disabled={loading}>

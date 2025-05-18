@@ -1,4 +1,9 @@
-/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Danach deine bestehenden globalen Stile */
+
 body {
   margin: 0;
   padding: 0;

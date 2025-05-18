@@ -1,0 +1,11 @@
+/* src/app/chat/page.module.css */
+.container {
+  padding: 1rem;
+}
+
+.message {
+  background-color: #e1f5fe;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+}

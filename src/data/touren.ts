@@ -45,7 +45,7 @@ export const touren = [
   {
     id: 3,
     name: "Forsthaus Silbertal",
-    description: "Beschreibung der Tour 3",
+    description: "Unsere Tour entführt uns in das Herz des Biosphärenreservates Pfälzerwald – eine sehr schöne Wanderung durch den Wald mit vielen Bächen und Sehenswürdigkeiten. Ziel ist das idyllisch und ruhig gelegene Forsthaus Silbertal auf rund 410m Höhe. Dort erwartet uns eine Einkehr mit Pfälzer Gerichten, Wurst aus eigener Herstellung sowie weiteren regionalen und vegetarischen Spezialitäten. Bei gutem Wetter können wir die Natur auf dem Freisitz genießen – der ideale Ausklang für diese schöne Waldtour!",
     images: [
       "/Tour3_1.jpg",
       "/Tour3_2.jpg",
@@ -79,7 +79,7 @@ export const touren = [
   {
     id: 4,
     name: "Mondbachschlucht",
-    description: "Beschreibung der Tour 4",
+    description: " Tour führt uns in die beeindruckende Monbachtalschlucht – ein echtes Naturerlebnis mit glitzernden Bächen und sattgrünen Flussauen. Der schmale Pfad, der Trittsicherheit erfordert, führt uns immer wieder über Steinquader durch das Tal. Genießt die besondere Atmosphäre dieser Schlucht, bei etwas Glück entdecken wir vielleicht sogar den seltenen Eisvogel! Zum Abschluss kehren wir in die Hausbrauerei Mönchwasen ein und lassen den Tag bei guter bürgerlicher Küche gemütlich ausklingen.",
     images: [
       "/Tour4_1.jpg",
       "/Tour4_2.jpg",

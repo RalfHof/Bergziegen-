@@ -29,41 +29,6 @@
     border-radius: 10px;
     border: 1px solid #999;
     font-size: 1rem;
-    width: 100%; /* Wichtig: Input soll 100% Breite im Container einnehmen */
-    box-sizing: border-box; /* Stellt sicher, dass Padding und Border zur Breite geh\u00F6ren */
-  }
-
-  /* NEU: Container f\u00FCr Passwort-Input und Toggle-Button */
-  .passwordContainer {
-    position: relative; /* Notwendig, damit das absolute Toggle innerhalb positioniert wird */
-    display: flex; /* Hilft beim Layout */
-    align-items: center; /* Zentriert den Inhalt vertikal */
-    width: 100%; /* Nimmt die volle Breite im .form an */
-  }
-
-  /* NEU: Stelle sicher, dass das Input-Feld im Container Platz f\u00FCr das Toggle l\u00E4sst */
-  /* Wird nur f\u00FCr Inputs INNERHALB von .passwordContainer angewendet */
-  .passwordContainer .input {
-     padding-right: 2.5rem; /* Erh\u00F6ht das Padding rechts, um das Icon nicht zu \u00FCberlappen */
-  }
-
-
-  /* NEU: Styling f\u00FCr den Toggle-Button/Icon */
-  .passwordToggle {
-    position: absolute; /* Positioniert das Element absolut innerhalb des n\u00E4chsten relativ positionierten Elements (.passwordContainer) */
-    right: 0.75rem; /* Abstand vom rechten Rand */
-    top: 50%; /* Beginnt bei 50% von oben */
-    transform: translateY(-50%); /* Verschiebt das Element um die H\u00E4lfte seiner eigenen H\u00F6he nach oben f\u00FCr exakte Zentrierung */
-    cursor: pointer; /* \u00C4ndert den Mauszeiger zu einem Hand-Symbol */
-    user-select: none; /* Verhindert, dass der Text (Icon) markiert wird */
-    color: #555; /* Graue Farbe */
-    font-size: 1.2rem; /* Gr\u00F6\u00DFe des Icons */
-    z-index: 10; /* Stellt sicher, dass das Icon \u00FCber dem Input liegt */
-  }
-
-  /* Optional: \u00C4ndere die Farbe beim Hover */
-  .passwordToggle:hover {
-      color: #000;
   }
 
   .button {
@@ -103,13 +68,5 @@
     .input,
     .button {
       font-size: 1rem;
-    }
-
-    .passwordToggle {
-        right: 0.5rem; /* Eventuell etwas weniger Abstand auf kleinen Bildschirmen */
-        font-size: 1rem; /* Eventuell etwas kleineres Icon */
-    }
-     .passwordContainer .input {
-       padding-right: 2rem; /* Platz anpassen, wenn Icon kleiner ist */
     }
   }

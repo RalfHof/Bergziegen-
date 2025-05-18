@@ -12,9 +12,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // F\u00FCr Ladezustand
-  // NEU: State f\u00FCr Passwort anzeigen/verbergen
-  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false); // Für Ladezustand
 
 
   const handleLogin = async (e: FormEvent) => { // async machen

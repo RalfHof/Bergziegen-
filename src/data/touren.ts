@@ -2,7 +2,8 @@ export const touren = [
   {
     id: 1,
     name: "Alte Brauerei Weingarten",
-    description: "Beschreibung der Tour 1",
+    // HIER war der Fehler - behoben durch Verwendung von Backticks ``
+    description: `Unsere  Tour führt uns zur gemütlichen "Alten Brauerei" in Karlsruhe-Weingarten. Dort erwartet uns ein Restaurant mit charmant altem Stil, schönem Ambiente und einer freundlichen Atmosphäre. Das besondere Highlight ist das Essen vom heißen Stein, bei dem wir exotische Fleischspezialitäten und auch leckere Gemüseplatten direkt am Tisch selbst zubereiten können. Ein perfekter Ort, um den Wandertag genussvoll und in geselliger Runde ausklingen zu lassen!`,
     images: [
       "/Tour1_1.jpg",
       "/Tour1_2.jpg",
@@ -18,7 +19,7 @@ export const touren = [
   {
     id: 2,
     name: "Besen Hexe Kreutzbergsee",
-    description: "Beschreibung der Tour 2",
+    description: "Unsere  Tour führt uns zur Besenhex Tiefenbach am Kreutzbergsee. Dort erwartet uns ein besonders attraktives Angebot: ein reichhaltiges Buffet für nur 24 Euro pro Person, bei dem alle Getränke bereits inklusive sind! Freut euch auf eine riesige Auswahl an Speisen in dieser schönen Lokalität. Ein wirklich entspannter und leckerer Abschluss für unsere Wanderung!",
     images: [
       "/Tour2_1.jpg",
       "/Tour2_2.jpg",
@@ -71,7 +72,7 @@ export const touren = [
       "/Tour3_23.jpg",
       "/Tour3_24.jpg",
       "/Tour3_25.jpg",
-      
+
     ],
     komootLink: "https://www.komoot.de/tour-3",
   },
@@ -160,4 +161,3 @@ export const touren = [
   },
 
 ];
-

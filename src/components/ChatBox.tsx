@@ -3,15 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { RealtimePostgresInsertPayload } from '@supabase/supabase-js';
-import { Message } from '@/types/message';
-import styles from './ChatBox.module.css';
+import { Message } from '@/types/message'; // Pfad sicherstellen
+import styles from './ChatBox.module.css'; // Pfad sicherstellen
 
 export default function ChatBox() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState('');
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  const messagesEndRef = useRef<HTMLDivElement | null>(null); // Für Scroll
 
   useEffect(() => {
     const getSession = async () => {
@@ -20,6 +21,7 @@ export default function ChatBox() {
       } = await supabase.auth.getSession();
       setUserEmail(session?.user?.email ?? null);
       setUserId(session?.user?.id ?? null);
+      console.log("Supabase Session geladen:", session);
     };
 
     getSession();
@@ -68,6 +70,7 @@ export default function ChatBox() {
     };
   }, []);
 
+  // Auto-Scroll bei neuen Nachrichten
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -75,7 +78,7 @@ export default function ChatBox() {
   const sendMessage = async () => {
     if (!message.trim()) return;
     if (!userId) {
-      alert('Bitte anmelden');
+      alert('Bitte melden Sie sich an, um eine Nachricht zu senden.');
       return;
     }
 
@@ -86,7 +89,8 @@ export default function ChatBox() {
     });
 
     if (error) {
-      console.error('Fehler beim Senden:', error.message);
+      console.error('Fehler beim Senden der Nachricht:', error.message);
+      alert('Nachricht konnte nicht gesendet werden: ' + (error.message || 'Unbekannter Fehler'));
     } else {
       setMessage('');
     }
@@ -94,29 +98,28 @@ export default function ChatBox() {
 
   const formatDate = (isoString: string) => {
     const date = new Date(isoString);
-    if (isNaN(date.getTime())) return '';
-    return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+    if (isNaN(date.getTime())) return 'Ungültiges Datum';
+    return date.toLocaleString('de-DE', {
+      dateStyle: 'short',
+      timeStyle: 'short',
+    });
   };
 
   return (
     <div className={styles.chatBox}>
       <div className={styles.messages}>
-        {messages.map((msg) => {
-          const isOwnMessage = msg.user_id === userId;
-          return (
-            <div
-              key={msg.id}
-              className={`${styles.message} ${isOwnMessage ? styles.ownMessage : styles.otherMessage}`}
-            >
-              <div className={styles.sender}>
-                {isOwnMessage ? 'Du' : msg.user_email || 'Unbekannt'}
-              </div>
-              <div>{msg.text}</div>
-              <div className={styles.timestamp}>{formatDate(msg.created_at)}</div>
+        {messages.map((msg) => (
+          <div key={msg.id} className={styles.message}>
+            <div>
+              <strong>{msg.user_email || msg.user_id || 'Unbekannt'}</strong>
+              <span style={{ fontSize: '0.8rem', marginLeft: '0.5rem', color: '#888' }}>
+                {formatDate(msg.created_at)}
+              </span>
             </div>
-          );
-        })}
-        <div ref={messagesEndRef} />
+            <div>{msg.text}</div>
+          </div>
+        ))}
+        <div ref={messagesEndRef} /> {/* ← Hier wird nach unten gescrollt */}
       </div>
 
       <div className={styles.inputArea}>
@@ -124,7 +127,7 @@ export default function ChatBox() {
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder={userId ? 'Nachricht eingeben...' : 'Bitte anmelden'}
+          placeholder={userId ? 'Nachricht eingeben...' : 'Bitte anmelden zum Chatten...'}
           className={styles.input}
           disabled={!userId}
         />

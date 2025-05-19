@@ -12,10 +12,10 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* WICHTIG! */
+  justify-content: flex-start;
   scroll-behavior: smooth;
 }
-/* Nachricht Grundstil */
+
 .message {
   max-width: 75%;
   padding: 0.5rem 0.75rem;
@@ -26,7 +26,6 @@
   word-break: break-word;
 }
 
-/* Eigene Nachricht */
 .ownMessage {
   align-self: flex-end;
   background-color: #d1fae5;
@@ -34,7 +33,6 @@
   border-bottom-right-radius: 0;
 }
 
-/* Nachricht von anderen */
 .otherMessage {
   align-self: flex-start;
   background-color: #e5e7eb;
@@ -42,21 +40,18 @@
   border-bottom-left-radius: 0;
 }
 
-/* Zeitstempel */
 .timestamp {
   font-size: 0.7rem;
   color: #888;
   margin-top: 0.25rem;
 }
 
-/* Absendername */
 .sender {
   font-weight: bold;
   font-size: 0.8rem;
   margin-bottom: 0.25rem;
 }
 
-/* Eingabefeld + Button */
 .inputArea {
   display: flex;
   gap: 0.5rem;

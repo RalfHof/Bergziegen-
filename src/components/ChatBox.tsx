@@ -15,11 +15,10 @@ export default function ChatBox() {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
+  // Auth-Session laden
   useEffect(() => {
     const getSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      const { data: { session } } = await supabase.auth.getSession();
       setUserEmail(session?.user?.email ?? null);
       setUserId(session?.user?.id ?? null);
     };
@@ -38,6 +37,7 @@ export default function ChatBox() {
     };
   }, []);
 
+  // Nachrichten laden und abonnieren
   useEffect(() => {
     const loadMessages = async () => {
       const { data, error } = await supabase
@@ -60,7 +60,9 @@ export default function ChatBox() {
         'postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'messages' },
         (payload: RealtimePostgresInsertPayload<Message>) => {
-          setMessages((prev) => [...prev, payload.new]);
+          setMessages((prev) =>
+            [...prev, payload.new].sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
+          );
         }
       )
       .subscribe();
@@ -70,6 +72,7 @@ export default function ChatBox() {
     };
   }, []);
 
+  // Scroll nach unten bei neuer Nachricht
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -116,17 +119,13 @@ export default function ChatBox() {
           return (
             <div
               key={msg.id}
-              className={`${styles.message} ${
-                isOwnMessage ? styles.ownMessage : styles.otherMessage
-              }`}
+              className={`${styles.message} ${isOwnMessage ? styles.ownMessage : styles.otherMessage}`}
             >
               <div className={styles.sender}>
                 {isOwnMessage ? 'Du' : msg.user_email || 'Unbekannt'}
               </div>
               <div>{msg.text}</div>
-              <div className={styles.timestamp}>
-                {formatDate(msg.created_at)}
-              </div>
+              <div className={styles.timestamp}>{formatDate(msg.created_at)}</div>
             </div>
           );
         })}

@@ -102,7 +102,10 @@ export default function ChatBox() {
   const formatDate = (isoString: string) => {
     const date = new Date(isoString);
     if (isNaN(date.getTime())) return '';
-    return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+    return date.toLocaleTimeString('de-DE', {
+      hour: '2-digit',
+      minute: '2-digit',
+    });
   };
 
   return (
@@ -121,7 +124,9 @@ export default function ChatBox() {
                 {isOwnMessage ? 'Du' : msg.user_email || 'Unbekannt'}
               </div>
               <div>{msg.text}</div>
-              <div className={styles.timestamp}>{formatDate(msg.created_at)}</div>
+              <div className={styles.timestamp}>
+                {formatDate(msg.created_at)}
+              </div>
             </div>
           );
         })}

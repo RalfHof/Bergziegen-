@@ -12,13 +12,9 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  justify-content: flex-start; /* WICHTIG! */
+  scroll-behavior: smooth;
 }
-
 /* Nachricht Grundstil */
 .message {
   max-width: 75%;

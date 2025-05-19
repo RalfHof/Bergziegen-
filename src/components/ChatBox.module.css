@@ -27,6 +27,7 @@
   margin: 0.25rem 0;
   display: flex;
   flex-direction: column;
+  word-break: break-word;
 }
 
 /* Eigene Nachricht */
@@ -34,6 +35,7 @@
   align-self: flex-end;
   background-color: #d1fae5;
   text-align: right;
+  border-bottom-right-radius: 0;
 }
 
 /* Nachricht von anderen */
@@ -41,6 +43,7 @@
   align-self: flex-start;
   background-color: #e5e7eb;
   text-align: left;
+  border-bottom-left-radius: 0;
 }
 
 /* Zeitstempel */
@@ -61,6 +64,8 @@
 .inputArea {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+  position: relative;
 }
 
 .input {
@@ -77,4 +82,18 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.emojiButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.emojiPicker {
+  position: absolute;
+  bottom: 3rem;
+  right: 2rem;
+  z-index: 10;
 }

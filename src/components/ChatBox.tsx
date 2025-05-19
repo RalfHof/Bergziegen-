@@ -5,12 +5,14 @@ import { supabase } from '@/lib/supabase';
 import { RealtimePostgresInsertPayload } from '@supabase/supabase-js';
 import { Message } from '@/types/message';
 import styles from './ChatBox.module.css';
+import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 
 export default function ChatBox() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState('');
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -89,7 +91,12 @@ export default function ChatBox() {
       console.error('Fehler beim Senden:', error.message);
     } else {
       setMessage('');
+      setShowEmojiPicker(false);
     }
+  };
+
+  const onEmojiClick = (emojiData: EmojiClickData) => {
+    setMessage((prev) => prev + emojiData.emoji);
   };
 
   const formatDate = (isoString: string) => {
@@ -106,7 +113,9 @@ export default function ChatBox() {
           return (
             <div
               key={msg.id}
-              className={`${styles.message} ${isOwnMessage ? styles.ownMessage : styles.otherMessage}`}
+              className={`${styles.message} ${
+                isOwnMessage ? styles.ownMessage : styles.otherMessage
+              }`}
             >
               <div className={styles.sender}>
                 {isOwnMessage ? 'Du' : msg.user_email || 'Unbekannt'}
@@ -120,6 +129,20 @@ export default function ChatBox() {
       </div>
 
       <div className={styles.inputArea}>
+        <button
+          onClick={() => setShowEmojiPicker((prev) => !prev)}
+          className={styles.emojiButton}
+          title="Emoji hinzufügen"
+        >
+          😊
+        </button>
+
+        {showEmojiPicker && (
+          <div className={styles.emojiPicker}>
+            <EmojiPicker onEmojiClick={onEmojiClick} />
+          </div>
+        )}
+
         <input
           type="text"
           value={message}

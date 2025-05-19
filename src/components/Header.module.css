@@ -8,20 +8,19 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  flex-wrap: wrap; /* Wichtig für das Umbrechen */
+  flex-wrap: wrap;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  /* width: auto; */
 }
 
 .nav {
   display: flex;
   gap: 0.25rem;
   flex-wrap: nowrap;
-  justify-content: center; /* Zentriert die Links */
+  justify-content: center;
   align-items: center;
 }
 
@@ -33,6 +32,7 @@
   border-radius: 8px;
   transition: background-color 0.2s ease;
   font-size: 0.75rem;
+  position: relative;
 }
 
 .nav a:hover {
@@ -40,32 +40,42 @@
   text-decoration: none;
 }
 
-/* Mobile Optimierung */
+.badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.6rem;
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+}
+
 @media (max-width: 600px) {
   .header {
-    flex-direction: column; /* Stapelt Logo, Titel, Navigationsleiste übereinander */
-    align-items: center; /* Zentriert Inhalt horizontal */
-    justify-content: flex-start; /* Links */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .logo {
-    margin-right: auto; /* Logo links */
-    margin-bottom: 0.25rem; /* Abstand zwischen Logo und Titel */
-    width: 100%; /* Logo volle Breite */
-    text-align: left; /* Text linksbündig */
+    margin-right: auto;
+    margin-bottom: 0.25rem;
+    width: 100%;
+    text-align: left;
   }
 
   .nav {
-    width: 100%; /* Navigationsleiste volle Breite */
-    justify-content: space-around; /* Gleichmäßiger Abstand */
-    margin-top: 0.25rem; /* Abstand zwischen Titel und Navigationsleiste */
-    gap: 0.1rem; /* Kleinerer Abstand zwischen Links */
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 0.25rem;
+    gap: 0.1rem;
   }
 
   .nav a {
-    flex: 1; /* Gleiche Breite für Links */
-    text-align: center; /* Zentriert Text in Links */
-    padding: 0.1rem 0.2rem; /* Kleinerer Innenabstand */
-    font-size: 0.65rem; /* Kleinere Schriftgröße */
+    flex: 1;
+    text-align: center;
+    padding: 0.1rem 0.2rem;
+    font-size: 0.65rem;
   }
 }

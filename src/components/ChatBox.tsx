@@ -15,7 +15,7 @@ export default function ChatBox() {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  // Auth-Session laden
+  // Session laden
   useEffect(() => {
     const getSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -37,16 +37,19 @@ export default function ChatBox() {
     };
   }, []);
 
-  // Nachrichten laden und abonnieren
+  // Nachrichten laden & abonnieren
   useEffect(() => {
     const loadMessages = async () => {
       const { data, error } = await supabase
         .from('messages')
-        .select('*')
-        .order('created_at', { ascending: true });
+        .select('*');
 
       if (!error && data) {
-        setMessages(data as Message[]);
+        // Lokale Sortierung nach Timestamp (sicher & stabil)
+        const sortedMessages = (data as Message[]).sort((a, b) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        );
+        setMessages(sortedMessages);
       } else {
         console.error('Fehler beim Laden der Nachrichten:', error?.message);
       }
@@ -61,7 +64,9 @@ export default function ChatBox() {
         { event: 'INSERT', schema: 'public', table: 'messages' },
         (payload: RealtimePostgresInsertPayload<Message>) => {
           setMessages((prev) =>
-            [...prev, payload.new].sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
+            [...prev, payload.new].sort((a, b) =>
+              new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+            )
           );
         }
       )
@@ -72,7 +77,7 @@ export default function ChatBox() {
     };
   }, []);
 
-  // Scroll nach unten bei neuer Nachricht
+  // Immer nach unten scrollen bei neuen Nachrichten
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);

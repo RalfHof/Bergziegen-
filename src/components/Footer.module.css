@@ -1,8 +1,14 @@
+/* components/Footer.module.css */
+/* Komplette Version OHNE Ziege-Animation-Styles */
+
 .footer {
   background-color: #2e7d32;
   color: white;
   padding: 2rem;
   text-align: center;
+  position: relative; /* Behalte relative Positionierung, falls Footer selbst Inhalte hat, die Positionierung ben\u00F6tigen */
+  overflow: hidden; /* Behalte overflow hidden, um Inhalte innerhalb zu halten */
+  min-height: 100px; /* Zur\u00FCcksetzen auf eine Standard-Mindesth\u00F6he f\u00FCr den Footer */
 }
 
 .footerContent {
@@ -11,7 +17,11 @@
   justify-content: space-around;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
+
+/* Die .runningGoat und @keyframes runGoat wurden HIER entfernt */
 
 .footerSection {
   margin-bottom: 1rem;

@@ -160,4 +160,31 @@ export const touren = [
     komootLink: "https://www.komoot.de/tour-5",
   },
 
+   {
+    id: 6,
+    name: "Hamsbacher Schloß 27,05,25",
+    description: "Beschreibung der Tour 6",
+    images: [
+      "/Tour6_1.jpg",
+      "/Tour6_2.jpg",
+      "/Tour6_3.jpg",
+      "/Tour6_4.jpg",
+      "/Tour6_5.jpg",
+      "/Tour6_6.jpg",
+      "/Tour6_7.jpg",
+      "/Tour6_8.jpg",
+      "/Tour6_9.jpg",
+      "/Tour6_10.jpg",
+      "/Tour6_11.jpg",
+      "/Tour6_12.jpg",
+      "/Tour6_13.jpg",
+      "/Tour6_14.jpg",
+      "/Tour6_15.jpg",
+      "/Tour6_16.jpg",
+      "/Tour6_17.jpg",
+
+    ],
+    komootLink: "https://www.komoot.de/tour-6",
+  },
+
 ];

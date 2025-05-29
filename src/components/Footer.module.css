@@ -6,9 +6,9 @@
   color: white;
   padding: 2rem;
   text-align: center;
-  position: relative; /* Behalte relative Positionierung, falls Footer selbst Inhalte hat, die Positionierung ben\u00F6tigen */
-  overflow: hidden; /* Behalte overflow hidden, um Inhalte innerhalb zu halten */
-  min-height: 100px; /* Zur\u00FCcksetzen auf eine Standard-Mindesth\u00F6he f\u00FCr den Footer */
+  position: relative;
+  overflow: hidden;
+  min-height: 100px;
 }
 
 .footerContent {
@@ -20,8 +20,6 @@
   position: relative;
   z-index: 1;
 }
-
-/* Die .runningGoat und @keyframes runGoat wurden HIER entfernt */
 
 .footerSection {
   margin-bottom: 1rem;
@@ -58,6 +56,24 @@
   font-size: 0.8rem;
 }
 
+/* Logout Button-Styling */
+.logoutButton {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.logoutButton:hover {
+  background-color: #1b5e20;
+}
+
 /* Mobile Optimierung */
 @media (max-width: 600px) {
   .footerContent {
@@ -67,5 +83,10 @@
 
   .footerSection {
     margin-bottom: 2rem;
+  }
+
+  .logoutButton {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
   }
 }

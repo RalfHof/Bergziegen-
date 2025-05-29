@@ -51,6 +51,24 @@
   right: -0.4rem;
 }
 
+/* NEU: Logout-Button-Styling */
+.logoutButton {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.75rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: #1b5e20;
+}
+
+/* Mobile Optimierung */
 @media (max-width: 600px) {
   .header {
     flex-direction: column;
@@ -72,7 +90,8 @@
     gap: 0.1rem;
   }
 
-  .nav a {
+  .nav a,
+  .logoutButton {
     flex: 1;
     text-align: center;
     padding: 0.1rem 0.2rem;

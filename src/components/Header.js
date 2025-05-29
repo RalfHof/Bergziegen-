@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './Header.module.css';
 import { useEffect, useState } from 'react';
@@ -5,8 +7,17 @@ import { supabase } from '@/lib/supabaseClient';
 
 export default function Header() {
   const [newMessagesCount, setNewMessagesCount] = useState(0);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      setUser(session?.user || null);
+      setLoading(false);
+    };
+    getSession();
+
     const channel = supabase
       .channel('chat-room')
       .on(
@@ -23,6 +34,12 @@ export default function Header() {
     };
   }, []);
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setUser(null);
+    window.location.href = '/';
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>🐐 Bergziegen</div>
@@ -36,8 +53,17 @@ export default function Header() {
           )}
         </Link>
         <Link href="/kalender">Kalender</Link>
-        <Link href="/login">Login</Link>
-        <Link href="/register">Register</Link>
+
+        {!loading && user ? (
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Logout
+          </button>
+        ) : (
+          <>
+            <Link href="/login">Login</Link>
+            <Link href="/register">Register</Link>
+          </>
+        )}
       </nav>
     </header>
   );

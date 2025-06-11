@@ -101,7 +101,7 @@ Unsere Wanderung führt uns auf etwa 9 Kilometern durch die malerische Landsch
       "/Tour7_11.jpg", "/Tour7_12.jpg", "/Tour7_13.jpg", "/Tour7_14.jpg", "/Tour7_15.jpg",
       "/Tour7_16.jpg", "/Tour7_17.jpg","/Tour7_18.jpg","/Tour7_19.jpg","/Tour7_20.jpg","/Tour7_21.jpg","/Tour7_22.jpg",
     ],
-    komootLink: "https://www.komoot.de/tour-5",
+    komootLink: "https://www.komoot.de/tour-7",
     outdooractiveLink: "https://www.outdooractive.com/de/tour-5",
   },
 

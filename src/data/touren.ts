@@ -102,7 +102,29 @@ Unsere Wanderung führt uns auf etwa 9 Kilometern durch die malerische Landsch
       "/Tour7_16.jpg", "/Tour7_17.jpg","/Tour7_18.jpg","/Tour7_19.jpg","/Tour7_20.jpg","/Tour7_21.jpg","/Tour7_22.jpg","/Tour7_23.jpg",
     ],
     komootLink: "https://www.komoot.de/tour-7",
-    outdooractiveLink: "https://www.outdooractive.com/de/tour-5",
+    outdooractiveLink: "https://www.outdooractive.com/de/tour-7",
   },
 
+   {
+  id: 8,
+  name: "Mit der Draisine durch die Südpfalz",
+  description: `Muskelkraft trifft Landschaftsgenuss
+
+Lust auf eine Tour der etwas anderen Art? Dann ab auf die Schiene – mit der Südpfalz-Draisinenbahn! Auf der stillgelegten Bahnstrecke zwischen Landau und Germersheim kannst du mit einer Draisine, einem von Muskelkraft betriebenen Schienenfahrzeug, die wunderschöne Pfälzer Landschaft entdecken.
+
+Das Ganze ist nicht nur entspanntes Dahinrollen – hier ist Teamwork, Ausdauer und ein gutes Sitzfleisch gefragt. Die Strecke hat es in sich, aber genau das macht den Spaß aus! Unterwegs gibt's jede Menge zu sehen, zu lachen und zu strampeln – je nachdem, wie sportlich du’s angehst.
+
+Am Endpunkt der Strecke wartet dann die wohlverdiente Pause auf dich. Ob Picknick, Vesper oder einfach nur Füße hochlegen – hier kannst du dich stärken, durchatmen und neue Energie für die Rückfahrt tanken.
+
+Also: Draisine klarmachen, Freunde einpacken und los geht’s auf eine Tour, die garantiert in Erinnerung bleibt. Und ja, Muskelkater ist inklusive – aber sowas von verdient!`,
+  images: [
+    "/Tour8_1.jpg", "/Tour8_2.jpg", "/Tour8_3.jpg", "/Tour8_4.jpg", "/Tour8_5.jpg",
+    "/Tour8_6.jpg", "/Tour8_7.jpg", "/Tour8_8.jpg", "/Tour8_9.jpg", "/Tour8_10.jpg",
+    "/Tour8_11.jpg", "/Tour8_12.jpg", "/Tour8_13.jpg", "/Tour8_14.jpg", "/Tour8_15.jpg",
+    "/Tour8_16.jpg", "/Tour8_17.jpg", "/Tour8_18.jpg", "/Tour8_19.jpg", "/Tour8_20.jpg",
+    "/Tour8_21.jpg", "/Tour8_22.jpg"
+  ],
+  komootLink: "https://www.komoot.de/tour-8",
+  outdooractiveLink: "https://www.outdooractive.com/de/tour-8"
+}
 ];

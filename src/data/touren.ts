@@ -141,5 +141,33 @@ Am Ende der Tour lädt der Pfalzblick zur verdienten Einkehr ein – es sei denn
     ],
     komootLink: "https://www.komoot.de/tour-9",
     outdooractiveLink: "https://www.outdooractive.com/de/tour-9"
+  },
+  {
+    id: 10,
+    name: "Salz Bergerk Bad Friedrichshall",
+    description: `Ab in die Tiefe – Das Salzbergwerk Bad Friedrichshall
+
+In 180 Metern Tiefe wartet eine faszinierende Welt auf dich: riesige Salzhallen, leuchtende Installationen, spannende Geschichten aus dem Bergbau und sogar eine der größten Bergbaumaschinen der Welt. Klingt beeindruckend? Ist es auch!
+
+Und das Beste: Du kannst selbst aktiv werden! Bei interaktiven Stationen wird ausprobiert, experimentiert und gestaunt. Neben all dem Staunen gehört aber auch Nachdenken dazu: In einer Dauerausstellung erfährst du mehr über das dunkle Kapitel der Zwangsarbeit im ehemaligen KZ Kochendorf – direkt in das Besucherbergwerk integriert.
+
+Der Rundgang dauert etwa 2,5 Stunden, ist rund 1,5 km lang und führt durch gut ausgebaute Wege – perfekt also auch mit Kindern. Mit angenehmen 18 Grad ist es da unten immer schön frisch, egal wie heiß es draußen ist. Also: Jacke nicht vergessen!
+
+Hungrig wird hier übrigens niemand: Im Bergwerk selbst gibt’s einen kleinen Kiosk mit Snacks und Getränken – perfekt für die Pause zwischendurch. Und wer danach noch Lust auf einen richtig guten Abschluss hat, kann den Tag gemütlich beim Italiener ausklingen lassen – mit Pizza, Pasta und einem kühlen Getränk. So schmeckt ein Ausflugstag doppelt gut!
+
+Dieses Ausflugsziel verbindet Spannung, Wissen und Genuss auf eindrucksvolle Weise – und ist garantiert ein Erlebnis, das man so schnell nicht vergisst!`,
+    images: [
+      "/Tour10_1.jpg", "/Tour10_2.jpg", "/Tour10_3.jpg", "/Tour10_4.jpg", "/Tour10_5.jpg",
+      "/Tour10_6.jpg", "/Tour10_7.jpg", "/Tour10_8.jpg", "/Tour10_9.jpg", "/Tour10_10.jpg",
+      "/Tour10_11.jpg", "/Tour10_12.jpg", "/Tour10_13.jpg", "/Tour10_14.jpg", "/Tour10_15.jpg",
+      "/Tour10_16.jpg", "/Tour10_17.jpg", "/Tour10_18.jpg", "/Tour10_19.jpg", "/Tour10_20.jpg",
+      "/Tour10_21.jpg", "/Tour10_22.jpg", "/Tour10_23.jpg", "/Tour10_24.jpg", "/Tour10_25.jpg",
+      "/Tour10_26.jpg", "/Tour10_27.jpg", "/Tour10_28.jpg", "/Tour10_29.jpg", "/Tour10_30.jpg",
+      "/Tour10_31.jpg", "/Tour10_32.jpg", "/Tour10_33.jpg", "/Tour10_34.jpg", "/Tour10_35.jpg", "/Tour10_36.jpg", "/Tour10_37.jpg",
+      "/Tour10_38.jpg", "/Tour10_39.jpg", "/Tour10_40.jpg", "/Tour10_41.jpg", "/Tour10_42.jpg", "/Tour10_43.jpg",
+      "/Tour10_44.jpg", "/Tour10_45.jpg", "/Tour10_46.jpg", "/Tour10_47.jpg",
+    ],
+    komootLink: "https://www.komoot.de/tour-10",
+    outdooractiveLink: "https://www.outdooractive.com/de/tour-10"
   }
 ];

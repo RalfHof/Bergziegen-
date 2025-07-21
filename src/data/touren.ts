@@ -82,15 +82,17 @@ Also: Draisine klarmachen, Freunde einpacken und los geht’s auf eine Tour, die
   {
     id: 9,
     name: "Gimmeldingen (Neustadt an der Weinstraße)",
-    description: "Unsere Tour führt uns nach Neustadt an der Weinstraße – eine der schönsten Städte entlang der Deutschen Weinstraße. Die Strecke verläuft durch dichte Waldgebiete und über zahlreiche Steigungen, was sie durchaus anspruchsvoll macht. Kondition ist gefragt – aber die Ausblicke auf die Rheinebene und die Umgebung lohnen jede Anstrengung. ",
+    description: "Unsere Tour führt uns nach Neustadt an der Weinstraße – eine der schönsten Städte entlang der Deutschen Weinstraße. Die Strecke verläuft durch dichte Waldgebiete und über zahlreiche Steigungen, was sie durchaus anspruchsvoll macht. Kondition ist gefragt – aber die Ausblicke auf die Rheinebene und die Umgebung lohnen jede Anstrengung.Ein besonderes Highlight auf dem Weg ist die historische Warte mit ihrer etwa 6 m hohen Aussichtsplattform: Der steinerne Unterbau (ca. 3 × 3 m Grundfläche) beherbergt einen kleinen Unterstand, zugänglich über eine Treppe und eine rund 2 m hohe Öffnung. Früher stand hier ein hölzerner Pavillon, heute ist nur noch ein Eisengeländer übrig. Von außen ist das Bauwerk wegen der umliegenden Bäume kaum zu erkennen – aber wer es erreicht, wird mit einem schönen Rundblick belohnt.Am Ende der Tour lädt der Pfalzblick zur verdienten Einkehr ein – es sei denn, er hat gerade Betriebsferien. Dann bleibt nur eines: Rucksackvesper auspacken, Füße hochlegen und den Tag in der Natur genießen. Eine fordernde, aber lohnenswerte Tour mit Geschichte, Höhenmetern und Aussicht! ",
     images: Array.from({ length: 35 }, (_, i) => `/Tour9_${i + 1}.jpg`),
     komootLink: "https://www.komoot.de/tour-9",
     outdooractiveLink: "https://www.outdooractive.com/de/tour-9",
   },
   {
     id: 10,
-    name: "Salzbergwerk Bad Friedrichshall",
-    description: "Beschreibung der Tour 10 - Das Salzbergwerk ist ein faszinierender Ort mit über 180 Metern Tiefe...",
+    name: "Salzbergwerk Bad Friedrichshall – Tief unter der Erde, stark im Erlebnis!",
+    description: `Ein unvergessliches Erlebnis erwartet euch 180 Meter unter der Erde: Im Salzbergwerk Bad Friedrichshall erkundet ihr bei einer interaktiven Führung auf eigene Faust die faszinierende Welt des Salzabbaus. In konstant angenehmen 18 °C könnt ihr spannende Stationen entdecken, Geschichte erleben und aktiv mitmachen – perfekt für Familien.
+
+Oben angekommen gibt es vor Ort eine Möglichkeit zur Einkehr mit kleinen Speisen. Wer danach noch Lust auf Genuss hat, kann etwa 20 Minuten weiterfahren und den Tag gemütlich beim Italiener ausklingen lassen. Bildung, Abenteuer und Kulinarik – alles in einer Tour!`,
     images: Array.from({ length: 47 }, (_, i) => `/Tour10_${i + 1}.jpg`),
     komootLink: "https://www.komoot.de/tour-10",
     outdooractiveLink: "https://www.outdooractive.com/de/tour-10",

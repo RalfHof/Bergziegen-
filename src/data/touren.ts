@@ -87,7 +87,7 @@ export const touren = [
 Rund 20 Kilometer geht's durch die herrliche Landschaft rund um Waghäusel – durch Weinberge, Felder und kleine Naturhighlights, und das Ganze in entspannter Geschwindigkeit. Perfekt also zum Abschalten, Quatschen und natürlich Lachen – denn unterwegs wird garantiert nicht geschwiegen!
 
 Mitgebracht werden nur gute Laune und vielleicht ein kleines Vesper – um den Rest kümmern sich Haffners. Die Tour dauert etwa drei Stunden und ist ein echtes Highlight für alle, die mal wieder gemeinsam was erleben wollen – ganz ohne Stress, aber mit viel Herz.`,
-  images: Array.from({ length: 24 }, (_, i) => `/Tour11_${i + 1}.jpg`),
+  images: Array.from({ length: 30 }, (_, i) => `/Tour11_${i + 1}.jpg`),
   komootLink: "https://www.komoot.de/tour-11",
   outdooractiveLink: "https://www.outdooractive.com/de/tour-11",
 }

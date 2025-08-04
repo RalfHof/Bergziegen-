@@ -46,6 +46,8 @@ export default function Header() {
       <nav className={styles.nav}>
         <Link href="/">Home</Link>
         <Link href="/touren">Touren</Link>
+        <Link href="/geplant">Geplante Touren</Link>
+
         <Link href="/chat/aktuell">
           Chat
           {newMessagesCount > 0 && (

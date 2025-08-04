@@ -30,6 +30,8 @@ export default function Footer() {
           <ul>
             <li><Link href="/">Home</Link></li>
             <li><Link href="/touren">Touren</Link></li>
+            <li><Link href="/geplant">Geplante Touren</Link></li>
+
             <li><Link href="/kalender">Kalender</Link></li>
             {!user ? (
               <>

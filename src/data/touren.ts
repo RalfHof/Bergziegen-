@@ -81,7 +81,7 @@ export const touren = [
   },
 {
   id: 11,
-  name: "Kutschfahrt in Waghäusel",
+  name: "Planwagenfahrt mit Haffner – 20 km Spaß auf Rädern Waghäusel",
   description: `Du suchst nach einem gemütlichen, aber trotzdem besonderen Ausflug mit Freunden oder Familie? Dann steig auf den Planwagen und komm mit zur Haffner-Kutschfahrt!
 
 Rund 20 Kilometer geht's durch die herrliche Landschaft rund um Waghäusel – durch Weinberge, Felder und kleine Naturhighlights, und das Ganze in entspannter Geschwindigkeit. Perfekt also zum Abschalten, Quatschen und natürlich Lachen – denn unterwegs wird garantiert nicht geschwiegen!
@@ -93,3 +93,5 @@ Mitgebracht werden nur gute Laune und vielleicht ein kleines Vesper – um den R
 }
 
 ];
+
+

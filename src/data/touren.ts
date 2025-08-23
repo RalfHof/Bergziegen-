@@ -92,6 +92,7 @@ Mitgebracht werden nur gute Laune und vielleicht ein kleines Vesper – um den R
   outdooractiveLink: "https://www.outdooractive.com/de/tour-11",
 }
 
+
 ];
 
 

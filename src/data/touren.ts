@@ -90,7 +90,18 @@ Mitgebracht werden nur gute Laune und vielleicht ein kleines Vesper – um den R
   images: Array.from({ length: 30 }, (_, i) => `/Tour11_${i + 1}.jpg`),
   komootLink: "https://www.komoot.de/tour-11",
   outdooractiveLink: "https://www.outdooractive.com/de/tour-11",
-}
+},
+{
+  id: 12,
+  name: "Sieges- und Friedensdenkmal Edenkoben",
+  description: `Unsere 10 km lange Wanderung führt uns zum imposanten Sieges- und Friedensdenkmal in Edenkoben, das 1899 zur Erinnerung an den Deutsch-Französischen Krieg von 1870/71 errichtet wurde. Der Weg verläuft größtenteils durch schattige Waldpfade und überrascht unterwegs mit in Stein gemeißelten Sehenswürdigkeiten. 
+
+Oben angekommen erwartet dich nicht nur das beeindruckende Denkmal, sondern auch eine herrliche Aussicht. Wer möchte, kann in der Waldgaststätte einkehren, sich stärken und die Atmosphäre genießen. Eine abwechslungsreiche Tour mit Natur, Geschichte – und garantiertem Muskelkater! 😉`,
+  images: Array.from({ length: 43 }, (_, i) => `/Tour12_${i + 1}.jpg`),
+  komootLink: "https://www.komoot.de/tour-12",
+  outdooractiveLink: "https://www.outdooractive.com/de/tour-12",
+},
+
 
 
 

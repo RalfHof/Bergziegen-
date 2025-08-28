@@ -102,6 +102,22 @@ Oben angekommen erwartet dich nicht nur das beeindruckende Denkmal, sondern auch
   outdooractiveLink: "https://www.outdooractive.com/de/tour-12",
 },
 
+{
+  id: 13,
+  name: "Von Gleisweiler zur Landauer Hütte",
+  description: `Unsere Tour startet in Gleisweiler und führt uns durch den schönen Pfälzerwald. 
+Unterwegs entdecken wir zahlreiche Holzskulpturen, genießen traumhafte Ausblicke in den Pfälzerwald, den Odenwald und sogar bis zum Schwarzwald. 
+Das absolute Highlight ist die Walddusche – eine natürliche Quelle mitten im Wald, die das ganze Jahr über für Erfrischung sorgt. 
+Auf dem Weg kehren wir in Hütten des Pfälzerwaldvereins wie der St.-Anna-Hütte, der Trifelsblick-Hütte und schließlich in der Landauer Hütte ein. 
+Dort wartet leckere Pfälzer Küche, die wir im Schatten unter den Bäumen genießen können. 
+Eine wunderschöne, abwechslungsreiche Wanderung mit Erholung`,
+  shortDescription: `Abwechslungsreiche Waldtour mit tollen Ausblicken und vielen Holzskulpturen. Highlight ist die Walddusche – eine Quelle mitten im Wald, die das ganze Jahr erfrischt. Zum Abschluss wartet in der Landauer Hütte deftige Pfälzer Küche im Schatten der Bäume.`,
+  images: Array.from({ length: 43
+  
+   }, (_, i) => `/Tour13_${i + 1}.jpg`),
+  komootLink: "https://www.komoot.de/tour-13",
+  outdooractiveLink: "https://www.outdooractive.com/de/tour-13",
+},
 
 
 

@@ -110,14 +110,34 @@ Unterwegs entdecken wir zahlreiche Holzskulpturen, genießen traumhafte Ausblick
 Das absolute Highlight ist die Walddusche – eine natürliche Quelle mitten im Wald, die das ganze Jahr über für Erfrischung sorgt. 
 Auf dem Weg kehren wir in Hütten des Pfälzerwaldvereins wie der St.-Anna-Hütte, der Trifelsblick-Hütte und schließlich in der Landauer Hütte ein. 
 Dort wartet leckere Pfälzer Küche, die wir im Schatten unter den Bäumen genießen können. 
-Eine wunderschöne, abwechslungsreiche Wanderung mit Erholung`,
+Eine wunderschöne, abwechslungsreiche Wanderung mit Erholungs- und Muskelkater-Garantie!`,
   shortDescription: `Abwechslungsreiche Waldtour mit tollen Ausblicken und vielen Holzskulpturen. Highlight ist die Walddusche – eine Quelle mitten im Wald, die das ganze Jahr erfrischt. Zum Abschluss wartet in der Landauer Hütte deftige Pfälzer Küche im Schatten der Bäume.`,
-  images: Array.from({ length: 43
-  
-   }, (_, i) => `/Tour13_${i + 1}.jpg`),
+  distance: "11,8 km",
+  duration: "ca. 3:50 Std.",
+  difficulty: "mittel",
+  ascent: "320 Hm",
+  images: Array.from({ length: 43 }, (_, i) => `/Tour13_${i + 1}.jpg`),
   komootLink: "https://www.komoot.de/tour-13",
   outdooractiveLink: "https://www.outdooractive.com/de/tour-13",
 },
+{
+  id: 14,
+  name: "Sinsheim – Kraichgau & Burg Steinsberg",
+  description: `Unsere Tour führt uns in den wunderschönen Kraichgau – das Land der 1000 Hügel – und hinauf zur prächtigen Stauferburg Steinsberg. 
+Die Strecke verläuft über 10,1 Kilometer durch eine sanfte Hügellandschaft und bietet mit 168 Höhenmetern einen leichten Schwierigkeitsgrad – ideal für eine entspannte Wanderung. 
+Das absolute Highlight ist die Burg Steinsberg, die weithin sichtbar auf einem erloschenen Vulkan thront. Mit ihrem rund 30 Meter hohen Turm, der über steile Holztreppen zu erklimmen ist, bietet sie eine fantastische Aussicht über den gesamten Kraichgau. 
+Der Burgberg mit 333 Metern Höhe ist die höchste Erhebung der Region und gilt als „Kompass des Kraichgaus“. 
+Eine gemütliche Tour mit viel Geschichte, schönen Ausblicken und garantiertem Wandererlebnis!`,
+  shortDescription: "Leichte Kraichgau-Wanderung mit Burg Steinsberg als Highlight und fantastischem Panoramablick.",
+  distance: "10,1 km",
+  duration: "ca. 3:40 Std.",
+  difficulty: "leicht",
+  ascent: "168 Hm",
+  images: Array.from({ length: 56 }, (_, i) => `/Tour14_${i + 1}.jpg`),
+  komootLink: "https://www.komoot.de/tour-14",
+  outdooractiveLink: "https://www.outdooractive.com/de/r/111262429?utm_source=unknown&utm_medium=social&utm_campaign=user-shared-social-content",
+}
+
 
 
 

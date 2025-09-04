@@ -136,7 +136,8 @@ Eine gemütliche Tour mit viel Geschichte, schönen Ausblicken und garantiertem 
   images: Array.from({ length: 56 }, (_, i) => `/Tour14_${i + 1}.jpg`),
   komootLink: "https://www.komoot.com/de-de/smarttour/32508536?ref=wdd",
   outdooractiveLink: "https://www.outdooractive.com/de/r/111262429?utm_source=unknown&utm_medium=social&utm_campaign=user-shared-social-content",
-}
+},
+
 
 
 

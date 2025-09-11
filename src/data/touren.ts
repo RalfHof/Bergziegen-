@@ -25,9 +25,9 @@ export const touren = [
   },
   {
     id: 4,
-    name: "Mondbachschlucht",
+    name: "Mondbachschlucht..20.08.23..07.09.25",
     description: `Tour führt uns in die beeindruckende Monbachtalschlucht – ein echtes Naturerlebnis mit glitzernden Bächen und sattgrünen Flussauen. Der schmale Pfad, der Trittsicherheit erfordert, führt uns immer wieder über Steinquader durch das Tal. Genießt die besondere Atmosphäre dieser Schlucht, bei etwas Glück entdecken wir vielleicht sogar den seltenen Eisvogel! Zum Abschluss kehren wir in die Hausbrauerei Mönchwasen ein und lassen den Tag bei guter bürgerlicher Küche gemütlich ausklingen.`,
-    images: Array.from({ length: 49 }, (_, i) => `/Tour4_${i + 1}.jpg`),
+    images: Array.from({ length: 101 }, (_, i) => `/Tour4_${i + 1}.jpg`),
     komootLink: "https://www.komoot.de/tour-4",
     outdooractiveLink: "https://www.outdooractive.com/de/tour-4",
   },
@@ -137,7 +137,17 @@ Eine gemütliche Tour mit viel Geschichte, schönen Ausblicken und garantiertem 
   komootLink: "https://www.komoot.com/de-de/smarttour/32508536?ref=wdd",
   outdooractiveLink: "https://www.outdooractive.com/de/r/111262429?utm_source=unknown&utm_medium=social&utm_campaign=user-shared-social-content",
 },
-
+{
+  id: 15,
+  name: "Drei Buchen – Ramberger Waldhaus 10.09.25",
+  description: `Unsere Tour führt uns ins Herz des Pfälzerwaldes zum traditionsreichen Waldhaus Drei Buchen bei Ramberg. 
+Auf idyllischen Waldwegen geht es durch eine abwechslungsreiche Natur mit schönen Ausblicken und stillen Abschnitten im Schatten der Bäume. 
+Das Waldhaus lädt unterwegs zur gemütlichen Rast ein – mit typischen Pfälzer Gerichten und einer entspannten Atmosphäre mitten im Grünen. 
+Eine Tour für alle, die Natur und Einkehr perfekt verbinden möchten.`,
+  images: Array.from({ length: 48 }, (_, i) => `/Tour15_${i + 1}.jpg`),
+  komootLink: "https://www.komoot.com/de-de/highlight/123172", 
+  outdooractiveLink: "https://www.outdooractive.com/de/hut/mittlerer-pfaelzerwald/waldhaus-drei-buchen-ramberger-waldhaus/2783842/#caml=8dd,1bt8p2,85ccxf,0,0",
+},
 
 
 

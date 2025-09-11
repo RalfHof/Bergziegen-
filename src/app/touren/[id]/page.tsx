@@ -5,8 +5,9 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { touren } from "@/data/touren";
 import styles from "./page.module.css";
+import Feedback from "@/components/Feedback";
 
-// Typ ableiten aus dem touren-Array
+// Typ aus dem touren-Array
 type TourType = typeof touren[number];
 
 export default function Page() {
@@ -15,10 +16,11 @@ export default function Page() {
   const [zoomedImage, setZoomedImage] = useState<number | null>(null);
 
   useEffect(() => {
-    const id = parseInt(params?.id as string);
+    if (!params?.id) return;
+    const id = parseInt(params.id as string);
     const foundTour = touren.find((t) => t.id === id) || null;
     setTour(foundTour);
-  }, [params]);
+  }, [params?.id]);
 
   if (!tour) {
     return (
@@ -58,17 +60,19 @@ export default function Page() {
         </a>
       </div>
 
+      {/* Galerie */}
       <div className={styles.gallery}>
         {tour.images.map((src: string, index: number) => (
           <Image
             key={index}
             src={src}
             alt={`${tour.name} Bild ${index + 1}`}
-            width={zoomedImage === index ? 600 : 300}
-            height={zoomedImage === index ? 400 : 200}
+            width={zoomedImage === index ? 800 : 400}
+            height={zoomedImage === index ? 600 : 300}
             style={{
               borderRadius: "12px",
-              objectFit: "cover",
+              objectFit: "contain", // ✅ nicht mehr abgeschnitten
+              backgroundColor: "#000", // ✅ schwarzer Hintergrund bei freien Flächen
               cursor: "pointer",
               transition: "width 0.3s ease, height 0.3s ease",
               margin: "0.5rem",
@@ -77,6 +81,9 @@ export default function Page() {
           />
         ))}
       </div>
+
+      {/* ⭐ Feedback-Komponente */}
+      <Feedback tourId={tour.id} />
     </div>
   );
 }

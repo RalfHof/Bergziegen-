@@ -71,8 +71,8 @@ export default function Page() {
             height={zoomedImage === index ? 600 : 300}
             style={{
               borderRadius: "12px",
-              objectFit: "contain", // ✅ nicht mehr abgeschnitten
-              backgroundColor: "#000", // ✅ schwarzer Hintergrund bei freien Flächen
+              objectFit: "contain",
+              backgroundColor: "#000",
               cursor: "pointer",
               transition: "width 0.3s ease, height 0.3s ease",
               margin: "0.5rem",

@@ -25,7 +25,7 @@ export const touren = [
   },
   {
     id: 4,
-    name: "Mondbachschlucht..20.08.23..07.09.25",
+    name: "Mondbachschlucht 20.08.23..07.09.25",
     description: `Tour führt uns in die beeindruckende Monbachtalschlucht – ein echtes Naturerlebnis mit glitzernden Bächen und sattgrünen Flussauen. Der schmale Pfad, der Trittsicherheit erfordert, führt uns immer wieder über Steinquader durch das Tal. Genießt die besondere Atmosphäre dieser Schlucht, bei etwas Glück entdecken wir vielleicht sogar den seltenen Eisvogel! Zum Abschluss kehren wir in die Hausbrauerei Mönchwasen ein und lassen den Tag bei guter bürgerlicher Küche gemütlich ausklingen.`,
     images: Array.from({ length: 101 }, (_, i) => `/Tour4_${i + 1}.jpg`),
     komootLink: "https://www.komoot.de/tour-4",

@@ -12,7 +12,7 @@ import { getAverageRating } from '@/utils/feedbackUtils';
 export default function TourenPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [ratings, setRatings] = useState<Record<number, number>>({}); // ⭐ Ratings für jede Tour
+  const [ratings, setRatings] = useState<Record<number, number>>({});
 
   useEffect(() => {
     const checkSession = async () => {
@@ -68,14 +68,13 @@ export default function TourenPage() {
             />
             <div className={styles.info}>
               <h2 className={styles.title}>
-                {tour.name}
-                {" "}
+                {tour.name}{' '}
                 {ratings[tour.id] ? (
-                  <span style={{ fontSize: "0.9rem", color: "gold" }}>
+                  <span style={{ fontSize: '0.9rem', color: 'gold' }}>
                     ⭐ {ratings[tour.id].toFixed(1)}
                   </span>
                 ) : (
-                  <span style={{ fontSize: "0.8rem", color: "gray" }}>
+                  <span style={{ fontSize: '0.8rem', color: 'lightgray' }}>
                     (Noch keine Bewertung)
                   </span>
                 )}

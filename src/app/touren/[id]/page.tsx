@@ -40,6 +40,14 @@ export default function Page() {
       <h1 className={styles.title}>{tour.name}</h1>
       <p className={styles.description}>{tour.description}</p>
 
+      {/* ✅ Neue Infos zu Distanz, Dauer, Schwierigkeit, Aufstieg */}
+      <div className={styles.tourInfo}>
+        {tour.distance && <p><strong>Distanz:</strong> {tour.distance}</p>}
+        {tour.duration && <p><strong>Dauer:</strong> {tour.duration}</p>}
+        {tour.difficulty && <p><strong>Schwierigkeit:</strong> {tour.difficulty}</p>}
+        {tour.ascent && <p><strong>Aufstieg:</strong> {tour.ascent}</p>}
+      </div>
+
       <div className={styles.links}>
         <a
           href={tour.komootLink}

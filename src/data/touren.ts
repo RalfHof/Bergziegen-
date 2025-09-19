@@ -37,7 +37,7 @@ export const touren = [
   },
   {
     id: 4,
-    name: "Mondbachschlucht",
+    name: "Mondbachschlucht..07.09.25./.04.08.21",
     description: `Tour führt uns in die beeindruckende Monbachtalschlucht – ein echtes Naturerlebnis mit glitzernden Bächen und sattgrünen Flussauen. Der schmale Pfad, der Trittsicherheit erfordert, führt uns immer wieder über Steinquader durch das Tal. Genießt die besondere Atmosphäre dieser Schlucht, bei etwas Glück entdecken wir vielleicht sogar den seltenen Eisvogel! Zum Abschluss kehren wir in die Hausbrauerei Mönchwasen ein und lassen den Tag bei guter bürgerlicher Küche gemütlich ausklingen.`,
     shortDescription: "Abenteuerliche Wanderung durch die Monbachtalschlucht mit Einkehr in der Brauerei.",
     distance: "ca. 10 km",
@@ -63,7 +63,7 @@ export const touren = [
   },
   {
     id: 6,
-    name: "Hambacher Schloss",
+    name: "Hambacher Schloss..27.05.25",
     description: `Das Hambacher Schloss, eine Burgruine aus dem 11. Jahrhundert, spielt eine bedeutende Rolle in der deutschen Demokratiegeschichte. Es wurde am 27. Mai 1832 zum Schauplatz des Hambacher Festes, einem wichtigen Ereignis der Demokratiebewegung im 19. Jahrhundert, und gilt seither als "Wiege der deutschen Demokratie". Unsere Wanderung führt uns auf etwa 9 Kilometern durch die malerische Landschaft rund um das Hambacher Schloss und überwindet dabei rund 180 Höhenmeter. Nach der Tour lädt das Weingut Ernst zur gemütlichen Einkehr ein.`,
     shortDescription: "Kulturelle Wanderung zum Hambacher Schloss mit Einkehr im Weingut Ernst.",
     distance: "9 km",
@@ -89,12 +89,12 @@ export const touren = [
   },
   {
     id: 8,
-    name: "Mit der Draisine durch die Südpfalz",
+    name: "Mit der Draisine durch die Südpfalz..06.07.25",
     description: `Muskelkraft trifft Landschaftsgenuss. Lust auf eine Tour der etwas anderen Art? Dann ab auf die Schiene – mit der Südpfalz-Draisinenbahn! Auf der stillgelegten Bahnstrecke zwischen Landau und Germersheim kannst du mit einer Draisine, einem von Muskelkraft betriebenen Schienenfahrzeug, die wunderschöne Pfälzer Landschaft entdecken. Das Ganze ist nicht nur entspanntes Dahinrollen – hier ist Teamwork, Ausdauer und ein gutes Sitzfleisch gefragt. Unterwegs gibt's jede Menge zu sehen, zu lachen und zu strampeln. Am Endpunkt der Strecke wartet dann die wohlverdiente Pause.`,
     shortDescription: "Draisinenfahrt durch die Südpfalz – Teamwork, Spaß und Landschaft genießen.",
     distance: "ca. 20 km",
     duration: "ca. 4:00 Std.",
-    difficulty: "mittel",
+    difficulty: "mittel/schwer",
     ascent: "folgt in Kürze",
     images: Array.from({ length: 22 }, (_, i) => `/Tour8_${i + 1}.jpg`),
     komootLink: "https://www.komoot.de/tour-8",
@@ -102,7 +102,7 @@ export const touren = [
   },
   {
     id: 9,
-    name: "Gimmeldingen (Neustadt an der Weinstraße)",
+    name: "Gimmeldingen (Neustadt an der Weinstraße)..10.07.25",
     description: `Unsere Tour führt uns nach Neustadt an der Weinstraße – eine der schönsten Städte entlang der Deutschen Weinstraße. Die Strecke verläuft durch dichte Waldgebiete und über zahlreiche Steigungen, was sie durchaus anspruchsvoll macht. Kondition ist gefragt – aber die Ausblicke auf die Rheinebene lohnen jede Anstrengung. Ein Highlight ist die historische Warte mit ihrer etwa 6 m hohen Aussichtsplattform. Am Ende der Tour lädt der Pfalzblick zur Einkehr ein.`,
     shortDescription: "Anspruchsvolle Wanderung rund um Neustadt mit toller Aussicht und Einkehr.",
     distance: "ca. 13 km",
@@ -115,7 +115,7 @@ export const touren = [
   },
   {
     id: 10,
-    name: "Salzbergwerk Bad Friedrichshall",
+    name: "Salzbergwerk Bad Friedrichshall..19.07.25",
     description: `Ein unvergessliches Erlebnis erwartet euch 180 Meter unter der Erde: Im Salzbergwerk Bad Friedrichshall erkundet ihr bei einer interaktiven Führung auf eigene Faust die faszinierende Welt des Salzabbaus. In konstant angenehmen 18 °C könnt ihr spannende Stationen entdecken, Geschichte erleben und aktiv mitmachen – perfekt für Familien. Oben angekommen gibt es eine Einkehrmöglichkeit, danach wartet vielleicht ein Italiener in der Nähe.`,
     shortDescription: "Abenteuer 180 m unter der Erde im Salzbergwerk Bad Friedrichshall.",
     distance: "folgt in Kürze",
@@ -128,7 +128,7 @@ export const touren = [
   },
   {
     id: 11,
-    name: "Planwagenfahrt mit Haffner – Waghäusel",
+    name: "Planwagenfahrt mit Haffner – Waghäusel..11.12.22./.04.08.25",
     description: `Du suchst nach einem gemütlichen, aber trotzdem besonderen Ausflug mit Freunden oder Familie? Dann steig auf den Planwagen und komm mit zur Haffner-Kutschfahrt! Rund 20 Kilometer geht's durch die herrliche Landschaft rund um Waghäusel – durch Weinberge, Felder und kleine Naturhighlights. Die Tour dauert etwa drei Stunden und ist ein echtes Highlight für alle, die mal wieder gemeinsam was erleben wollen – ganz ohne Stress, aber mit viel Herz.`,
     shortDescription: "Planwagenfahrt rund um Waghäusel – 20 km Spaß auf Rädern.",
     distance: "20 km",
@@ -141,7 +141,7 @@ export const touren = [
   },
   {
     id: 12,
-    name: "Sieges- und Friedensdenkmal Edenkoben",
+    name: "Sieges- und Friedensdenkmal Edenkoben..14.08.25",
     description: `Unsere 10 km lange Wanderung führt uns zum imposanten Sieges- und Friedensdenkmal in Edenkoben, das 1899 zur Erinnerung an den Deutsch-Französischen Krieg errichtet wurde. Der Weg verläuft größtenteils durch schattige Waldpfade und überrascht unterwegs mit in Stein gemeißelten Sehenswürdigkeiten. Oben angekommen erwartet dich eine herrliche Aussicht und Einkehrmöglichkeit.`,
     shortDescription: "Kulturelle Tour zum Sieges- und Friedensdenkmal Edenkoben mit Waldgaststätte.",
     distance: "10 km",
@@ -154,7 +154,7 @@ export const touren = [
   },
   {
     id: 13,
-    name: "Von Gleisweiler zur Landauer Hütte",
+    name: "Von Gleisweiler zur Landauer Hütte..27.08.25",
     description: `Unsere Tour startet in Gleisweiler und führt uns durch den schönen Pfälzerwald. Unterwegs entdecken wir zahlreiche Holzskulpturen, genießen traumhafte Ausblicke in den Pfälzerwald, den Odenwald und sogar bis zum Schwarzwald. Das absolute Highlight ist die Walddusche – eine natürliche Quelle mitten im Wald, die das ganze Jahr über für Erfrischung sorgt. Auf dem Weg kehren wir in Hütten des Pfälzerwaldvereins wie der St.-Anna-Hütte, der Trifelsblick-Hütte und schließlich in der Landauer Hütte ein. Dort wartet deftige Pfälzer Küche im Schatten der Bäume.`,
     shortDescription: "Waldtour mit Walddusche und Einkehr in der Landauer Hütte.",
     distance: "11,8 km",
@@ -167,7 +167,7 @@ export const touren = [
   },
   {
     id: 14,
-    name: "Sinsheim – Kraichgau & Burg Steinsberg",
+    name: "Sinsheim – Kraichgau & Burg Steinsberg..03.09.25",
     description: `Unsere Tour führt uns in den wunderschönen Kraichgau – das Land der 1000 Hügel – und hinauf zur prächtigen Stauferburg Steinsberg. Die Strecke verläuft über 10,1 Kilometer durch eine sanfte Hügellandschaft. Das absolute Highlight ist die Burg Steinsberg, die weithin sichtbar auf einem erloschenen Vulkan thront. Mit ihrem rund 30 Meter hohen Turm bietet sie eine fantastische Aussicht über den gesamten Kraichgau.`,
     shortDescription: "Leichte Kraichgau-Wanderung mit Burg Steinsberg und Panoramablick.",
     distance: "10,1 km",
@@ -180,7 +180,7 @@ export const touren = [
   },
   {
     id: 15,
-    name: "Drei Buchen – Ramberger Waldhaus",
+    name: "Drei Buchen – Ramberger Waldhaus..10.09.25",
     description: `Unsere Tour führt uns ins Herz des Pfälzerwaldes zum traditionsreichen Waldhaus Drei Buchen bei Ramberg. Auf idyllischen Waldwegen geht es durch abwechslungsreiche Natur mit schönen Ausblicken. Das Waldhaus lädt unterwegs zur gemütlichen Rast ein – mit typischen Pfälzer Gerichten und einer entspannten Atmosphäre mitten im Grünen.`,
     shortDescription: "Idyllische Waldtour mit Einkehr im Waldhaus Drei Buchen.",
     distance: "folgt in Kürze",
@@ -193,7 +193,7 @@ export const touren = [
   },
   {
     id: 16,
-    name: "Kraichgau – Weinberge & Derdinger Horn",
+    name: "Kraichgau – Weinberge & Derdinger Horn..17.09.25",
     description: `Unsere Tour führt uns durch die sanften Weinberge des Kraichgaus bis hin zum Derdinger Horn. Die Strecke ist leicht zu gehen und bietet über 12,8 Kilometer weite Ausblicke. Mit 231 Höhenmetern ist die Wanderung sehr entspannt – perfekt für eine gemütliche Runde. Nach etwa zwei Dritteln lädt die Bäckerei Thollembeek zu einer wohlverdienten Pause ein. Eine herrliche Kraichgau-Wanderung mit Panorama pur!`,
     shortDescription: "Leichte Weinberg-Wanderung mit Aussicht am Derdinger Horn und Einkehr bei Thollembeek.",
     distance: "12,8 km",

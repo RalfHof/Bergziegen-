@@ -12,10 +12,14 @@ body {
 }
 
 main {
-  flex: 1; /* Füllt den freien Platz zwischen Header und Footer */
+  flex: 1;
   padding: 1rem;
-  padding-top: 80px; /* mehr Abstand, damit Bilder nicht am Header kleben */
   padding-bottom: 80px; /* Abstand zum Footer */
+}
+
+/* 👉 Extra-Regel: Auf Seiten mit Hero-Bild keinen Abstand oben */
+main.heroPage {
+  padding-top: 0;
 }
 
 a {

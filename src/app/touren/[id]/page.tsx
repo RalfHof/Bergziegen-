@@ -36,62 +36,77 @@ export default function Page() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{tour.name}</h1>
-      <p className={styles.description}>{tour.description}</p>
+    <main className={styles.main}>
+      {/* 🎨 Hero-Bereich */}
+      <section
+        className={styles.hero}
+        style={{ backgroundImage: `url(${tour.images[0]})` }}
+      >
+        <div className={styles.overlay}>
+          <h1 className={styles.title}>{tour.name}</h1>
+        </div>
+      </section>
 
-      {/* ✅ Neue Infos zu Distanz, Dauer, Schwierigkeit, Aufstieg */}
-      <div className={styles.tourInfo}>
-        {tour.distance && <p><strong>Distanz:</strong> {tour.distance}</p>}
-        {tour.duration && <p><strong>Dauer:</strong> {tour.duration}</p>}
-        {tour.difficulty && <p><strong>Schwierigkeit:</strong> {tour.difficulty}</p>}
-        {tour.ascent && <p><strong>Aufstieg:</strong> {tour.ascent}</p>}
-      </div>
+      {/* Beschreibung + Infos */}
+      <section className={styles.section}>
+        <p className={styles.description}>{tour.description}</p>
 
-      <div className={styles.links}>
-        <a
-          href={tour.komootLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.komootLink}
-        >
-          Zur Komoot-Tour
-        </a>{" "}
-        |{" "}
-        <a
-          href={tour.outdooractiveLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.komootLink}
-        >
-          Outdooractive öffnen
-        </a>
-      </div>
+        <div className={styles.tourInfo}>
+          {tour.distance && <p><strong>Distanz:</strong> {tour.distance}</p>}
+          {tour.duration && <p><strong>Dauer:</strong> {tour.duration}</p>}
+          {tour.difficulty && <p><strong>Schwierigkeit:</strong> {tour.difficulty}</p>}
+          {tour.ascent && <p><strong>Aufstieg:</strong> {tour.ascent}</p>}
+        </div>
+
+        <div className={styles.links}>
+          <a
+            href={tour.komootLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.komootLink}
+          >
+            Zur Komoot-Tour
+          </a>{" "}
+          |{" "}
+          <a
+            href={tour.outdooractiveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.komootLink}
+          >
+            Outdooractive öffnen
+          </a>
+        </div>
+      </section>
 
       {/* Galerie */}
-      <div className={styles.gallery}>
-        {tour.images.map((src: string, index: number) => (
-          <Image
-            key={index}
-            src={src}
-            alt={`${tour.name} Bild ${index + 1}`}
-            width={zoomedImage === index ? 800 : 400}
-            height={zoomedImage === index ? 600 : 300}
-            style={{
-              borderRadius: "12px",
-              objectFit: "contain",
-              backgroundColor: "#000",
-              cursor: "pointer",
-              transition: "width 0.3s ease, height 0.3s ease",
-              margin: "0.5rem",
-            }}
-            onClick={() => handleImageClick(index)}
-          />
-        ))}
-      </div>
+      <section className={styles.section}>
+        <div className={styles.gallery}>
+          {tour.images.map((src: string, index: number) => (
+            <Image
+              key={index}
+              src={src}
+              alt={`${tour.name} Bild ${index + 1}`}
+              width={zoomedImage === index ? 800 : 400}
+              height={zoomedImage === index ? 600 : 300}
+              style={{
+                borderRadius: "12px",
+                objectFit: "contain",
+                backgroundColor: "#000",
+                cursor: "pointer",
+                transition: "width 0.3s ease, height 0.3s ease",
+                margin: "0.5rem",
+              }}
+              onClick={() => handleImageClick(index)}
+            />
+          ))}
+        </div>
+      </section>
 
       {/* ⭐ Feedback-Komponente */}
-      <Feedback tourId={tour.id} />
-    </div>
+      <section className={styles.section}>
+        <Feedback tourId={tour.id} />
+      </section>
+    </main>
   );
 }

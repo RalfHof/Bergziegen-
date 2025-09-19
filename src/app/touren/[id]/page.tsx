@@ -7,19 +7,28 @@ import { touren } from "@/data/touren";
 import styles from "./page.module.css";
 import Feedback from "@/components/Feedback";
 
-// Typ aus dem touren-Array
 type TourType = typeof touren[number];
 
 export default function Page() {
   const params = useParams();
   const [tour, setTour] = useState<TourType | null>(null);
   const [zoomedImage, setZoomedImage] = useState<number | null>(null);
+  const [averageRating, setAverageRating] = useState<number | null>(null);
 
   useEffect(() => {
     if (!params?.id) return;
     const id = parseInt(params.id as string);
     const foundTour = touren.find((t) => t.id === id) || null;
     setTour(foundTour);
+
+    const loadRating = async () => {
+      const res = await fetch("/api/feedback/ratings", { cache: "no-store" });
+      const data = await res.json();
+      if (data[id]) {
+        setAverageRating(data[id]);
+      }
+    };
+    loadRating();
   }, [params?.id]);
 
   if (!tour) {
@@ -36,77 +45,61 @@ export default function Page() {
   };
 
   return (
-    <main className={styles.main}>
-      {/* 🎨 Hero-Bereich */}
-      <section
-        className={styles.hero}
-        style={{ backgroundImage: `url(${tour.images[0]})` }}
-      >
-        <div className={styles.overlay}>
-          <h1 className={styles.title}>{tour.name}</h1>
-        </div>
-      </section>
+    <div className={styles.container}>
+      <h1 className={styles.title}>{tour.name}</h1>
 
-      {/* Beschreibung + Infos */}
-      <section className={styles.section}>
-        <p className={styles.description}>{tour.description}</p>
+      {averageRating ? (
+        <p style={{ color: "gold", marginBottom: "1rem" }}>
+          ⭐ {averageRating.toFixed(1)}
+        </p>
+      ) : (
+        <p style={{ color: "lightgray", marginBottom: "1rem" }}>
+          Noch keine Bewertung
+        </p>
+      )}
 
-        <div className={styles.tourInfo}>
-          {tour.distance && <p><strong>Distanz:</strong> {tour.distance}</p>}
-          {tour.duration && <p><strong>Dauer:</strong> {tour.duration}</p>}
-          {tour.difficulty && <p><strong>Schwierigkeit:</strong> {tour.difficulty}</p>}
-          {tour.ascent && <p><strong>Aufstieg:</strong> {tour.ascent}</p>}
-        </div>
+      <p className={styles.description}>{tour.description}</p>
 
-        <div className={styles.links}>
-          <a
-            href={tour.komootLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.komootLink}
-          >
-            Zur Komoot-Tour
-          </a>{" "}
-          |{" "}
-          <a
-            href={tour.outdooractiveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.komootLink}
-          >
-            Outdooractive öffnen
-          </a>
-        </div>
-      </section>
+      <div className={styles.tourInfo}>
+        {tour.distance && <p><strong>Distanz:</strong> {tour.distance}</p>}
+        {tour.duration && <p><strong>Dauer:</strong> {tour.duration}</p>}
+        {tour.difficulty && <p><strong>Schwierigkeit:</strong> {tour.difficulty}</p>}
+        {tour.ascent && <p><strong>Aufstieg:</strong> {tour.ascent}</p>}
+      </div>
 
-      {/* Galerie */}
-      <section className={styles.section}>
-        <div className={styles.gallery}>
-          {tour.images.map((src: string, index: number) => (
-            <Image
-              key={index}
-              src={src}
-              alt={`${tour.name} Bild ${index + 1}`}
-              width={zoomedImage === index ? 800 : 400}
-              height={zoomedImage === index ? 600 : 300}
-              style={{
-                borderRadius: "12px",
-                objectFit: "contain",
-                backgroundColor: "#000",
-                cursor: "pointer",
-                transition: "width 0.3s ease, height 0.3s ease",
-                margin: "0.5rem",
-              }}
-              onClick={() => handleImageClick(index)}
-            />
-          ))}
-        </div>
-      </section>
+      <div className={styles.links}>
+        <a href={tour.komootLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>
+          Zur Komoot-Tour
+        </a>{" "}
+        |{" "}
+        <a href={tour.outdooractiveLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>
+          Outdooractive öffnen
+        </a>
+      </div>
 
-      {/* ⭐ Feedback-Komponente */}
-      <section className={styles.section}>
-        <Feedback tourId={tour.id} />
-      </section>
-    </main>
+      <div className={styles.gallery}>
+        {tour.images.map((src: string, index: number) => (
+          <Image
+            key={index}
+            src={src}
+            alt={`${tour.name} Bild ${index + 1}`}
+            width={zoomedImage === index ? 800 : 400}
+            height={zoomedImage === index ? 600 : 300}
+            style={{
+              borderRadius: "12px",
+              objectFit: "contain",
+              backgroundColor: "#000",
+              cursor: "pointer",
+              transition: "width 0.3s ease, height 0.3s ease",
+              margin: "0.5rem",
+            }}
+            onClick={() => handleImageClick(index)}
+          />
+        ))}
+      </div>
+
+      {/* ⭐ jetzt mit Callback */}
+      <Feedback tourId={tour.id} onNewRating={(avg) => setAverageRating(avg)} />
+    </div>
   );
 }

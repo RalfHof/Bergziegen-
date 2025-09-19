@@ -1,145 +1,128 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getAverageRating, FeedbackEntry } from "@/utils/feedbackUtils";
+import { supabase } from "@/lib/supabase";
 
-type FeedbackProps = {
+interface FeedbackProps {
   tourId: number;
-};
+  onNewRating?: (newAverage: number) => void; // Callback an Eltern-Komponente
+}
 
-export default function Feedback({ tourId }: FeedbackProps) {
+// 🎯 Eigener Typ für ein Feedback-Eintrag
+interface FeedbackEntry {
+  tour_id: number;
+  rating: number;
+  comment: string;
+  created_at: string;
+}
+
+export default function Feedback({ tourId, onNewRating }: FeedbackProps) {
   const [rating, setRating] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
-  const [feedbacks, setFeedbacks] = useState<FeedbackEntry[]>([]);
-  const [avgRating, setAvgRating] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(false);
+  const [feedbackList, setFeedbackList] = useState<FeedbackEntry[]>([]);
 
-  // Feedbacks laden
-  const loadFeedbacks = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/feedback?tourId=${tourId}`, {
-        cache: "no-store",
-      });
-      if (res.ok) {
-        const data: FeedbackEntry[] = await res.json();
-        setFeedbacks(data);
-        const avg = await getAverageRating(tourId);
-        setAvgRating(avg);
-      }
-    } catch (err) {
-      console.error("Fehler beim Laden der Feedbacks:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Feedbacks für diese Tour laden
   useEffect(() => {
+    const loadFeedbacks = async () => {
+      const { data, error } = await supabase
+        .from("feedback")
+        .select("*")
+        .eq("tour_id", tourId)
+        .order("created_at", { ascending: false });
+
+      if (!error && data) {
+        // Typecast, damit TS zufrieden ist
+        setFeedbackList(data as FeedbackEntry[]);
+      }
+    };
+
     loadFeedbacks();
   }, [tourId]);
 
-  // Feedback absenden
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
-    if (rating < 1) {
-      alert("Bitte gib mindestens 1 Stern.");
+    const { error } = await supabase.from("feedback").insert([
+      {
+        tour_id: tourId,
+        rating,
+        comment,
+      },
+    ]);
+
+    setLoading(false);
+
+    if (error) {
+      alert("Fehler beim Speichern: " + error.message);
       return;
     }
 
-    try {
-      const res = await fetch("/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tourId, rating, comment }),
-      });
+    // Lokale Liste aktualisieren
+    const newEntry: FeedbackEntry = {
+      tour_id: tourId,
+      rating,
+      comment,
+      created_at: new Date().toISOString(),
+    };
+    const updatedFeedbacks = [newEntry, ...feedbackList];
+    setFeedbackList(updatedFeedbacks);
 
-      if (!res.ok) {
-        throw new Error("Fehler beim Speichern des Feedbacks");
-      }
+    // Durchschnitt neu berechnen
+    const sum = updatedFeedbacks.reduce((acc, f) => acc + f.rating, 0);
+    const avg = sum / updatedFeedbacks.length;
 
-      setRating(0);
-      setComment("");
-      await loadFeedbacks();
-    } catch (err) {
-      console.error(err);
-      alert("Feedback konnte nicht gespeichert werden.");
+    if (onNewRating) {
+      onNewRating(avg); // Eltern-Seite informieren
     }
+
+    // Formular zurücksetzen
+    setRating(0);
+    setComment("");
   };
 
   return (
-    <div style={{ marginTop: "2rem" }}>
-      <h2>⭐ Feedback</h2>
-
-      {/* Durchschnitt */}
-      {avgRating > 0 && (
-        <p>
-          Durchschnitt: <strong>⭐ {avgRating.toFixed(1)}</strong>
-        </p>
-      )}
-
-      {/* Formular */}
-      <form onSubmit={handleSubmit} style={{ marginBottom: "1rem" }}>
-        <div>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <span
-              key={star}
-              onClick={() => setRating(star)}
-              style={{
-                cursor: "pointer",
-                fontSize: "1.5rem",
-                color: star <= rating ? "gold" : "gray",
-              }}
-            >
-              ★
-            </span>
-          ))}
-        </div>
-
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          placeholder="Kommentar schreiben..."
-          style={{ width: "100%", minHeight: "80px", marginTop: "0.5rem" }}
-        />
-
-        <button
-          type="submit"
-          style={{
-            marginTop: "0.5rem",
-            padding: "0.5rem 1rem",
-            cursor: "pointer",
-          }}
-        >
-          Abschicken
+    <div style={{ marginTop: "2rem", width: "100%", maxWidth: "600px" }}>
+      <h3>Bewertung abgeben</h3>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Sterne:
+          <select
+            value={rating}
+            onChange={(e) => setRating(Number(e.target.value))}
+          >
+            <option value={0}>Bitte wählen</option>
+            <option value={1}>⭐ 1</option>
+            <option value={2}>⭐ 2</option>
+            <option value={3}>⭐ 3</option>
+            <option value={4}>⭐ 4</option>
+            <option value={5}>⭐ 5</option>
+          </select>
+        </label>
+        <br />
+        <label>
+          Kommentar:
+          <textarea
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            style={{ width: "100%", minHeight: "80px" }}
+          />
+        </label>
+        <br />
+        <button type="submit" disabled={loading}>
+          {loading ? "Speichern..." : "Absenden"}
         </button>
       </form>
 
-      {/* Liste aller Feedbacks */}
-      <h3>Alle Bewertungen</h3>
-      {loading ? (
-        <p>Lade Feedback...</p>
-      ) : feedbacks.length === 0 ? (
+      <h4 style={{ marginTop: "1.5rem" }}>Alle Bewertungen</h4>
+      {feedbackList.length === 0 ? (
         <p>Noch keine Bewertungen vorhanden.</p>
       ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {feedbacks.map((f, idx) => (
-            <li
-              key={idx}
-              style={{
-                borderBottom: "1px solid #ccc",
-                padding: "0.5rem 0",
-              }}
-            >
-              <p>
-                {Array.from({ length: f.rating }).map(() => "⭐").join("")}
-              </p>
-              {f.comment && <p>{f.comment}</p>}
-              <small>
-                {f.created_at
-                  ? new Date(f.created_at).toLocaleString("de-DE")
-                  : ""}
-              </small>
+        <ul>
+          {feedbackList.map((f, i) => (
+            <li key={i}>
+              <strong>{f.rating}⭐</strong> – {f.comment}
             </li>
           ))}
         </ul>

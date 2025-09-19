@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { touren } from '@/data/touren';
 import { supabase } from '@/lib/supabase';
-import { getAverageRating } from '@/utils/feedbackUtils';
 
 export default function TourenPage() {
   const router = useRouter();
@@ -37,15 +36,12 @@ export default function TourenPage() {
     };
   }, [router]);
 
-  // ⭐ Bewertungen laden
+  // ⭐ Bewertungen laden (ein Request für alle Touren)
   useEffect(() => {
     const loadRatings = async () => {
-      const results: Record<number, number> = {};
-      for (const tour of touren) {
-        const avg = await getAverageRating(tour.id);
-        results[tour.id] = avg;
-      }
-      setRatings(results);
+      const res = await fetch("/api/feedback/ratings", { cache: "no-store" });
+      const data = await res.json();
+      setRatings(data);
     };
     loadRatings();
   }, []);

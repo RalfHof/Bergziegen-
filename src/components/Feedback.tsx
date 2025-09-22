@@ -1,18 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 
 interface FeedbackProps {
   tourId: number;
-  onNewRating?: (newAverage: number) => void; // Callback an Eltern-Komponente
+  onNewRating?: (newAverage: number) => void;
 }
 
-// 🎯 Eigener Typ für ein Feedback-Eintrag
 interface FeedbackEntry {
   tour_id: number;
   rating: number;
-  comment: string;
+  comment: string | null;
   created_at: string;
 }
 
@@ -22,33 +21,35 @@ export default function Feedback({ tourId, onNewRating }: FeedbackProps) {
   const [loading, setLoading] = useState(false);
   const [feedbackList, setFeedbackList] = useState<FeedbackEntry[]>([]);
 
-  // Feedbacks für diese Tour laden
-  useEffect(() => {
-    const loadFeedbacks = async () => {
-      const { data, error } = await supabase
-        .from("feedback")
-        .select("*")
-        .eq("tour_id", tourId)
-        .order("created_at", { ascending: false });
+  const loadFeedbacks = useCallback(async () => {
+    const { data, error } = await supabase
+      .from("feedback")
+      .select("*")
+      .eq("tour_id", tourId)
+      .order("created_at", { ascending: false });
 
-      if (!error && data) {
-        // Typecast, damit TS zufrieden ist
-        setFeedbackList(data as FeedbackEntry[]);
-      }
-    };
-
-    loadFeedbacks();
+    if (!error && data) {
+      setFeedbackList(data as FeedbackEntry[]);
+    }
   }, [tourId]);
+
+  useEffect(() => {
+    loadFeedbacks();
+  }, [loadFeedbacks]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (rating < 1) {
+      alert("Bitte mindestens 1 Stern wählen.");
+      return;
+    }
     setLoading(true);
 
     const { error } = await supabase.from("feedback").insert([
       {
         tour_id: tourId,
         rating,
-        comment,
+        comment: comment || null,
       },
     ]);
 
@@ -59,60 +60,61 @@ export default function Feedback({ tourId, onNewRating }: FeedbackProps) {
       return;
     }
 
-    // Lokale Liste aktualisieren
     const newEntry: FeedbackEntry = {
       tour_id: tourId,
       rating,
-      comment,
+      comment: comment || null,
       created_at: new Date().toISOString(),
     };
+
     const updatedFeedbacks = [newEntry, ...feedbackList];
     setFeedbackList(updatedFeedbacks);
 
-    // Durchschnitt neu berechnen
     const sum = updatedFeedbacks.reduce((acc, f) => acc + f.rating, 0);
     const avg = sum / updatedFeedbacks.length;
 
-    if (onNewRating) {
-      onNewRating(avg); // Eltern-Seite informieren
-    }
+    if (onNewRating) onNewRating(avg);
 
-    // Formular zurücksetzen
     setRating(0);
     setComment("");
   };
 
   return (
-    <div style={{ marginTop: "2rem", width: "100%", maxWidth: "600px" }}>
+    <div style={{ marginTop: "2rem", width: "100%", maxWidth: "700px" }}>
       <h3>Bewertung abgeben</h3>
       <form onSubmit={handleSubmit}>
-        <label>
-          Sterne:
-          <select
-            value={rating}
-            onChange={(e) => setRating(Number(e.target.value))}
-          >
-            <option value={0}>Bitte wählen</option>
-            <option value={1}>⭐ 1</option>
-            <option value={2}>⭐ 2</option>
-            <option value={3}>⭐ 3</option>
-            <option value={4}>⭐ 4</option>
-            <option value={5}>⭐ 5</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Kommentar:
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            style={{ width: "100%", minHeight: "80px" }}
-          />
-        </label>
-        <br />
-        <button type="submit" disabled={loading}>
-          {loading ? "Speichern..." : "Absenden"}
-        </button>
+        <div>
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              type="button"
+              onClick={() => setRating(star)}
+              style={{
+                cursor: "pointer",
+                fontSize: "1.4rem",
+                background: "transparent",
+                border: "none",
+                color: star <= rating ? "gold" : "lightgray",
+              }}
+              aria-label={`Sterne ${star}`}
+            >
+              ★
+            </button>
+          ))}
+        </div>
+
+        <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Kommentar schreiben..."
+          style={{ width: "100%", minHeight: "80px", marginTop: "0.5rem" }}
+        />
+
+        <div style={{ marginTop: "0.5rem" }}>
+          <button type="submit" disabled={loading}>
+            {loading ? "Speichern..." : "Absenden"}
+          </button>
+        </div>
       </form>
 
       <h4 style={{ marginTop: "1.5rem" }}>Alle Bewertungen</h4>
@@ -122,7 +124,8 @@ export default function Feedback({ tourId, onNewRating }: FeedbackProps) {
         <ul>
           {feedbackList.map((f, i) => (
             <li key={i}>
-              <strong>{f.rating}⭐</strong> – {f.comment}
+              <strong>{'★'.repeat(f.rating)}</strong> – {f.comment || <em>kein Kommentar</em>}
+              <div style={{ fontSize: '0.85rem', color: '#666' }}>{new Date(f.created_at).toLocaleString('de-DE')}</div>
             </li>
           ))}
         </ul>

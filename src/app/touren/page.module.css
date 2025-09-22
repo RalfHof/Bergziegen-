@@ -71,4 +71,24 @@
   margin-left: 6px;
 }
 
-  
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #444;
+}
+
+.short {
+  font-size: 0.95rem;
+  color: #eaf3e6;
+}
+
+.noRating {
+  font-size: 0.8rem;
+  color: lightgray;
+}
+
+/* sorge dafür, dass lange Titel umbrechen (Handy) */
+.title {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}

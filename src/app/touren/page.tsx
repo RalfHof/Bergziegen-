@@ -17,12 +17,10 @@ export default function TourenPage() {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setLoading(false);
-
       if (!session) {
         router.push('/login');
       }
     };
-
     checkSession();
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
@@ -36,14 +34,23 @@ export default function TourenPage() {
     };
   }, [router]);
 
-  // ⭐ Bewertungen laden (ein Request für alle Touren)
+  // Lade alle Durchschnittsbewertungen in einem Request (viel schneller)
   useEffect(() => {
     const loadRatings = async () => {
-      const res = await fetch("/api/feedback/ratings", { cache: "no-store" });
-      const data = await res.json();
-      setRatings(data);
+      try {
+        const res = await fetch('/api/feedback/ratings', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = (await res.json()) as Record<string, number>;
+        const map: Record<number, number> = {};
+        Object.entries(data).forEach(([k, v]) => {
+          map[Number(k)] = Number(v);
+        });
+        setRatings(map);
+      } catch (err) {
+        console.error('Fehler beim Laden der Bewertungen:', err);
+      }
     };
-    loadRatings();
+    void loadRatings();
   }, []);
 
   if (loading) {
@@ -52,33 +59,27 @@ export default function TourenPage() {
 
   return (
     <div className={styles.container}>
-      {touren.map((tour) => (
-        <Link key={tour.id} href={`/touren/${tour.id}`} className={styles.link}>
-          <div className={styles.tourCard}>
-            <Image
-              src={tour.images[0]}
-              alt={tour.name}
-              width={150}
-              height={100}
-              className={styles.image}
-            />
-            <div className={styles.info}>
-              <h2 className={styles.title}>
-                {tour.name}{' '}
-                {ratings[tour.id] ? (
-                  <span style={{ fontSize: '0.9rem', color: 'gold' }}>
-                    ⭐ {ratings[tour.id].toFixed(1)}
-                  </span>
-                ) : (
-                  <span style={{ fontSize: '0.8rem', color: 'lightgray' }}>
-                    (Noch keine Bewertung)
-                  </span>
-                )}
-              </h2>
+      {touren.map((tour) => {
+        const previewImage = (tour.images && tour.images.length > 0) ? tour.images[0] : '/placeholder.jpg';
+        return (
+          <Link key={tour.id} href={`/touren/${tour.id}`} className={styles.link}>
+            <div className={styles.tourCard}>
+              <Image src={previewImage} alt={tour.name} width={150} height={100} className={styles.image} />
+              <div className={styles.info}>
+                <h2 className={styles.title}>
+                  {tour.name}{' '}
+                  {ratings[tour.id] ? (
+                    <span className={styles.avgRating}>⭐ {ratings[tour.id].toFixed(1)}</span>
+                  ) : (
+                    <span style={{ fontSize: '0.8rem', color: 'lightgray' }}>(Noch keine Bewertung)</span>
+                  )}
+                </h2>
+                <p style={{ margin: 0, fontSize: '0.95rem', color: '#eaf3e6' }}>{tour.shortDescription ?? ''}</p>
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </div>
   );
 }

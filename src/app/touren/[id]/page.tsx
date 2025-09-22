@@ -1,3 +1,4 @@
+// src/app/touren/[id]/page.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -6,6 +7,7 @@ import Image from "next/image";
 import { touren } from "@/data/touren";
 import styles from "./page.module.css";
 import Feedback from "@/components/Feedback";
+import { getAverageRating } from "@/utils/feedbackUtils";
 
 type TourType = typeof touren[number];
 
@@ -13,22 +15,17 @@ export default function Page() {
   const params = useParams();
   const [tour, setTour] = useState<TourType | null>(null);
   const [zoomedImage, setZoomedImage] = useState<number | null>(null);
-  const [averageRating, setAverageRating] = useState<number | null>(null);
+  const [avgRating, setAvgRating] = useState<number | null>(null);
 
   useEffect(() => {
     if (!params?.id) return;
-    const id = parseInt(params.id as string);
+    const id = parseInt(params.id as string, 10);
     const foundTour = touren.find((t) => t.id === id) || null;
     setTour(foundTour);
 
-    const loadRating = async () => {
-      const res = await fetch("/api/feedback/ratings", { cache: "no-store" });
-      const data = await res.json();
-      if (data[id]) {
-        setAverageRating(data[id]);
-      }
-    };
-    loadRating();
+    if (foundTour) {
+      getAverageRating(foundTour.id).then((r) => setAvgRating(r));
+    }
   }, [params?.id]);
 
   if (!tour) {
@@ -46,17 +43,9 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{tour.name}</h1>
-
-      {averageRating ? (
-        <p style={{ color: "gold", marginBottom: "1rem" }}>
-          ⭐ {averageRating.toFixed(1)}
-        </p>
-      ) : (
-        <p style={{ color: "lightgray", marginBottom: "1rem" }}>
-          Noch keine Bewertung
-        </p>
-      )}
+      <h1 className={styles.title}>
+        {tour.name} {avgRating !== null && <span className={styles.avgRating}>⭐ {avgRating.toFixed(1)}</span>}
+      </h1>
 
       <p className={styles.description}>{tour.description}</p>
 
@@ -68,13 +57,9 @@ export default function Page() {
       </div>
 
       <div className={styles.links}>
-        <a href={tour.komootLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>
-          Zur Komoot-Tour
-        </a>{" "}
+        <a href={tour.komootLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>Zur Komoot-Tour</a>{" "}
         |{" "}
-        <a href={tour.outdooractiveLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>
-          Outdooractive öffnen
-        </a>
+        <a href={tour.outdooractiveLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>Outdooractive öffnen</a>
       </div>
 
       <div className={styles.gallery}>
@@ -98,8 +83,7 @@ export default function Page() {
         ))}
       </div>
 
-      {/* ⭐ jetzt mit Callback */}
-      <Feedback tourId={tour.id} onNewRating={(avg) => setAverageRating(avg)} />
+      <Feedback tourId={tour.id} onNewRating={(avg) => setAvgRating(avg)} />
     </div>
   );
 }

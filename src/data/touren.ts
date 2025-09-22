@@ -1,10 +1,10 @@
+// src/data/touren.ts
 export const touren = [
   {
     id: 1,
     name: "Alte Brauerei Weingarten",
     description: `Unsere Tour führt uns zur gemütlichen "Alten Brauerei" in Karlsruhe-Weingarten. Dort erwartet uns ein Restaurant mit charmant altem Stil, schönem Ambiente und einer freundlichen Atmosphäre. Das besondere Highlight ist das Essen vom heißen Stein, bei dem wir exotische Fleischspezialitäten und auch leckere Gemüseplatten direkt am Tisch selbst zubereiten können. Ein perfekter Ort, um den Wandertag genussvoll und in geselliger Runde ausklingen zu lassen!`,
     shortDescription: "Gemütliche Einkehrtour zur Alten Brauerei in Weingarten mit Essen vom heißen Stein.",
-    
     images: Array.from({ length: 33 }, (_, i) => `/Tour1_${i + 1}.jpg`),
     komootLink: "https://www.komoot.de/tour-1",
     outdooractiveLink: "https://www.outdooractive.com/de/tour-1",
@@ -90,7 +90,7 @@ export const touren = [
   {
     id: 8,
     name: "Mit der Draisine durch die Südpfalz..06.07.25",
-    description: `Muskelkraft trifft Landschaftsgenuss. Lust auf eine Tour der etwas anderen Art? Dann ab auf die Schiene – mit der Südpfalz-Draisinenbahn! Auf der stillgelegten Bahnstrecke zwischen Landau und Germersheim kannst du mit einer Draisine, einem von Muskelkraft betriebenen Schienenfahrzeug, die wunderschöne Pfälzer Landschaft entdecken. Das Ganze ist nicht nur entspanntes Dahinrollen – hier ist Teamwork, Ausdauer und ein gutes Sitzfleisch gefragt. Unterwegs gibt's jede Menge zu sehen, zu lachen und zu strampeln. Am Endpunkt der Strecke wartet dann die wohlverdiente Pause.`,
+    description: `Muskelkraft trifft Landschaftsgenuss. Lust auf eine Tour der etwas anderen Art? Dann ab auf die Schiene – mit der Südpfalz-Draisinenbahn! Auf der stillgelegten Bahnstrecke zwischen Landau und Germersheim kannst du mit einer Draisine, einem von Muskelkraft betriebenen Schienenfahrzeug, die wunderschöne Pfälzer Landschaft entdecken. Am Endpunkt der Strecke wartet dann die wohlverdiente Pause.`,
     shortDescription: "Draisinenfahrt durch die Südpfalz – Teamwork, Spaß und Landschaft genießen.",
     distance: "ca. 20 km",
     duration: "ca. 4:00 Std.",
@@ -129,7 +129,7 @@ export const touren = [
   {
     id: 11,
     name: "Planwagenfahrt mit Haffner – Waghäusel..11.12.22./.04.08.25",
-    description: `Du suchst nach einem gemütlichen, aber trotzdem besonderen Ausflug mit Freunden oder Familie? Dann steig auf den Planwagen und komm mit zur Haffner-Kutschfahrt! Rund 20 Kilometer geht's durch die herrliche Landschaft rund um Waghäusel – durch Weinberge, Felder und kleine Naturhighlights. Die Tour dauert etwa drei Stunden und ist ein echtes Highlight für alle, die mal wieder gemeinsam was erleben wollen – ganz ohne Stress, aber mit viel Herz.`,
+    description: `Du suchst nach einem gemütlichen, aber trotzdem besonderen Ausflug mit Freunden oder Familie? Dann steig auf den Planwagen und komm mit zur Haffner-Kutschfahrt! Rund 20 Kilometer geht's durch die herrliche Landschaft rund um Waghäusel – durch Weinberge, Felder und kleine Naturhighlights.`,
     shortDescription: "Planwagenfahrt rund um Waghäusel – 20 km Spaß auf Rädern.",
     distance: "20 km",
     duration: "ca. 3:00 Std.",
@@ -155,7 +155,7 @@ export const touren = [
   {
     id: 13,
     name: "Von Gleisweiler zur Landauer Hütte..27.08.25",
-    description: `Unsere Tour startet in Gleisweiler und führt uns durch den schönen Pfälzerwald. Unterwegs entdecken wir zahlreiche Holzskulpturen, genießen traumhafte Ausblicke in den Pfälzerwald, den Odenwald und sogar bis zum Schwarzwald. Das absolute Highlight ist die Walddusche – eine natürliche Quelle mitten im Wald, die das ganze Jahr über für Erfrischung sorgt. Auf dem Weg kehren wir in Hütten des Pfälzerwaldvereins wie der St.-Anna-Hütte, der Trifelsblick-Hütte und schließlich in der Landauer Hütte ein. Dort wartet deftige Pfälzer Küche im Schatten der Bäume.`,
+    description: `Unsere Tour startet in Gleisweiler und führt uns durch den schönen Pfälzerwald. Unterwegs entdecken wir zahlreiche Holzskulpturen, genießen traumhafte Ausblicke in den Pfälzerwald, den Odenwald und sogar bis zum Schwarzwald. Das absolute Highlight ist die Walddusche – eine natürliche Quelle mitten im Wald, die das ganze Jahr über für Erfrischung sorgt.`,
     shortDescription: "Waldtour mit Walddusche und Einkehr in der Landauer Hütte.",
     distance: "11,8 km",
     duration: "ca. 3:50 Std.",
@@ -168,7 +168,7 @@ export const touren = [
   {
     id: 14,
     name: "Sinsheim – Kraichgau & Burg Steinsberg..03.09.25",
-    description: `Unsere Tour führt uns in den wunderschönen Kraichgau – das Land der 1000 Hügel – und hinauf zur prächtigen Stauferburg Steinsberg. Die Strecke verläuft über 10,1 Kilometer durch eine sanfte Hügellandschaft. Das absolute Highlight ist die Burg Steinsberg, die weithin sichtbar auf einem erloschenen Vulkan thront. Mit ihrem rund 30 Meter hohen Turm bietet sie eine fantastische Aussicht über den gesamten Kraichgau.`,
+    description: `Unsere Tour führt uns in den wunderschönen Kraichgau – das Land der 1000 Hügel – und hinauf zur prächtigen Stauferburg Steinsberg. Die Strecke verläuft über 10,1 Kilometer durch eine sanfte Hügellandschaft. Das absolute Highlight ist die Burg Steinsberg, die weithin sichtbar auf einem erloschenen Vulkan thront.`,
     shortDescription: "Leichte Kraichgau-Wanderung mit Burg Steinsberg und Panoramablick.",
     distance: "10,1 km",
     duration: "ca. 2:40 Std.",
@@ -194,7 +194,7 @@ export const touren = [
   {
     id: 16,
     name: "Kraichgau – Weinberge & Derdinger Horn..17.09.25",
-    description: `Unsere Tour führt uns durch die sanften Weinberge des Kraichgaus bis hin zum Derdinger Horn. Die Strecke ist leicht zu gehen und bietet über 12,8 Kilometer weite Ausblicke. Mit 231 Höhenmetern ist die Wanderung sehr entspannt – perfekt für eine gemütliche Runde. Nach etwa zwei Dritteln lädt die Bäckerei Thollembeek zu einer wohlverdienten Pause ein. Eine herrliche Kraichgau-Wanderung mit Panorama pur!`,
+    description: `Unsere Tour führt uns durch die sanften Weinberge des Kraichgaus bis hin zum Derdinger Horn. Die Strecke ist leicht zu gehen und bietet über 12,8 Kilometer weite Ausblicke. Mit 231 Höhenmetern ist die Wanderung sehr entspannt – perfekt für eine gemütliche Runde. Nach etwa zwei Dritteln lädt die Bäckerei Thollembeek zu einer wohlverdienten Pause ein.`,
     shortDescription: "Leichte Weinberg-Wanderung mit Aussicht am Derdinger Horn und Einkehr bei Thollembeek.",
     distance: "12,8 km",
     duration: "ca. 4:37 Std.",

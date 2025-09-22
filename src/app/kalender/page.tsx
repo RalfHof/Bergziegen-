@@ -30,7 +30,7 @@ export default function KalenderPage() {
   const [error, setError] = useState<string | null>(null);
   const [kalenderDatum, setKalenderDatum] = useState<Date>(new Date());
 
-  // Termine laden
+  // --- Termine laden ---
   const loadTermine = async () => {
     setLoadingData(true);
     setError(null);
@@ -51,7 +51,7 @@ export default function KalenderPage() {
     setLoadingData(false);
   };
 
-  // Auth-Check + initial load
+  // --- Auth-Check & Daten laden ---
   useEffect(() => {
     const checkSessionAndLoadData = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -78,9 +78,9 @@ export default function KalenderPage() {
     return () => {
       authListener?.subscription.unsubscribe();
     };
-  }, [router]);
+  }, [router]); // ✅ supabase entfernt, kein ESLint-Fehler mehr
 
-  // Realtime subscription — nur abhängig von loadingPage (nicht supabase-Instanz)
+  // --- Realtime Updates ---
   useEffect(() => {
     if (loadingPage) return;
 
@@ -93,7 +93,9 @@ export default function KalenderPage() {
           if (payload.eventType === 'INSERT') {
             setTermine((prev) => [...prev, payload.new as Termin]);
           } else if (payload.eventType === 'UPDATE') {
-            setTermine((prev) => prev.map((t) => (t.id === payload.old.id ? (payload.new as Termin) : t)));
+            setTermine((prev) =>
+              prev.map((t) => (t.id === payload.old.id ? (payload.new as Termin) : t))
+            );
           } else if (payload.eventType === 'DELETE') {
             setTermine((prev) => prev.filter((t) => t.id !== payload.old.id));
           }
@@ -102,21 +104,14 @@ export default function KalenderPage() {
       .subscribe();
 
     return () => {
-      // Cleanup
       supabase.removeChannel(channel);
     };
-  }, [loadingPage]);
+  }, [loadingPage]); // ✅ supabase entfernt
 
-  // Form handlers
+  // --- Form Handler ---
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const resetForm = () => {
-    setIsEditing(null);
-    setFormData({ date: '', tour_title: '', difficulty: '', status: 'aktiv' });
-    setShowDifficultyMenu(null);
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -146,8 +141,11 @@ export default function KalenderPage() {
         })
         .eq('id', isEditing);
 
-      if (error) setError('Fehler beim Aktualisieren des Termins.');
-      else resetForm();
+      if (error) {
+        setError('Fehler beim Aktualisieren des Termins.');
+      } else {
+        resetForm();
+      }
     } else {
       const { error } = await supabase.from('termine').insert({
         date,
@@ -157,20 +155,23 @@ export default function KalenderPage() {
         user_id: currentUserId,
       });
 
-      if (error) setError('Fehler beim Hinzufügen des Termins.');
-      else resetForm();
+      if (error) {
+        setError('Fehler beim Hinzufügen des Termins.');
+      } else {
+        resetForm();
+      }
     }
 
     setLoadingData(false);
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('Sind Sie sicher, dass Sie diesen Termin löschen möchten?')) return;
-
-    setLoadingData(true);
-    const { error } = await supabase.from('termine').delete().eq('id', id);
-    if (error) setError('Fehler beim Löschen des Termins.');
-    setLoadingData(false);
+    if (confirm('Diesen Termin löschen?')) {
+      setLoadingData(true);
+      const { error } = await supabase.from('termine').delete().eq('id', id);
+      if (error) setError('Fehler beim Löschen des Termins.');
+      setLoadingData(false);
+    }
   };
 
   const handleEditButtonClick = (termin: Termin) => {
@@ -185,6 +186,12 @@ export default function KalenderPage() {
   };
 
   const handleCancelEdit = () => resetForm();
+
+  const resetForm = () => {
+    setIsEditing(null);
+    setFormData({ date: '', tour_title: '', difficulty: '', status: 'aktiv' });
+    setShowDifficultyMenu(null);
+  };
 
   const handleDifficultyMenuToggle = (terminId: number) => {
     setShowDifficultyMenu(showDifficultyMenu === terminId ? null : terminId);
@@ -214,30 +221,30 @@ export default function KalenderPage() {
     return null;
   };
 
-  if (loadingPage) return <p className={styles.loading}>Lade Kalender...</p>;
+  if (loadingPage) return <p className={styles.loading}>⏳ Lade Kalender...</p>;
 
   return (
     <div className={styles.outerBox}>
       <div className={styles.container}>
-        <h1 className={styles.title}>📅 Bergziegen-Tourkalender 🐐</h1>
+        <h1 className={styles.title}>🐐 Bergziegen Tourkalender</h1>
 
-        {loadingData && <p className={styles.loadingData}>Operation läuft...</p>}
-        {error && <p className={styles.error}>{error}</p>}
+        {loadingData && <p className={styles.loadingData}>⏳ Operation läuft...</p>}
+        {error && <p className={styles.error}>⚠️ {error}</p>}
 
+        {/* --- Formular --- */}
         <form onSubmit={handleSubmit} className={styles.form}>
-          <input type="date" name="date" value={formData.date} onChange={handleInputChange} className={styles.input} disabled={loadingData} required />
-          <input type="text" name="tour_title" value={formData.tour_title} placeholder="Titel der Tour" onChange={handleInputChange} className={styles.input} disabled={loadingData} required />
+          <input type="date" name="date" value={formData.date} onChange={handleInputChange} disabled={loadingData} required />
+          <input type="text" name="tour_title" value={formData.tour_title} placeholder="Titel der Tour" onChange={handleInputChange} disabled={loadingData} required />
 
           {isEditing === null && (
             <>
-              <select name="difficulty" value={formData.difficulty} onChange={handleInputChange} className={styles.input} disabled={loadingData}>
-                <option value="">Schwierigkeit wählen (Optional)</option>
+              <select name="difficulty" value={formData.difficulty} onChange={handleInputChange} disabled={loadingData}>
+                <option value="">Schwierigkeit wählen</option>
                 <option value="Leicht">Leicht</option>
                 <option value="Mittel">Mittel</option>
                 <option value="Schwer">Schwer</option>
               </select>
-
-              <select name="status" value={formData.status} onChange={handleInputChange} className={styles.input} disabled={loadingData}>
+              <select name="status" value={formData.status} onChange={handleInputChange} disabled={loadingData}>
                 <option value="aktiv">Status: Aktiv</option>
                 <option value="abgesagt">Status: Abgesagt</option>
               </select>
@@ -245,58 +252,66 @@ export default function KalenderPage() {
           )}
 
           <div className={styles.formButtons}>
-            <button type="submit" className={styles.button} disabled={loadingData}>
-              {isEditing !== null ? 'Änderungen speichern' : 'Termin hinzufügen'}
+            <button type="submit" disabled={loadingData}>
+              {isEditing !== null ? '💾 Änderungen speichern' : '➕ Termin hinzufügen'}
             </button>
             {isEditing !== null && (
-              <button type="button" onClick={handleCancelEdit} className={`${styles.button} ${styles.cancelButton}`} disabled={loadingData}>
-                Abbrechen
+              <button type="button" onClick={handleCancelEdit} disabled={loadingData}>
+                ❌ Abbrechen
               </button>
             )}
           </div>
         </form>
 
+        {/* --- Kalender --- */}
         <div className={styles.calendarContainer}>
           <Calendar onChange={(date) => setKalenderDatum(date as Date)} value={kalenderDatum} locale="de-DE" tileContent={tileContent} />
         </div>
 
+        {/* --- Terminliste --- */}
         <div className={styles.list}>
           {termine
             .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
             .map((t) => (
-              <div key={t.id} className={`${styles.card} ${t.difficulty ? styles[t.difficulty.toLowerCase()] : ''} ${t.status === 'abgesagt' ? styles.abgesagt : ''}`}>
+              <div
+                key={t.id}
+                className={`${styles.card} ${t.difficulty ? styles[t.difficulty.toLowerCase()] : ''} ${
+                  t.status === 'abgesagt' ? styles.abgesagt : ''
+                }`}
+              >
                 <div className={styles.cardInfo}>
-                  <strong className={styles.cardDatum}>{t.date}</strong>
-                  <p className={styles.cardTitel}>{t.tour_title}</p>
+                  <strong>{t.date}</strong>
+                  <p>{t.tour_title}</p>
                   {(t.difficulty || t.status) && (
-                    <p className={styles.cardDetails}>
-                      {t.difficulty && `Schwierigkeit: ${t.difficulty}`}
+                    <p>
+                      {t.difficulty && `⛰️ ${t.difficulty}`}
                       {t.difficulty && t.status && ' | '}
-                      {t.status && `Status: ${t.status}`}
+                      {t.status && (t.status === 'abgesagt' ? '❌ Abgesagt' : '✅ Aktiv')}
                     </p>
                   )}
                 </div>
-
                 <div className={styles.cardButtons}>
                   {isEditing !== t.id && (
                     <>
-                      <button type="button" onClick={() => handleDifficultyMenuToggle(t.id)} className={`${styles.button} ${styles.menuButton}`} disabled={loadingData}>
-                        Optionen ▼
+                      <button type="button" onClick={() => handleDifficultyMenuToggle(t.id)} disabled={loadingData}>
+                        ⚙️ Optionen
                       </button>
-
                       {showDifficultyMenu === t.id && (
                         <div className={styles.difficultyMenu}>
-                          <button type="button" onClick={() => handleMenuSelection(t.id, 'difficulty', 'Leicht')}>Leicht</button>
-                          <button type="button" onClick={() => handleMenuSelection(t.id, 'difficulty', 'Mittel')}>Mittel</button>
-                          <button type="button" onClick={() => handleMenuSelection(t.id, 'difficulty', 'Schwer')}>Schwer</button>
+                          <button onClick={() => handleMenuSelection(t.id, 'difficulty', 'Leicht')}>Leicht</button>
+                          <button onClick={() => handleMenuSelection(t.id, 'difficulty', 'Mittel')}>Mittel</button>
+                          <button onClick={() => handleMenuSelection(t.id, 'difficulty', 'Schwer')}>Schwer</button>
                           <div className={styles.menuSeparator}></div>
-                          <button type="button" onClick={() => handleMenuSelection(t.id, 'status', 'aktiv')}>Status: Aktiv</button>
-                          <button type="button" onClick={() => handleMenuSelection(t.id, 'status', 'abgesagt')}>Status: Abgesagt</button>
+                          <button onClick={() => handleMenuSelection(t.id, 'status', 'aktiv')}>✅ Aktiv</button>
+                          <button onClick={() => handleMenuSelection(t.id, 'status', 'abgesagt')}>❌ Abgesagt</button>
                         </div>
                       )}
-
-                      <button type="button" onClick={() => handleEditButtonClick(t)} className={`${styles.button} ${styles.editButton}`} disabled={loadingData}>Bearbeiten</button>
-                      <button type="button" onClick={() => handleDelete(t.id)} className={`${styles.button} ${styles.deleteButton}`} disabled={loadingData}>Löschen</button>
+                      <button type="button" onClick={() => handleEditButtonClick(t)} disabled={loadingData}>
+                        ✏️ Bearbeiten
+                      </button>
+                      <button type="button" onClick={() => handleDelete(t.id)} disabled={loadingData}>
+                        🗑️ Löschen
+                      </button>
                     </>
                   )}
                 </div>

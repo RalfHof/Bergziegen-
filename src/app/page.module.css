@@ -1,3 +1,6 @@
+/* page.module.css */
+
+/* Lokale Klasse statt global "main" */
 .main {
   min-height: 100vh;
   display: flex;
@@ -8,15 +11,17 @@
 /* 🎨 Hero-Bereich */
 .hero {
   position: relative;
-  height: 50vh;
-  width: 100%;
-  background-image: url("/hero-berg.jpg"); /* <-- eigenes Bild einfügen in /public */
+  height: 50vh;                 /* gleiche Höhe wie vorher */
+  width: 100vw;                 /* volle Breite (statt 100%) */
+  margin: 0;                    /* keine Abstände */
+  padding: 0;
+  background-image: url("/hero-berg.jpg"); /* eigenes Bild in /public */
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0 0 1rem 1rem;
+  border-radius: 0;             /* keine runden Ecken */
   overflow: hidden;
 }
 
@@ -50,7 +55,12 @@
   background-color: #b8efbd;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  margin: 0 1rem;
+
+  /* Abstand nach oben/unten */
+  margin: 2rem auto;
+
+  /* Kein Rand links/rechts, aber schöne max. Breite */
+  max-width: 900px;
 }
 
 .text {

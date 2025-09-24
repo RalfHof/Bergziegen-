@@ -1,11 +1,74 @@
-/* src/app/chat/page.module.css */
-.container {
-  padding: 1rem;
+/* Hero-Hintergrund für Chat-Seite */
+.chatPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: url('/hero-berg.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* Parallax-Effekt */
+  color: white;
 }
 
-.message {
-  background-color: #e1f5fe;
+/* Overlay, damit Text lesbar ist */
+.overlay {
+  background: rgba(0, 0, 0, 0.55);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem;
+}
+
+/* Titel */
+.chatTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Nachrichtencontainer */
+.messages {
+  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.85); /* Chatbox hell auf dunklem Bild */
+  border-radius: 1rem;
+  color: #333;
+}
+
+/* Nachricht */
+.messageCard {
+  background: #e1f5fe;
+  border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
-  border-radius: 10px;
+}
+
+/* Eingabezeile */
+.inputArea {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+.input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }

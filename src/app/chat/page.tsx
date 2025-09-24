@@ -59,33 +59,35 @@ export default function ChatPage() {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>🐐 Bergziegen-Chat</h1>
+    <main className={styles.chatPage}>
+      <div className={styles.overlay}>
+        <h1 className={styles.chatTitle}>🐐 Bergziegen Chat</h1>
 
-      <div className={styles.messages}>
-        {messages.map((msg) => (
-          <div key={msg.id} className={styles.messageCard}>
-            <div className={styles.messageMeta}>
-              <strong>{msg.username}</strong> am{' '}
-              {new Date(msg.created_at).toLocaleString()}
+        <div className={styles.messages}>
+          {messages.map((msg) => (
+            <div key={msg.id} className={styles.messageCard}>
+              <div>
+                <strong>{msg.username}</strong> am{' '}
+                {new Date(msg.created_at).toLocaleString()}
+              </div>
+              <p>{msg.content}</p>
             </div>
-            <p className={styles.messageText}>{msg.content}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className={styles.inputArea}>
-        <input
-          type="text"
-          value={newMessage}
-          placeholder="Nachricht eingeben..."
-          onChange={(e) => setNewMessage(e.target.value)}
-          className={styles.input}
-        />
-        <button onClick={sendMessage} className={styles.button}>
-          Senden
-        </button>
+        <div className={styles.inputArea}>
+          <input
+            type="text"
+            value={newMessage}
+            placeholder="Nachricht eingeben..."
+            onChange={(e) => setNewMessage(e.target.value)}
+            className={styles.input}
+          />
+          <button onClick={sendMessage} className={styles.button}>
+            Senden
+          </button>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }

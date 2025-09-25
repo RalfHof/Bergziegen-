@@ -1,7 +1,7 @@
 .chatBox {
   border-radius: 16px;
   padding: 1rem;
-  /* KORREKTUR: Alpha-Wert auf 0.7 reduziert, um das Hintergrundbild besser sichtbar zu machen */
+  /* KORREKTUR: Alpha-Wert auf 0.0 reduziert, um das Hintergrundbild besser sichtbar zu machen */
   background: rgba(255, 255, 255, 0.0); /* Deutlich transparenter */
   max-width: 700px;
   width: 100%;

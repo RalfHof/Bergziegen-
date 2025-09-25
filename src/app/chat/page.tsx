@@ -59,9 +59,9 @@ export default function ChatPage() {
   };
 
   return (
-    <main className={styles.chatPage}>
+    <div className={styles.chatPage}>
       <div className={styles.overlay}>
-        <h1 className={styles.chatTitle}>🐐 Bergziegen Chat</h1>
+        <h1 className={styles.title}>🐐 Bergziegen-Chat</h1>
 
         <div className={styles.messages}>
           {messages.map((msg) => (
@@ -88,6 +88,6 @@ export default function ChatPage() {
           </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

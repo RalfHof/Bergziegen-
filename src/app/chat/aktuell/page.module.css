@@ -1,35 +1,39 @@
-/* src/app/chat/aktuell/page.module.css */
+/* Hintergrundbild über ganze Seite */
+.heroBackground {
+  min-height: 100vh;
+  background-image: url('/hero-berg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
 
-.chatContainer {
+/* Chat Wrapper */
+.chatWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
   max-width: 800px;
-  margin: 0 auto;
-  min-height: 100vh;
-  background: #f9f9f9;
 }
 
+/* Titel über Chat */
 .chatTitle {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1.5rem;
-  color: #333;
   text-align: center;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  margin-bottom: 1rem;
 }
 
 .loading {
   text-align: center;
   font-size: 1.2rem;
-  color: #555;
+  color: white;
   margin-top: 2rem;
-}
-
-/* Handy Optimierung */
-@media (max-width: 600px) {
-  .chatTitle {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-  }
 }

@@ -1,78 +1,101 @@
 .chatBox {
-  border: 2px solid #ccc;
-  border-radius: 12px;
+  border-radius: 16px;
   padding: 1rem;
-  background-color: #f0fdf4;
-  max-width: 600px;
-  margin: 2rem auto;
+  background: linear-gradient(
+    135deg,
+    rgba(173, 216, 230, 0.6),   /* hellblau */
+    rgba(255, 255, 255, 0.25)   /* weißlich-transparent */
+  );
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
+/* Nachrichten-Bereich */
 .messages {
-  height: 300px;
+  height: 350px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
   scroll-behavior: smooth;
 }
 
+/* Nachrichten-Blasen */
 .message {
-  max-width: 75%;
-  padding: 0.5rem 0.75rem;
-  border-radius: 12px;
-  margin: 0.25rem 0;
-  display: flex;
-  flex-direction: column;
-  word-break: break-word;
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  word-wrap: break-word;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .ownMessage {
   align-self: flex-end;
-  background-color: #d1fae5;
-  text-align: right;
-  border-bottom-right-radius: 0;
+  background: linear-gradient(135deg, #4facfe, #00f2fe); /* Blau Verlauf */
+  color: #fff;
+  border-bottom-right-radius: 0.3rem;
 }
 
 .otherMessage {
   align-self: flex-start;
-  background-color: #e5e7eb;
-  text-align: left;
-  border-bottom-left-radius: 0;
+  background: rgba(255, 255, 255, 0.8);
+  color: #222;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.sender {
+  font-weight: 600;
+  font-size: 0.75rem;
+  margin-bottom: 0.2rem;
 }
 
 .timestamp {
   font-size: 0.7rem;
-  color: #888;
-  margin-top: 0.25rem;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+  text-align: right;
 }
 
-.sender {
-  font-weight: bold;
-  font-size: 0.8rem;
-  margin-bottom: 0.25rem;
-}
-
+/* Input-Bereich */
 .inputArea {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  margin-top: 1rem;
   position: relative;
 }
 
 .input {
   flex: 1;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  padding: 0.6rem 0.8rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .button {
-  padding: 0.5rem 1rem;
-  background-color: #10b981;
+  background: linear-gradient(135deg, #43a047, #2e7d32);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 1rem;
+  padding: 0.6rem 1.2rem;
   cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #66bb6a, #388e3c);
 }
 
 .emojiButton {

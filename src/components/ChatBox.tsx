@@ -45,7 +45,6 @@ export default function ChatBox() {
         .select('*');
 
       if (!error && data) {
-        // Lokale Sortierung nach Timestamp (sicher & stabil)
         const sortedMessages = (data as Message[]).sort((a, b) =>
           new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
         );

@@ -12,10 +12,7 @@ export default function ChatPage() {
 
   useEffect(() => {
     const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
+      const { data: { session } } = await supabase.auth.getSession();
       setLoading(false);
 
       if (!session) {
@@ -43,9 +40,11 @@ export default function ChatPage() {
   }
 
   return (
-    <div className={styles.chatContainer}>
-      <h1 className={styles.chatTitle}>⛰️ Bergziegen Chat 🐐</h1>
-      <ChatBox />
-    </div>
+    <main className={styles.heroBackground}>
+      <div className={styles.chatWrapper}>
+        <h1 className={styles.chatTitle}>⛰️ Bergziegen Chat 🐐</h1>
+        <ChatBox />
+      </div>
+    </main>
   );
 }

@@ -4,18 +4,26 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
+  
+  /* Ermöglicht dem Body, bei Bedarf zu wachsen und zu scrollen (Standardverhalten). */
+  height: auto; 
+  overflow: auto; 
 }
 
 .site-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* Erlaubt dem Wrapper, die gesamte Seitenhöhe einzunehmen und bei Bedarf zu wachsen. */
+  min-height: 100vh; 
 }
 
 main {
+  /* Nimmt den gesamten vertikalen Platz zwischen Header und Footer ein */
   flex: 1;
-  padding: 0;              /* ❌ Rand entfernen */
-  padding-bottom: 80px;    /* nur unten Abstand zum Footer */
+  padding: 0; 
+  padding-bottom: 80px; /* Dieser Abstand wird für den Footer beibehalten und auf der Chat-Seite negiert. */
+  overflow: auto; 
+  margin-top: 0;
 }
 
 /* 👉 Extra-Regel: Auf Seiten mit Hero-Bild keinen Abstand oben */

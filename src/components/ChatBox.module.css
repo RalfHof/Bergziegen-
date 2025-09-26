@@ -1,25 +1,28 @@
 .chatBox {
   border-radius: 16px;
   padding: 1rem;
-  /* KORREKTUR: Alpha-Wert auf 0.0 reduziert, um das Hintergrundbild besser sichtbar zu machen */
-  background: rgba(255, 255, 255, 0.0); /* Deutlich transparenter */
+  background: rgba(255, 255, 255, 0.0); 
   max-width: 700px;
   width: 100%;
   margin: 0 auto;
+  
   display: flex;
   flex-direction: column;
+  flex: 1; 
+  
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 /* Nachrichten-Bereich */
 .messages {
-  height: 350px;
-  overflow-y: auto;
+  flex: 1; 
+  overflow-y: auto; /* DIES IST DIE SCROLL-FUNKTION FÜR NACHRICHTEN */
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.5rem;
   scroll-behavior: smooth;
+  min-height: 200px; 
 }
 
 /* Nachrichten-Blasen */
@@ -33,16 +36,17 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Eigene Nachrichten: Rechts ausgerichtet, Blau-Verlauf */
 .ownMessage {
-  align-self: flex-end;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  align-self: flex-end; 
+  background: linear-gradient(135deg, #4facfe, #00f2fe); 
   color: #fff;
   border-bottom-right-radius: 0.3rem;
 }
 
+/* Andere Nachrichten: Links ausgerichtet, Weiß-Grau */
 .otherMessage {
-  align-self: flex-start;
-  /* Hintergrund für fremde Nachrichten beibehalten */
+  align-self: flex-start; 
   background: #f1f1f1; 
   color: #222;
   border-bottom-left-radius: 0.3rem;
@@ -107,41 +111,4 @@
   right: 2rem;
   z-index: 10;
 }
-
-/* Diese Klassen wurden vorher als redundant markiert, aber hier für Vollständigkeit beibehalten. */
-.heroBackground {
-  min-height: 100vh;
-  background-image: url('/hero-berg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-.chatWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 800px;
-}
-
-.chatTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-  margin-bottom: 1rem;
-}
-
-.loading {
-  text-align: center;
-  font-size: 1.2rem;
-  color: white;
-  margin-top: 2rem;
-}
+/* ... (Rest des Codes beibehalten) ... */

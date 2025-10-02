@@ -204,4 +204,23 @@ export const touren = [
     komootLink: "https://www.komoot.com/de-de/tour/4202877",
     outdooractiveLink: "https://www.outdooractive.com/de/gastro/kraichgau-stromberg/weingut-kelterhof/64513735",
   },
+    {
+    id: 17,
+    name: "Saupferch – Drachenfels – Lambertskreutz – Bad Dürkheim",
+    description: `Eine schöne, mittelschwere Wanderung mit vielen Höhen und Tiefen über Schotterwege, Waldboden und zahlreiche Wurzeln – was die Strecke besonders interessant macht. 
+Das absolute Highlight ist die Drachenhöhle, außerdem der steile Abgrund, der allerdings nichts für Menschen mit Höhenangst ist. 
+Nach etwa zwei Dritteln der Strecke lädt das Lambertskreuz zu einer Einkehr ein – mit einer großen Außenanlage, die ideal für Groß und Klein ist. 
+Hier kannst du dich für den Abstieg stärken, bevor es weitergeht.`,
+    shortDescription: "",
+    distance: "10,8 km",
+    duration: "ca. 3:50 Std.",
+    difficulty: "mittel",
+    ascent: "368 Hm",
+    descent: "368 Hm",
+    highestPoint: "563 m",
+    images: Array.from({ length: 57 }, (_, i) => `/Tour17_${i + 1}.jpg`),
+    komootLink: "https://www.komoot.com/de-de/tour/213128168",
+    outdooractiveLink: "https://www.outdooractive.com/de/route/wanderung/drachenfels/drachenfels-und-lambertskreuz-rundwanderung-ab-parkplatz-saupferch/802735116/",
+  },
+
 ];

@@ -95,7 +95,20 @@ export default function Page() {
         </a>
       </div>
 
-      {/* Galerie mit Bildern */}
+      {/* ✅ Nur anzeigen, wenn tour.video existiert */}
+      {tour.video && (
+        <div className={styles.videoWrapper}>
+          <video
+            controls
+            width="100%"
+            style={{ borderRadius: "12px", margin: "1rem 0" }}
+          >
+            <source src={tour.video} type="video/mp4" />
+            Dein Browser unterstützt das Video-Tag nicht.
+          </video>
+        </div>
+      )}
+
       <div className={styles.gallery}>
         {tour.images.map((src: string, index: number) => (
           <Image
@@ -116,24 +129,6 @@ export default function Page() {
           />
         ))}
       </div>
-
-      {/* Video falls vorhanden */}
-      {tour.video && (
-        <div style={{ marginTop: "2rem" }}>
-          <h2>🎥 Video zur Tour</h2>
-          <video
-            controls
-            style={{
-              maxWidth: "100%",
-              borderRadius: "12px",
-              marginTop: "1rem",
-            }}
-          >
-            <source src={tour.video} type="video/mp4" />
-            Dein Browser unterstützt kein HTML5-Video.
-          </video>
-        </div>
-      )}
 
       <Feedback tourId={tour.id} onNewRating={(avg) => setAvgRating(avg)} />
     </div>

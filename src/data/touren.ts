@@ -204,26 +204,18 @@ export const touren = [
     komootLink: "https://www.komoot.com/de-de/tour/4202877",
     outdooractiveLink: "https://www.outdooractive.com/de/gastro/kraichgau-stromberg/weingut-kelterhof/64513735",
   },
-  {
-  id: 17,
-  name: "Route 16 – Saupferch, Drachenfels, Lambertskreuz, Bad Dürkheim",
-  description:
-    "Eine schöne, mittelschwere Wanderung mit vielen Höhen und Tiefen über Schotterwege, Waldboden und zahlreiche Wurzeln – was die Strecke besonders interessant macht. Das absolute Highlight ist die Drachenhöhle, außerdem der steile Abgrund, der allerdings nichts für Menschen mit Höhenangst ist. Nach etwa zwei Dritteln der Strecke gibt es die Möglichkeit, im Lambertskreuz einzukehren. Dort erwartet dich eine gemütliche Außenanlage für Groß und Klein – perfekt, um sich für den Abstieg zu stärken.",
-  distance: "10,8 km",
-  duration: "3:50 Std.",
-  difficulty: "mittel",
-  ascent: "368 hm",
-  descent: "368 hm",
-  highestPoint: "563 m",
-  komootLink: "https://www.komoot.de/tour/xxxxxx", // <- deinen Komoot-Link einsetzen
-  outdooractiveLink: "https://www.outdooractive.com/xxxxxx", // <- Outdooractive-Link einsetzen
-
-  // Galerie mit Bildern (liegen in /public)
-  images: Array.from({ length: 57 }, (_, i) => `/Tour17_${i + 1}.jpg`),
-
-  // 🎥 Video-Datei (liegt im Ordner /public/videos)
-  video: "/videos/tour17.mp4",
-}
-,
-
+ {
+    id: 17,
+    name: "Tour 17 – Drachenhöhle & Lambertskreuz",
+    description:
+      "Eine schöne, mittelschwere Wanderung mit vielen Höhen und Tiefen über Schotterwege, Waldboden und zahlreiche Wurzeln – was die Strecke besonders interessant macht. Das absolute Highlight ist die Drachenhöhle, außerdem der steile Abgrund, der allerdings nichts für Menschen mit Höhenangst ist. Nach etwa zwei Dritteln der Strecke kann man im Lambertskreuz einkehren, um sich für den Abstieg zu stärken – mit einer tollen Außenanlage für Groß und Klein.",
+    distance: "12 km",
+    duration: "4 Std",
+    difficulty: "Mittel",
+    ascent: "450 Hm",
+    komootLink: "https://www.komoot.de/tour/xxxxxx",
+    outdooractiveLink: "https://www.https://www.outdooractive.com/de/route/wanderung/pfalz/saupferch-drachenfels-lambertskreuz-saupferch/108630848/?utm_source=unknown&utm_medium=social&utm_campaign=user-shared-social-content",
+   images: Array.from({ length: 57 }, (_, i) => `/Tour17_${i + 1}.jpg`),
+    video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour17.mp4", // ✅ hier dein Supabase-Link
+  },
 ];

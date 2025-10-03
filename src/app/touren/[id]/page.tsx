@@ -44,24 +44,58 @@ export default function Page() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        {tour.name} {avgRating !== null && <span className={styles.avgRating}>⭐ {avgRating.toFixed(1)}</span>}
+        {tour.name}{" "}
+        {avgRating !== null && (
+          <span className={styles.avgRating}>⭐ {avgRating.toFixed(1)}</span>
+        )}
       </h1>
 
       <p className={styles.description}>{tour.description}</p>
 
       <div className={styles.tourInfo}>
-        {tour.distance && <p><strong>Distanz:</strong> {tour.distance}</p>}
-        {tour.duration && <p><strong>Dauer:</strong> {tour.duration}</p>}
-        {tour.difficulty && <p><strong>Schwierigkeit:</strong> {tour.difficulty}</p>}
-        {tour.ascent && <p><strong>Aufstieg:</strong> {tour.ascent}</p>}
+        {tour.distance && (
+          <p>
+            <strong>Distanz:</strong> {tour.distance}
+          </p>
+        )}
+        {tour.duration && (
+          <p>
+            <strong>Dauer:</strong> {tour.duration}
+          </p>
+        )}
+        {tour.difficulty && (
+          <p>
+            <strong>Schwierigkeit:</strong> {tour.difficulty}
+          </p>
+        )}
+        {tour.ascent && (
+          <p>
+            <strong>Aufstieg:</strong> {tour.ascent}
+          </p>
+        )}
       </div>
 
       <div className={styles.links}>
-        <a href={tour.komootLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>Zur Komoot-Tour</a>{" "}
+        <a
+          href={tour.komootLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.komootLink}
+        >
+          Zur Komoot-Tour
+        </a>{" "}
         |{" "}
-        <a href={tour.outdooractiveLink} target="_blank" rel="noopener noreferrer" className={styles.komootLink}>Outdooractive öffnen</a>
+        <a
+          href={tour.outdooractiveLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.komootLink}
+        >
+          Outdooractive öffnen
+        </a>
       </div>
 
+      {/* Galerie mit Bildern */}
       <div className={styles.gallery}>
         {tour.images.map((src: string, index: number) => (
           <Image
@@ -82,6 +116,24 @@ export default function Page() {
           />
         ))}
       </div>
+
+      {/* Video falls vorhanden */}
+      {tour.video && (
+        <div style={{ marginTop: "2rem" }}>
+          <h2>🎥 Video zur Tour</h2>
+          <video
+            controls
+            style={{
+              maxWidth: "100%",
+              borderRadius: "12px",
+              marginTop: "1rem",
+            }}
+          >
+            <source src={tour.video} type="video/mp4" />
+            Dein Browser unterstützt kein HTML5-Video.
+          </video>
+        </div>
+      )}
 
       <Feedback tourId={tour.id} onNewRating={(avg) => setAvgRating(avg)} />
     </div>

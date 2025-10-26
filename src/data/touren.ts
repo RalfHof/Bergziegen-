@@ -205,19 +205,66 @@ export const touren = [
     komootLink: "https://www.komoot.com/de-de/tour/4202877",
     outdooractiveLink: "https://www.outdooractive.com/de/gastro/kraichgau-stromberg/weingut-kelterhof/64513735",
   },
- {
-  id: 17,
-  name: "Drachenhöhle & Lambertskreuz",
-  description:
-    "Eine schöne, mittelschwere Wanderung mit vielen Höhen und Tiefen über Schotterwege, Waldboden und zahlreiche Wurzeln – was die Strecke besonders interessant macht. Das absolute Highlight ist die Drachenhöhle, außerdem der steile Abgrund, der allerdings nichts für Menschen mit Höhenangst ist. Nach etwa zwei Dritteln der Strecke kann man im Lambertskreuz einkehren, um sich für den Abstieg zu stärken – mit einer tollen Außenanlage für Groß und Klein.",
-  distance: "10,8 km",
-  duration: "4 Std",
-  difficulty: "Mittel",
-  ascent: "365 Hm",
-  komootLink: "https://www.komoot.com/de-de/tour/32777811",
-  outdooractiveLink:
-    "https://www.outdooractive.com/de/route/wanderung/pfalz/saupferch-drachenfels-lambertskreuz-saupferch/108630848/?utm_source=unknown&utm_medium=social&utm_campaign=user-shared-social-content#caml=92i,1bz5ea,86838u,0,0",
-  images: Array.from({ length: 61 }, (_, i) => `/Tour17_${i + 1}.jpg`),
-  video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour17.mp4", // ✅ Supabase-Link
-}
+   {
+    id: 17,
+    name: "Drachenhöhle & Lambertskreuz",
+    description:
+      "Eine schöne, mittelschwere Wanderung mit vielen Höhen und Tiefen über Schotterwege, Waldboden und zahlreiche Wurzeln – was die Strecke besonders interessant macht. Das absolute Highlight ist die Drachenhöhle, außerdem der steile Abgrund, der allerdings nichts für Menschen mit Höhenangst ist. Nach etwa zwei Dritteln der Strecke kann man im Lambertskreuz einkehren, um sich für den Abstieg zu stärken – mit einer tollen Außenanlage für Groß und Klein.",
+    distance: "10,8 km",
+    duration: "4 Std",
+    difficulty: "Mittel",
+    ascent: "365 Hm",
+    komootLink: "https://www.komoot.com/de-de/tour/32777811",
+    outdooractiveLink:
+      "https://www.outdooractive.com/de/route/wanderung/pfalz/saupferch-drachenfels-lambertskreuz-saupferch/108630848/?utm_source=unknown&utm_medium=social&utm_campaign=user-shared-social-content#caml=92i,1bz5ea,86838u,0,0",
+    images: Array.from({ length: 61 }, (_, i) => `/Tour17_${i + 1}.jpg`),
+    video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour17.mp4",
+  },
+  {
+    id: 18,
+    name: "Forsthaus Silbertal",
+    description: `
+    Eine wunderschöne herbstliche Wanderung durch das Silbertal mit sanften Steigungen und viel Natur. 
+    Die Strecke führt über leicht begehbare Wege, die bei herbstlichem Laub jedoch etwas rutschig sein können – also Vorsicht beim Gehen! 
+    Nach etwa zwei Dritteln der Tour lohnt sich unbedingt eine Einkehr im gemütlichen Forsthaus Silbertal. 
+    Dort kann man sich bei gutbürgerlicher Küche und einem warmen Getränk stärken, bevor es auf den Rückweg geht. 
+    Eine entspannte Wanderung mit schöner Atmosphäre – und trotz eines kleinen Missgeschicks (mein Wanderstock ist leider zerbrochen 😅) immer wieder lohnenswert.`,
+    shortDescription: "22.10.25",
+    distance: "10,0 km",
+    duration: "2 Std 30 Min",
+    difficulty: "Leicht",
+    ascent: "157 Hm",
+    descent: "157 Hm",
+    komootLink: "https://www.komoot.de/tour-18",
+    outdooractiveLink: "https://www.outdooractive.com/de/track/silbertal-22.10.2025-10-33-45/328986004/",
+    images: Array.from({ length: 19 }, (_, i) => `/Tour18_${i + 1}.jpg`),
+    video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour18.mp4",
+    subTours: [
+      {
+        id: "18a",
+        name: "Silbertal Herbsttour 2025",
+        description: `Eine goldene Herbsttour mit buntem Laub, klarer Luft und wunderschöner Atmosphäre im Pfälzerwald.`,
+        distance: "10,0 km",
+        duration: "2 Std 30 Min",
+        difficulty: "Leicht",
+        ascent: "157 Hm",
+        images: Array.from({ length: 19 }, (_, i) => `/Tour18a_${i + 1}.jpg`),
+        outdooractiveLink: "https://www.outdooractive.com/de/track/silbertal-22.10.2025-10-33-45/328986004/",
+        komootLink: "https://www.komoot.de/tour-18a",
+        video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour18a.mp4",
+      },
+      {
+        id: "18b",
+        name: "Silbertal Frühlingstour 2025",
+        description: `Eine zweite Variante der Silbertal-Wanderung – diesmal im Frühling mit frischem Grün und Vogelgezwitscher.`,
+        distance: "10,2 km",
+        duration: "2 Std 45 Min",
+        difficulty: "Leicht",
+        ascent: "165 Hm",
+        images: Array.from({ length: 15 }, (_, i) => `/Tour18b_${i + 1}.jpg`),
+        outdooractiveLink: "https://www.outdooractive.com/de/track/silbertal-fruehling-2025/329123456/",
+        komootLink: "https://www.komoot.de/tour-18b",
+      },
+    ],
+  },
 ];

@@ -263,4 +263,24 @@ Am Ende bleibt man erschöpft, aber glücklich – mit einem Lächeln im Gesicht
   images: Array.from({ length: 83 }, (_, i) => `/Tour19_${i + 1}.jpg`),
   video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour19.mp4",
 },
+{
+  id: 20,
+  name: "Hohe Loog – Pfälzer Ausblick & Abenteuer",
+  description: `Diese Tour führt uns hinauf zur Hohen Loog – einer der schönsten Aussichtspunkte über dem Pfälzerwald. Die abwechslungsreiche Strecke fordert mit fast 500 Höhenmetern auf rund 10 Kilometern einiges an Kondition und Trittsicherheit. Besonders im Herbst, wenn das bunte Laub die Wege bedeckt, ist Vorsicht geboten – viele Passagen sind rutschig und die Pfade teils schwer zu erkennen.
+
+Doch die Mühe lohnt sich: Oben angekommen, öffnet sich der Blick über das weite Tal – ein atemberaubender Moment, der jede Anstrengung vergessen lässt. Auf dem Gipfel lädt die urige Gaststätte *Hohe Loog Haus* zur Einkehr ein. Hier gibt’s gut bürgerliche Küche, Pfälzer Spezialitäten und bei schönem Wetter einen herrlichen Panoramablick über die Rheinebene.
+
+Die Umgebung bietet außerdem zahlreiche weitere Wanderungen in herrlicher Natur (siehe [loog-loops.de](https://www.loog-loops.de)) und ein tolles Freizeitangebot für Familien: Ein riesiger Kinderspielplatz mit Riesenrutsche, Klettergerüsten und Schaukeln sorgt dafür, dass auch die Kleinen auf ihre Kosten kommen. Ein besonderes Highlight ist das traditionelle Waldfest im Sommer mit Spießbraten und erlesenen Hambacher Weinen – ein echtes Erlebnis für alle Sinne!`,
+  shortDescription: "04.11.2025",
+  distance: "ca. 10 km",
+  duration: "ca. 3 Std 30 Min",
+  difficulty: "Schwer",
+  ascent: "480 Hm",
+  descent: "480 Hm",
+  komootLink: "https://www.komoot.de/tour-20",
+  outdooractiveLink: "https://www.outdooractive.com/de/route/wanderung/pfalz/tourenplanung-am-04.11.2025-12-50-16/329722996/",
+  images: Array.from({ length: 69 }, (_, i) => `/Tour20_${i + 1}.jpg`),
+  video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour20.mp4",
+},
+
 ];

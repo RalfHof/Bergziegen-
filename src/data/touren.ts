@@ -282,5 +282,27 @@ Die Umgebung bietet außerdem zahlreiche weitere Wanderungen in herrlicher Natur
   images: Array.from({ length: 69 }, (_, i) => `/Tour20_${i + 1}.jpg`),
   video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour20.mp4",
 },
+{
+  id: 21,
+  name: "Wachtenburg – Der Balkon der Pfalz 14.11.25",
+  description: `Unsere Tour zur Wachtenburg führt uns hoch über die malerische Stadt Wachenheim an der Weinstraße – ein echtes Highlight für Wanderfreunde und Geschichtsliebhaber. Die 11,3 km lange Strecke verlangt mit rund 270 Höhenmetern etwas Kondition, wird aber mit einem grandiosen Ausblick über die gesamte Rheinebene bis hin zum Odenwald und bei klarer Sicht sogar bis in den Schwarzwald belohnt.
+
+Die Wachtenburg, auch bekannt als "Balkon der Pfalz", stammt aus dem 12. Jahrhundert und blickt auf eine bewegte Geschichte zurück. Im Pfälzischen Erbfolgekrieg wurde sie 1689 durch französische Truppen unter General Mélac zerstört – ihre Ruinen erzählen bis heute von diesen Zeiten. Seit 1984 wird die Burg durch den „Förderkreis zur Erhaltung der Ruine Wachtenburg e.V.“ liebevoll gepflegt und ist für Besucher frei zugänglich.
+
+Oben erwartet uns die gemütliche Burgschänke mit regionalen Pfälzer Spezialitäten und hervorragenden Weinen – perfekt für eine Rast nach dem Aufstieg. Besonders in der Herbst- und Winterzeit ist die Schänke klein und urig, daher lohnt sich eine Reservierung. Im Sommer dagegen lädt die große Terrasse mit herrlichem Panorama zum Verweilen ein.
+
+Eine abwechslungsreiche Tour mit Geschichte, Genuss und Aussicht – ein echtes Pfalz-Erlebnis!`,
+  shortDescription: "Historische Wanderung zur Wachtenburg – mit Panoramablick, Burgschänke und Pfälzer Flair.",
+  distance: "11,3 km",
+  duration: "ca. 3 Std 40 Min",
+  difficulty: "Mittel",
+  ascent: "272 Hm",
+  descent: "269 Hm",
+  komootLink: "https://www.komoot.de/tour-21",
+  outdooractiveLink: "https://www.outdooractive.com/de/track/wanderung-zur-wachtenburg-am-13.-april-2022/240361434/",
+  images: Array.from({ length: 38 }, (_, i) => `/Tour21_${i + 1}.jpg`),
+  video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour21.mp4",
+},
+
 
 ];

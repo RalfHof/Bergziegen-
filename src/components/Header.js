@@ -1,72 +1,97 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import styles from './Header.module.css';
-import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
+import Link from "next/link";
+import styles from "./Header.module.css";
 
 export default function Header() {
-  const [newMessagesCount, setNewMessagesCount] = useState(0);
+  const router = useRouter();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setUser(session?.user || null);
-      setLoading(false);
-    };
-    getSession();
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null);
+    });
 
-    const channel = supabase
-      .channel('chat-room')
-      .on(
-        'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'messages' },
-        () => {
-          setNewMessagesCount((prev) => prev + 1);
-        }
-      )
-      .subscribe();
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
 
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    return () => listener.subscription.unsubscribe();
   }, []);
 
-  const handleLogout = async () => {
+  const logout = async () => {
     await supabase.auth.signOut();
-    setUser(null);
-    window.location.href = '/';
+    router.push("/login");
   };
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>🐐 Bergziegen</div>
-      <nav className={styles.nav}>
-        <Link href="/">Home</Link>
-        <Link href="/touren">Touren</Link>
-        <Link href="/geplant">Geplante Touren</Link>
-
-        <Link href="/chat/aktuell">
-          Chat
-          {newMessagesCount > 0 && (
-            <span className={styles.badge}>{newMessagesCount}</span>
-          )}
+      <div className={styles.inner}>
+        {/* LOGO */}
+        <Link href="/" className={styles.logo}>
+          🐐 Bergziegen
         </Link>
-        <Link href="/kalender">Kalender</Link>
 
-        {!loading && user ? (
-          <button onClick={handleLogout} className={styles.logoutButton}>
-            Logout
-          </button>
-        ) : (
-          <>
+        {/* Desktop Navigation */}
+        <nav className={styles.navDesktop}>
+          <Link href="/">Start</Link>
+          <Link href="/touren">Touren</Link>
+          <Link href="/geplant">Geplante Touren</Link>
+          <Link href="/kalender">Kalender</Link>
+          <Link href="/chat">Chat</Link>
+          <Link href="/about">Über uns</Link>
+
+          {user ? (
+            <button onClick={logout} className={styles.logoutBtn}>
+              Logout
+            </button>
+          ) : (
             <Link href="/login">Login</Link>
-            <Link href="/register">Register</Link>
-          </>
-        )}
-      </nav>
+          )}
+        </nav>
+
+        {/* Burger Button mobile */}
+        <button
+          className={styles.burger}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`}></div>
+          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`}></div>
+          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`}></div>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <nav className={styles.navMobile}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Start</Link>
+          <Link href="/touren" onClick={() => setMenuOpen(false)}>Touren</Link>
+          <Link href="/geplant" onClick={() => setMenuOpen(false)}>Geplante Touren</Link>
+          <Link href="/kalender" onClick={() => setMenuOpen(false)}>Kalender</Link>
+          <Link href="/chat" onClick={() => setMenuOpen(false)}>Chat</Link>
+          <Link href="/about" onClick={() => setMenuOpen(false)}>Über uns</Link>
+
+          {user ? (
+            <button
+              className={styles.logoutBtn}
+              onClick={() => {
+                setMenuOpen(false);
+                logout();
+              }}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link href="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+          )}
+        </nav>
+      )}
     </header>
   );
 }

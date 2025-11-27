@@ -1,3 +1,4 @@
+// app/touren/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -34,7 +35,6 @@ export default function TourenPage() {
     };
   }, [router]);
 
-  // Lade alle Durchschnittsbewertungen in einem Request (viel schneller)
   useEffect(() => {
     const loadRatings = async () => {
       try {
@@ -42,41 +42,40 @@ export default function TourenPage() {
         if (!res.ok) return;
         const data = (await res.json()) as Record<string, number>;
         const map: Record<number, number> = {};
-        Object.entries(data).forEach(([k, v]) => {
-          map[Number(k)] = Number(v);
-        });
+        Object.entries(data).forEach(([k, v]) => { map[Number(k)] = Number(v); });
         setRatings(map);
       } catch (err) {
-        console.error('Fehler beim Laden der Bewertungen:', err);
+        console.error(err);
       }
     };
     void loadRatings();
   }, []);
 
-  if (loading) {
-    return <p className={styles.loading}>Lade Touren...</p>;
-  }
+  if (loading) return <p className={styles.loading}>Lade Touren...</p>;
 
   return (
     <div className={styles.container}>
       {touren.map((tour) => {
-        const previewImage = (tour.images && tour.images.length > 0) ? tour.images[0] : '/placeholder.jpg';
+        const preview = (tour.images && tour.images.length) ? tour.images[0] : '/placeholder.jpg';
         return (
           <Link key={tour.id} href={`/touren/${tour.id}`} className={styles.link}>
-            <div className={styles.tourCard}>
-              <Image src={previewImage} alt={tour.name} width={150} height={100} className={styles.image} />
-              <div className={styles.info}>
-                <h2 className={styles.title}>
-                  {tour.name}{' '}
-                  {ratings[tour.id] ? (
-                    <span className={styles.avgRating}>⭐ {ratings[tour.id].toFixed(1)}</span>
-                  ) : (
-                    <span style={{ fontSize: '0.8rem', color: 'lightgray' }}>(Noch keine Bewertung)</span>
-                  )}
-                </h2>
-                <p style={{ margin: 0, fontSize: '0.95rem', color: '#eaf3e6' }}>{tour.shortDescription ?? ''}</p>
+            <article className={styles.tourCard}>
+              <div className={styles.imageWrap}>
+                <Image src={preview} alt={tour.name} width={220} height={140} className={styles.image} />
               </div>
-            </div>
+              <div className={styles.info}>
+                <h3 className={styles.title}>
+                  {tour.name}
+                  {ratings[tour.id] ? <span className={styles.avg}>⭐ {ratings[tour.id].toFixed(1)}</span> : <span className={styles.noRating}>(—)</span>}
+                </h3>
+                <p className={styles.short}>{tour.shortDescription ?? (tour.description.slice(0,140) + '...')}</p>
+                <div className={styles.meta}>
+                  {tour.distance && <span>{tour.distance}</span>}
+                  {tour.duration && <span> • {tour.duration}</span>}
+                  {tour.difficulty && <span> • {tour.difficulty}</span>}
+                </div>
+              </div>
+            </article>
           </Link>
         );
       })}

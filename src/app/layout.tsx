@@ -1,3 +1,4 @@
+// app/layout.tsx
 'use client';
 
 import '../styles/globals.css';
@@ -8,8 +9,6 @@ import { usePathname } from 'next/navigation';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-
-  // Footer nur auf der Startseite sichtbar
   const showFooter = pathname === '/';
 
   return (
@@ -17,7 +16,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <body className="site-wrapper">
         <SessionProvider>
           <Header />
-          <main>{children}</main>
+          <main className={pathname === '/' ? 'heroPage' : ''}>{children}</main>
           {showFooter && <Footer />}
         </SessionProvider>
       </body>

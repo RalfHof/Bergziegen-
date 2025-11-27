@@ -1,37 +1,69 @@
-/* global.css */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  
-  /* Ermöglicht dem Body, bei Bedarf zu wachsen und zu scrollen (Standardverhalten). */
-  height: auto; 
-  overflow: auto; 
+/* styles/globals.css - Dark Forest B1 (global) */
+
+:root{
+  --bg:#0f2b1f;        /* sehr dunkles Grün */
+  --panel:#153a2d;     /* dunkles Grün für Karten */
+  --muted:#bcd9c3;     /* helle Schrift */
+  --accent:#d4af37;    /* gold */
+  --card:#163b31;
+  --glass: rgba(255,255,255,0.03);
+  --radius:12px;
+  --max-w:1100px;
 }
 
-.site-wrapper {
-  display: flex;
-  flex-direction: column;
-  /* Erlaubt dem Wrapper, die gesamte Seitenhöhe einzunehmen und bei Bedarf zu wachsen. */
-  min-height: 100vh; 
+*{box-sizing:border-box}
+html,body,#__next{
+  height:100%;
 }
 
-main {
-  /* Nimmt den gesamten vertikalen Platz zwischen Header und Footer ein */
-  flex: 1;
-  padding: 0; 
-  padding-bottom: 80px; /* Dieser Abstand wird für den Footer beibehalten und auf der Chat-Seite negiert. */
-  overflow: auto; 
-  margin-top: 0;
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg), #062016);
+  color:var(--muted);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* 👉 Extra-Regel: Auf Seiten mit Hero-Bild keinen Abstand oben */
+/* Site wrapper with min-height */
+.site-wrapper{
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* main: container for pages */
+main{
+  flex:1;
+  padding:2rem 1rem;
+  max-width:var(--max-w);
+  margin:0 auto;
+}
+
+/* Remove top padding for hero pages (class .heroPage on <main>) */
 main.heroPage {
   padding-top: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Links */
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* Buttons */
+.btn {
+  background: linear-gradient(180deg, rgba(212,175,55,0.95), rgba(195,150,45,0.95));
+  color:#072010;
+  padding:0.5rem 0.9rem;
+  border-radius:10px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+}
+
+/* Utility */
+.container-center{ max-width:var(--max-w); margin:0 auto; padding:0 1rem; }
+
+/* Small screens */
+@media (max-width:720px){
+  main{ padding:1rem; }
 }

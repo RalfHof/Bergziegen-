@@ -30,15 +30,19 @@ export default function Header() {
     router.push("/login");
   };
 
+  // Schließt Menü beim Navigieren
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
+        
         {/* LOGO */}
         <Link href="/" className={styles.logo}>
           🐐 Bergziegen
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* DESKTOP NAVIGATION */}
         <nav className={styles.navDesktop}>
           <Link href="/">Start</Link>
           <Link href="/touren">Touren</Link>
@@ -56,42 +60,40 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Burger Button mobile */}
+        {/* BURGER BUTTON */}
         <button
           className={styles.burger}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`}></div>
-          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`}></div>
-          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`}></div>
+          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`} />
+          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`} />
+          <div className={`${styles.bar} ${menuOpen ? styles.open : ""}`} />
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <nav className={styles.navMobile}>
-          <Link href="/" onClick={() => setMenuOpen(false)}>Start</Link>
-          <Link href="/touren" onClick={() => setMenuOpen(false)}>Touren</Link>
-          <Link href="/geplant" onClick={() => setMenuOpen(false)}>Geplante Touren</Link>
-          <Link href="/kalender" onClick={() => setMenuOpen(false)}>Kalender</Link>
-          <Link href="/chat" onClick={() => setMenuOpen(false)}>Chat</Link>
-          <Link href="/about" onClick={() => setMenuOpen(false)}>Über uns</Link>
+      {/* MOBILE-MENÜ */}
+      <nav className={`${styles.navMobile} ${menuOpen ? styles.navMobileOpen : ""}`}>
+        <Link href="/" onClick={closeMenu}>Start</Link>
+        <Link href="/touren" onClick={closeMenu}>Touren</Link>
+        <Link href="/geplant" onClick={closeMenu}>Geplante Touren</Link>
+        <Link href="/kalender" onClick={closeMenu}>Kalender</Link>
+        <Link href="/chat" onClick={closeMenu}>Chat</Link>
+        <Link href="/about" onClick={closeMenu}>Über uns</Link>
 
-          {user ? (
-            <button
-              className={styles.logoutBtn}
-              onClick={() => {
-                setMenuOpen(false);
-                logout();
-              }}
-            >
-              Logout
-            </button>
-          ) : (
-            <Link href="/login" onClick={() => setMenuOpen(false)}>Login</Link>
-          )}
-        </nav>
-      )}
+        {user ? (
+          <button
+            className={styles.logoutBtn}
+            onClick={() => {
+              closeMenu();
+              logout();
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link href="/login" onClick={closeMenu}>Login</Link>
+        )}
+      </nav>
     </header>
   );
 }

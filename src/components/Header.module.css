@@ -1,11 +1,11 @@
 .header {
   width: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.1);
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 1000;
 }
 
 .inner {
@@ -24,6 +24,7 @@
   text-decoration: none;
 }
 
+/* DESKTOP NAV */
 .navDesktop {
   display: flex;
   gap: 1.5rem;
@@ -50,6 +51,7 @@
   cursor: pointer;
 }
 
+/* BURGER BUTTON */
 .burger {
   display: none;
   background: none;
@@ -58,48 +60,59 @@
 }
 
 .bar {
-  width: 25px;
+  width: 26px;
   height: 3px;
   background: white;
-  margin: 4px 0;
-  transition: 0.3s;
+  margin: 5px 0;
+  transition: 0.3s ease;
 }
 
-/* Burger open animation */
+/* Burger X Animation */
 .open:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 .open:nth-child(2) {
   opacity: 0;
 }
 .open:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile */
+/* MOBILE NAVIGATION */
 .navMobile {
-  display: flex;
+  display: none;
   flex-direction: column;
   background: rgba(0,0,0,0.95);
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+
+.navMobileOpen {
+  display: flex;
+  max-height: 500px;
   padding: 1rem;
-  animation: fadeIn 0.3s ease;
 }
 
 .navMobile a {
   color: white;
-  padding: 0.7rem 0;
+  padding: 0.8rem 0;
   font-size: 1.2rem;
+  text-decoration: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.navMobile a:hover {
+  opacity: 0.9;
 }
 
-@media (max-width: 800px) {
+/* MOBILE BREAKPOINT */
+@media (max-width: 850px) {
   .navDesktop {
     display: none;
   }
+
   .burger {
     display: inline-block;
   }

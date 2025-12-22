@@ -21,9 +21,9 @@
     "jsonwebtoken": "^9.0.2",
     "next": "^16.1.0",
     "next-auth": "^4.24.11",
-    "react": "^19.1.0",
+    "react": "^19.2.3",
     "react-calendar": "^5.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

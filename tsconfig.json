@@ -15,7 +15,7 @@
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
@@ -37,7 +37,8 @@
     "src/components/Header.js",
     "src/components/Footer.js",
     "src/app/legal/datenschutz/page.js",
-    "src/types/next-auth.d.ts"
+    "src/types/next-auth.d.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1,96 +1,79 @@
-// src/app/login/page.tsx
-// Komplette Version mit Passwort-Anzeige-Button (Fehlender State hinzugef\u00FCgt)
-
 "use client";
+
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase'; // Supabase importieren
-import styles from './Login.module.css'; // Pfad zu deinem CSS-Modul
+import { supabase } from '@/lib/supabase';
+import styles from './Login.module.css';
 
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false); // F\u00FCr Ladezustand
-  // NEU: State f\u00FCr Passwort anzeigen/verbergen - DIESE ZEILE WAR FEHLEND
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-
-  const handleLogin = async (e: FormEvent) => { // async machen
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    setError(''); // Vorherige Fehler zur\u00FCcksetzen
+    setError('');
+    setLoading(true);
 
-    setLoading(true); // Ladezustand aktivieren
-
-    // *** SUPABASE LOGIN VERWENDEN ***
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
+      email,
+      password,
     });
 
-    setLoading(false); // Ladezustand deaktivieren
-
     if (error) {
-      console.error('Supabase Login Fehler:', error.message);
-      setError(`Login fehlgeschlagen: ${error.message}`);
-    } else if (data.user) {
-        // Erfolgreich angemeldet, Supabase Session ist gesetzt
-        alert('Login erfolgreich!');
-      router.push('/touren'); // Oder zur Chat-Seite leiten
-    } else {
-        // Dieser Fall sollte selten sein, wenn kein Fehler auftritt, aber kein User da ist
-         setError('Login fehlgeschlagen: Benutzerdaten ung\u00FCltig oder nicht best\u00E4tigt.');
+      setError(error.message);
+      setLoading(false);
+      return;
     }
-  };
 
-  // Funktion zum Umschalten der Passwort-Sichtbarkeit
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    if (data?.session) {
+      // ✅ WICHTIG: replace, nicht push
+      router.replace('/touren');
+      return;
+    }
+
+    setError('Login fehlgeschlagen.');
+    setLoading(false);
   };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Login</h2>
+
       <form onSubmit={handleLogin} className={styles.form}>
-        {/* E-Mail Feld bleibt unver\u00E4ndert */}
         <input
           type="email"
           placeholder="E-Mail"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className={styles.input}
           disabled={loading}
+          className={styles.input}
         />
 
-        {/* Wrapper um Passwort-Input und Toggle */}
         <div className={styles.passwordContainer}>
           <input
-            // Typ dynamisch zwischen 'password' und 'text' wechseln
             type={showPassword ? "text" : "password"}
             placeholder="Passwort"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className={styles.input} // Behalte die Input-Klasse f\u00FCr allgemeines Styling bei
             disabled={loading}
+            className={styles.input}
           />
-          {/* Toggle Button/Icon */}
-          {/* Klickt dieses Element, wird die Sichtbarkeit umgeschaltet */}
-          {/* Verwende hier Text-Emojis als einfache Icons */}
           <span
-            className={styles.passwordToggle} // Neue CSS-Klasse f\u00FCr Positionierung/Styling
-            onClick={togglePasswordVisibility}
+            className={styles.passwordToggle}
+            onClick={() => setShowPassword(!showPassword)}
           >
-            {/* Zeigt je nach Zustand unterschiedliche Icons/Texte */}
             {showPassword ? '👁️' : '🔒'}
           </span>
         </div>
 
-
-        <button type="submit" className={styles.button} disabled={loading}>
-            {loading ? 'Logge ein...' : 'Einloggen'}
+        <button type="submit" disabled={loading} className={styles.button}>
+          {loading ? 'Logge ein...' : 'Einloggen'}
         </button>
 
         {error && <p className={styles.error}>{error}</p>}

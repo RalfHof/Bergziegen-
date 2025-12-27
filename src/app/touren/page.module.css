@@ -1,74 +1,71 @@
 .container {
-    padding: 2rem 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
-    background: #d4e5cd;
-    border-radius: 20px;
-  }
-  
-  .tourCard {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    background-color: #356859;
-    border-radius: 16px;
-    overflow: hidden;
-    color: white;
-    transition: transform 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tourCard:hover {
-    transform: scale(1.02);
-  }
-  
-  .image {
-    width: 150px;
-    height: 100px;
-    object-fit: cover;
-    border-right: 1px solid #2a4f3c;
-  }
-  
-  .info {
-    padding: 1rem;
-    flex-grow: 1;
-  }
-  
-  .title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
-    color: #ffffff;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  /* 📱 Mobile Optimierung */
-  @media (max-width: 600px) {
-    .tourCard {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .image {
-      width: 100%;
-      height: 180px;
-      border-right: none;
-      border-bottom: 2px solid #2a4f3c;
-    }
-  
-    .info {
-      padding: 0.75rem;
-    }
-  }
-  .avgRating {
-  font-size: 0.9rem;
-  color: #f5b301; /* gold-gelb für Sterne */
-  margin-left: 6px;
+  padding: 2rem 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #d4e5cd;
+  border-radius: 20px;
+}
+
+.tourCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background-color: #356859;
+  border-radius: 16px;
+  overflow: hidden;
+  color: white;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tourCard:hover {
+  transform: scale(1.02);
+}
+
+.image {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-right: 1px solid #2a4f3c;
+}
+
+.info {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #ffffff;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+.avgRating {
+  font-size: 0.95rem;
+  color: #f5b301; /* Gold für Sterne */
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.noRating {
+  font-size: 0.8rem;
+  color: #bdc3c7;
+  margin-left: 8px;
+}
+
+.short {
+  font-size: 0.95rem;
+  color: #eaf3e6;
+  margin-top: 0.4rem;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .loading {
@@ -77,18 +74,21 @@
   color: #444;
 }
 
-.short {
-  font-size: 0.95rem;
-  color: #eaf3e6;
-}
+/* 📱 Mobile Optimierung */
+@media (max-width: 600px) {
+  .tourCard {
+    flex-direction: column;
+    text-align: center;
+  }
 
-.noRating {
-  font-size: 0.8rem;
-  color: lightgray;
-}
+  .image {
+    width: 100%;
+    height: 180px;
+    border-right: none;
+    border-bottom: 2px solid #2a4f3c;
+  }
 
-/* sorge dafür, dass lange Titel umbrechen (Handy) */
-.title {
-  word-wrap: break-word;
-  overflow-wrap: anywhere;
+  .info {
+    padding: 1rem;
+  }
 }

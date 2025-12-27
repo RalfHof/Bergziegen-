@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabaseClient';
-import { useSession } from 'next-auth/react';
-import styles from './page.module.css';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
+import type { User } from '@supabase/supabase-js';
 
 interface Message {
   id: number;
@@ -13,82 +13,63 @@ interface Message {
 }
 
 export default function ChatPage() {
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
-  const { data: session } = useSession();
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    fetchMessages();
+    const init = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
 
-    const channel = supabase
-      .channel('chat-room')
-      .on(
-        'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'messages' },
-        (payload) => {
-          const newMsg = payload.new as Message;
-          setMessages((prev) => [...prev, newMsg]);
-        }
-      )
-      .subscribe();
+      if (!session) {
+        router.replace('/login');
+        return;
+      }
 
-    return () => {
-      supabase.removeChannel(channel);
+      setUser(session.user);
+      setLoading(false);
+
+      const { data } = await supabase
+        .from('messages')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      setMessages((data ?? []) as Message[]);
     };
-  }, []);
 
-  const fetchMessages = async () => {
-    const { data } = await supabase
-      .from('messages')
-      .select('*')
-      .order('created_at', { ascending: true });
-
-    setMessages(data as Message[]);
-  };
+    init();
+  }, [router]);
 
   const sendMessage = async () => {
-    if (!newMessage || !session?.user?.name) return;
+    if (!newMessage || !user) return;
 
-    await supabase.from('messages').insert([
-      {
-        content: newMessage,
-        username: session.user.name,
-      },
-    ]);
+    await supabase.from('messages').insert({
+      content: newMessage,
+      username: user.email ?? 'Unbekannt',
+    });
+
     setNewMessage('');
   };
 
+  if (loading) return <p>Lade Chat…</p>;
+
   return (
-    <div className={styles.chatPage}>
-      <div className={styles.overlay}>
-        <h1 className={styles.title}>🐐 Bergziegen-Chat</h1>
+    <div>
+      <h1>🐐 Chat</h1>
 
-        <div className={styles.messages}>
-          {messages.map((msg) => (
-            <div key={msg.id} className={styles.messageCard}>
-              <div>
-                <strong>{msg.username}</strong> am{' '}
-                {new Date(msg.created_at).toLocaleString()}
-              </div>
-              <p>{msg.content}</p>
-            </div>
-          ))}
-        </div>
+      {messages.map((m) => (
+        <p key={m.id}>
+          <strong>{m.username}:</strong> {m.content}
+        </p>
+      ))}
 
-        <div className={styles.inputArea}>
-          <input
-            type="text"
-            value={newMessage}
-            placeholder="Nachricht eingeben..."
-            onChange={(e) => setNewMessage(e.target.value)}
-            className={styles.input}
-          />
-          <button onClick={sendMessage} className={styles.button}>
-            Senden
-          </button>
-        </div>
-      </div>
+      <input
+        value={newMessage}
+        onChange={(e) => setNewMessage(e.target.value)}
+      />
+      <button onClick={sendMessage}>Senden</button>
     </div>
   );
 }
-

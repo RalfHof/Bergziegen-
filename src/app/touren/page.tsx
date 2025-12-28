@@ -15,19 +15,19 @@ export default function TourenPage() {
 
   useEffect(() => {
     const initPage = async () => {
-      // 1. Session prüfen (für Handy-Login Sicherheit)
+      // Session Check
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
         router.replace('/login');
         return;
       }
 
-      // 2. Alle Bewertungen laden, um Durchschnitt zu berechnen
-      const { data: feedbackData } = await supabase
+      // Bewertungen laden
+      const { data: feedbackData, error } = await supabase
         .from('feedback')
         .select('tour_id, rating');
 
-      if (feedbackData) {
+      if (!error && feedbackData) {
         const counts: Record<number, { sum: number; count: number }> = {};
         feedbackData.forEach((f) => {
           if (!counts[f.tour_id]) counts[f.tour_id] = { sum: 0, count: 0 };
@@ -42,26 +42,23 @@ export default function TourenPage() {
         });
         setAverages(calculatedAvgs);
       }
-
       setLoading(false);
     };
 
     initPage();
   }, [router]);
 
-  if (loading) return <p className={styles.loading}>Lade Touren und Bewertungen…</p>;
+  if (loading) return <p className={styles.loading}>Lade Touren und Bewertungen...</p>;
 
   return (
     <div className={styles.container}>
       {touren.map((tour) => {
-        const previewImage = tour.images?.[0] ?? '/placeholder.jpg';
         const avg = averages[tour.id];
-
         return (
           <Link key={tour.id} href={`/touren/${tour.id}`} className={styles.link}>
             <article className={styles.tourCard}>
               <Image
-                src={previewImage}
+                src={tour.images?.[0] ?? '/placeholder.jpg'}
                 alt={tour.name}
                 width={150}
                 height={100}
@@ -76,9 +73,7 @@ export default function TourenPage() {
                     <span className={styles.noRating}> (—)</span>
                   )}
                 </h3>
-                <p className={styles.short}>
-                  {tour.shortDescription || (tour.description.substring(0, 80) + "...")}
-                </p>
+                <p className={styles.short}>{tour.shortDescription}</p>
               </div>
             </article>
           </Link>

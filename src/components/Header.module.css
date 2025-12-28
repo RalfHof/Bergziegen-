@@ -1,100 +1,109 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2e7d32;
-  padding: 0.5rem 1rem;
-  color: white;
+  background-color: #1b3a2f; /* dunkelgrün */
+  color: #d4af37; /* gold */
+  padding: 0.6rem 1rem;
   position: sticky;
   top: 0;
   z-index: 100;
-  flex-wrap: wrap;
+  border-bottom: 2px solid #d4af37;
 }
 
-.logo {
+.topRow {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
+.logo {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #d4af37;
+}
+
+/* 🍔 Burger */
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Navigation */
 .nav {
   display: flex;
-  gap: 0.25rem;
-  flex-wrap: nowrap;
-  justify-content: center;
+  gap: 0.6rem;
   align-items: center;
 }
 
 .nav a {
-  color: white;
-  font-weight: 500;
+  color: #d4af37;
   text-decoration: none;
-  padding: 0.15rem 0.3rem;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
   position: relative;
+  transition: all 0.2s ease;
 }
 
 .nav a:hover {
-  background-color: #1b5e20;
-  text-decoration: none;
+  background-color: #143027;
+  color: #f1d36b;
 }
 
+/* 🔔 Badge */
 .badge {
-  background-color: red;
-  color: white;
+  background-color: #d4af37;
+  color: #1b3a2f;
   border-radius: 50%;
-  padding: 0.1rem 0.4rem;
+  padding: 0.1rem 0.35rem;
   font-size: 0.6rem;
   position: absolute;
   top: -0.4rem;
   right: -0.4rem;
 }
 
-/* NEU: Logout-Button-Styling */
+/* Logout */
 .logoutButton {
-  background: transparent;
-  border: none;
-  color: white;
-  font-weight: 500;
+  background: none;
+  border: 1px solid #d4af37;
+  color: #d4af37;
   cursor: pointer;
-  padding: 0.15rem 0.3rem;
   font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 8px;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .logoutButton:hover {
-  background-color: #1b5e20;
+  background-color: #d4af37;
+  color: #1b3a2f;
 }
 
-/* Mobile Optimierung */
-@media (max-width: 600px) {
-  .header {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .logo {
-    margin-right: auto;
-    margin-bottom: 0.25rem;
-    width: 100%;
-    text-align: left;
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
   }
 
   .nav {
+    display: none;
+    flex-direction: column;
     width: 100%;
-    justify-content: space-around;
-    margin-top: 0.25rem;
-    gap: 0.1rem;
+    margin-top: 0.5rem;
+    background-color: #1b3a2f;
+    border-top: 1px solid #d4af37;
+  }
+
+  .nav.open {
+    display: flex;
   }
 
   .nav a,
   .logoutButton {
-    flex: 1;
-    text-align: center;
-    padding: 0.1rem 0.2rem;
-    font-size: 0.65rem;
+    width: 100%;
+    text-align: left;
+    padding: 0.6rem;
   }
 }

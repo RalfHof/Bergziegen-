@@ -304,6 +304,23 @@ const tourenData: Tour[] = [
     ascent: "50 hm",
     images: Array.from({ length: 33 }, (_, i) => `/Tour1_${i + 1}.jpg`),
   },
+  {
+  id: 24,
+  name: "Rotenberg – Taiernbach – Mühlhausen (17.12.25)",
+  description: "Diese gemütliche Wanderung führt uns vom Rotenberg über das Schloss Rotenberg durch die idyllischen Weinberge des Kraichgaus nach Taiernbach und weiter bis nach Mühlhausen. Der Weinpfad Kraichgau bietet herrliche Ausblicke über die sanfte Hügellandschaft und ist zu jeder Jahreszeit ein echtes Genuss-Erlebnis. Eine ideale Tour für entspanntes Wandern mit Rucksackverpflegung und der Möglichkeit, in Mühlhausen zum Kaffee einzukehren.",
+  shortDescription: "Genussvolle Weinbergwanderung im Kraichgau mit Schlossblick und Einkehrmöglichkeit.",
+  distance: "10,7 km",
+  duration: "3:01 h",
+  difficulty: "leicht",
+  ascent: "235 hm",
+  descent: "280 hm",
+  outdooractiveLink: "https://www.outdooractive.com/de/track/rotenberg-taiernbach-ueber-muehlhausen17.12.2025-10-11-26/331637454/",
+  images: Array.from({ length: 13 }, (_, i) => `/Tour24_${i + 1}.jpg`),
+}
+
+
+
+
 ];
 
 // Automatische Sortierung: Höchste ID (neuste Tour) kommt zuerst

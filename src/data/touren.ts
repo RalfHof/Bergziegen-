@@ -315,7 +315,7 @@ const tourenData: Tour[] = [
   ascent: "235 hm",
   descent: "280 hm",
   outdooractiveLink: "https://www.outdooractive.com/de/track/rotenberg-taiernbach-ueber-muehlhausen17.12.2025-10-11-26/331637454/",
-  images: Array.from({ length: 13 }, (_, i) => `/Tour24_${i + 1}.jpg`),
+  images: Array.from({ length: 11 }, (_, i) => `/Tour24_${i + 1}.jpg`),
 }
 
 

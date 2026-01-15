@@ -316,7 +316,22 @@ const tourenData: Tour[] = [
   descent: "280 hm",
   outdooractiveLink: "https://www.outdooractive.com/de/track/rotenberg-taiernbach-ueber-muehlhausen17.12.2025-10-11-26/331637454/",
   images: Array.from({ length: 11 }, (_, i) => `/Tour24_${i + 1}.jpg`),
-}
+},
+{
+  id: 25,
+  name: "Horrenberg – Kälbererhütte – Dachsenfranz-Höhle",
+  description: "Diese abwechslungsreiche und geschichtsträchtige Wanderung führt durch die Wälder der Kurpfalz. Überwiegend auf gut begehbaren Wegen – mit einem kurzen Abschnitt quer durch den Wald – erreichen wir die Kälbererhütte, die spannende Einblicke in die heimische Tier- und Pflanzenwelt bietet, sowie die geheimnisvolle Dachsenfranz-Höhle.\n\nFrancesko Regali, genannt Dachsenfranz, floh im 19. Jahrhundert nach den italienischen Unabhängigkeitskriegen in den Kraichgau, nachdem er in einen tödlich ausgegangenen Streit verwickelt war. Er lebte als Außenseiter in selbstgegrabenen Erdhöhlen und einfachen Unterständen im Wald. In der Region war er als geschickter Fallensteller bekannt und half Bauernhöfen und Mühlen, indem er sie von Ratten- und Mäuseplagen befreite.\n\nNach Regenfällen können die Wege stellenweise matschig sein, im Sommer ist die Tour jedoch hervorragend zu gehen. Ein besonderes Highlight ist die Einkehr in der liebevoll restaurierten Mühlenbäckerei mit Mittagtisch und wunderschöner Mühlenkulisse – ein perfekter Abschluss dieser eindrucksvollen Wanderung.",
+  shortDescription: "Waldwanderung mit Geschichte, Höhle und Einkehr in historischer Mühle.",
+  distance: "15 km",
+  duration: "4:30 h",
+  difficulty: "mittel",
+  ascent: "299 hm",
+  descent: "295 hm",
+  outdooractiveLink: "https://www.outdooractive.com/de/route/wanderung/kurpfalz/horrenberg-kaelbererhuette-dachsenfranz-hoehle-horrenberg/105956825/",
+  images: Array.from({ length: 30 }, (_, i) => `/Tour25_${i + 1}.jpg`),
+},
+
+
 
 
 

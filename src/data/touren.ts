@@ -341,8 +341,10 @@ const tourenData: Tour[] = [
   ascent: "306 hm",
   descent: "366 hm",
   outdooractiveLink: "https://www.outdooractive.com/de/track/eselspfad1.01.2026-10-39-11/333467921/",
-  images: Array.from({ length: 9 }, (_, i) => `/Tour26_${i + 1}.jpg`),
+  images: Array.from({ length: 12 }, (_, i) => `/Tour26_${i + 1}.jpg`),
+  video: "https://youtu.be/-lN9dt74TZE",
 },
+
 
 
 

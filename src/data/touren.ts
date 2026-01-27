@@ -330,6 +330,20 @@ const tourenData: Tour[] = [
   outdooractiveLink: "https://www.outdooractive.com/de/route/wanderung/kurpfalz/horrenberg-kaelbererhuette-dachsenfranz-hoehle-horrenberg/105956825/",
   images: Array.from({ length: 30 }, (_, i) => `/Tour25_${i + 1}.jpg`),
 },
+{
+  id: 26,
+  name: "Auf den Pfaden der Esel – Deidesheim (01.01.2026)",
+  description: "Diese mittelschwere Wanderung führt uns auf historischen Pfaden rund um Deidesheim – bekannt als die Pfade der Esel. Die abwechslungsreiche Strecke verläuft durch Weinberge, Waldpassagen und teils steinige Abschnitte, die etwas Trittsicherheit erfordern. Mit schönen Ausblicken über die Pfalz ist diese Tour ideal für naturverbundenes Wandern. Rucksackverpflegung oder eine Einkehr unterwegs sind möglich – eine vorherige Reservierung wird empfohlen.",
+  shortDescription: "Historische Pfälzer Wanderung rund um Deidesheim mit Weinbergen, Wald und Ausblicken.",
+  distance: "12 km",
+  duration: "3:24 h",
+  difficulty: "mittel",
+  ascent: "306 hm",
+  descent: "366 hm",
+  outdooractiveLink: "https://www.outdooractive.com/de/track/eselspfad1.01.2026-10-39-11/333467921/",
+  images: Array.from({ length: 9 }, (_, i) => `/Tour26_${i + 1}.jpg`),
+},
+
 
 
 

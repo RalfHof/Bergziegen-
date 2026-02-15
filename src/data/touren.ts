@@ -345,6 +345,20 @@ const tourenData: Tour[] = [
   video: "https://vxdxrojbgltjypxzehsg.supabase.co/storage/v1/object/public/touren-videos/Tour26.mp4",
 },
 
+{
+  id: 27,
+  name: "Eußerthal über Galgenberg und Dernbach (04.02.26)",
+  description: "Diese abwechslungsreiche Wanderung führt rund um Eußerthal über den Galgenberg und weiter in Richtung Dernbach. Wetterbedingt waren Teile der Strecke recht nass und dadurch stellenweise anspruchsvoll, andere Abschnitte hingegen gut zu gehen. Trotz der Bedingungen überzeugt die Tour mit schönen Aussichten und ruhigen Waldpassagen. Ein besonderes Highlight ist die Einkehr in der Pension zum Hahn, die mit sehr gutem, gutbürgerlichem Essen und einer vielfältigen Auswahl überzeugt – absolut empfehlenswert, auch wenn auf den Bildern wenig Betrieb zu sehen ist.",
+  shortDescription: "Abwechslungsreiche Pfalztour mit tollen Aussichten und empfehlenswerter Einkehr.",
+  distance: "13,3 km",
+  duration: "3:13 h",
+  difficulty: "mittel",
+  ascent: "457 hm",
+  descent: "445 hm",
+  outdooractiveLink: "https://www.outdooractive.com/de/route/wanderung/pfalz/eusserthal-ueber-galgenberg-und-dernbach-04.02.2026/334232262/",
+  images: Array.from({ length: 18 }, (_, i) => `/Tour27_${i + 1}.jpg`),
+},
+
 
 
 
